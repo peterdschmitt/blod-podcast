@@ -15,6 +15,7 @@ export const NAV = [
   { href: '/podcast/', label: 'Podcast' },
   { href: '/real-examples/', label: 'Real examples' },
   { href: '/questions/', label: 'Q&A' },
+  { href: '/calculator/', label: 'Calculator' },
   { href: '/methodology/', label: 'Methodology' },
   { href: '/about/', label: 'About' },
 ];

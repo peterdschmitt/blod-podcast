@@ -1,18 +1,471 @@
 ---
+import '../styles/calc.css';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Signup from '../components/Signup.astro';
+import { DEFAULTS, LIMITS } from '../lib/calc';
+import { NOT_ADVICE } from '../site';
+
+const money = (n: number) => '$' + n.toLocaleString('en-US');
+
+// Field definitions. `k` is the path into the calculator inputs; `pct` fields show percents and store fractions.
+type Field = { k: string; label: string; hint?: string; prefix?: string; suffix?: string; pct?: boolean; step?: number };
+const usageFields: Field[] = [
+  { k: 'usage.pcp', label: 'Primary care visits' },
+  { k: 'usage.labs', label: 'Lab panels' },
+  { k: 'usage.rx', label: 'Generic prescription fills', hint: 'One daily drug for a year is 12 fills' },
+  { k: 'usage.specialist', label: 'Specialist visits' },
+  { k: 'usage.imaging', label: 'MRI or CT scans' },
+];
+const silverFields: Field[] = [
+  { k: 'silver.premium', label: 'Monthly premium', prefix: '$' },
+  { k: 'silver.deductible', label: 'Deductible', prefix: '$', step: 100 },
+  { k: 'silver.oopMax', label: 'Out-of-pocket max', prefix: '$', step: 100 },
+  { k: 'silver.coins', label: 'Coinsurance after deductible', suffix: '%', pct: true },
+  { k: 'silver.pcpCopay', label: 'Primary care copay', prefix: '$' },
+  { k: 'silver.specCopay', label: 'Specialist copay', prefix: '$' },
+  { k: 'silver.rxCopay', label: 'Generic drug copay', prefix: '$' },
+];
+const bronzeFields: Field[] = [
+  { k: 'bronze.premium', label: 'Monthly premium', prefix: '$' },
+  { k: 'bronze.deductible', label: 'Deductible', prefix: '$', step: 100 },
+  { k: 'bronze.oopMax', label: 'Out-of-pocket max', prefix: '$', step: 100 },
+  { k: 'bronze.coins', label: 'Coinsurance after deductible', suffix: '%', pct: true },
+];
+const dpcFields: Field[] = [
+  { k: 'dpc.fee', label: 'Monthly membership', prefix: '$', hint: `HSA rules cap it at $${LIMITS.dpcFeeCap.self} for one person, $${LIMITS.dpcFeeCap.family} for more` },
+  { k: 'dpc.lab', label: 'Lab panel at DPC price', prefix: '$' },
+  { k: 'dpc.rx', label: 'Generic fill at DPC price', prefix: '$' },
+  { k: 'dpc.imagingCash', label: 'Cash price for a scan', prefix: '$', step: 50 },
+];
+const priceFields: Field[] = [
+  { k: 'prices.pcp', label: 'Primary care visit', prefix: '$' },
+  { k: 'prices.lab', label: 'Lab panel', prefix: '$' },
+  { k: 'prices.rx', label: 'Generic fill', prefix: '$' },
+  { k: 'prices.specialist', label: 'Specialist visit', prefix: '$' },
+  { k: 'prices.imaging', label: 'MRI or CT scan', prefix: '$', step: 50 },
+  { k: 'prices.hospital', label: 'Hospital stay', prefix: '$', step: 1000 },
+];
+const brackets = [0.1, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37];
+const presets = [
+  { v: 'light', label: 'Light year', sub: '4 visits, 2 labs, 1 generic' },
+  { v: 'typical', label: 'Typical year', sub: 'A chronic condition, a scan' },
+  { v: 'bad', label: 'Bad year', sub: 'A hospital stay' },
+  { v: 'custom', label: 'Custom', sub: 'Set your own counts' },
+];
+const stacks = [
+  { key: 'silver', name: 'Silver plan', layers: ['Silver plan'] },
+  { key: 'bronze', name: 'Bronze plan alone', layers: ['Bronze plan', 'HSA'] },
+  { key: 'stack', name: 'Bronze + DPC + HSA', layers: ['Bronze plan', 'HSA', 'DPC'] },
+];
+const legend = [
+  { cls: 'seg-prem', label: 'Premiums' },
+  { cls: 'seg-dpc', label: 'DPC membership' },
+  { cls: 'seg-care', label: 'Care you pay for' },
+  { cls: 'seg-extra', label: 'Value-added benefits' },
+];
 ---
-<Base title="Stack calculator" description="Compare the expected and worst-case yearly cost of different coverage stacks, with every formula published.">
+<Base title="Stack calculator" description="Estimate a year of health costs on a silver plan, a bronze plan, or bronze plus direct primary care and an HSA. Every formula published, every number editable.">
   <header class="page-hero bg-ink">
-    <span class="pill rise" style="align-self: flex-start; background: #2D4C7C; color: #fff"><span class="dot"></span>In development</span>
-    <h1 class="display rise d1">The stack calculator, <em>coming soon.</em></h1>
-    <p class="dek rise d2 on-dark-muted">Enter your household, income and expected usage. See an expected year and a bad year for each stack, side by side.</p>
+    <span class="pill rise" style="align-self: flex-start; background: #2D4C7C; color: #fff"><span class="dot"></span>Educational estimate · 2027 limits</span>
+    <h1 class="display rise d1">What would your year <em>actually cost?</em></h1>
+    <p class="dek rise d2 on-dark-muted">Pick a kind of year, then swap our assumed prices for your own quotes. You'll see the total for each setup and what a bad year would cost. The starting numbers match our <a href="/blog/dpc-plus-bronze-worked-numbers/" style="color: #fff">worked-numbers guide</a>.</p>
   </header>
-  <div class="bento">
-    <div class="card pad-s reveal"><Icon name="calc" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">Formulas published</h2><p class="muted" style="margin: 0">Every number traces to a formula and an assumption you can read and change.</p></div>
-    <div class="card pad-s reveal"><Icon name="ban" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">Nothing pre-selected</h2><p class="muted" style="margin: 0">No partner product is ranked first, highlighted or chosen for you. You set the sort order.</p></div>
-    <div class="card pad-s reveal"><Icon name="info" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">An estimate only</h2><p class="muted" style="margin: 0">It shows how stacks compare under stated assumptions. Confirm with HealthCare.gov, your state exchange, a navigator or a licensed agent.</p></div>
-    <div class="span-all"><Signup /></div>
+
+  <div class="calc">
+    <form class="calc-in" id="calc-form" autocomplete="off" novalidate>
+      <section class="card calc-group">
+        <h2 class="calc-h"><span class="calc-n">1</span>Your year</h2>
+        <div class="seg seg-4" role="radiogroup" aria-label="Kind of year">
+          {presets.map((p) => (
+            <label class="seg-opt">
+              <input type="radio" name="preset" value={p.v} checked={DEFAULTS.preset === p.v} />
+              <span><b>{p.label}</b><small>{p.sub}</small></span>
+            </label>
+          ))}
+        </div>
+        <div class="calc-fields">
+          {usageFields.map((f) => (
+            <label class="cfield">
+              <span class="cl">{f.label}</span>
+              <span class="cin"><input type="number" inputmode="numeric" min="0" step="1" data-k={f.k} /></span>
+              {f.hint && <small class="ch">{f.hint}</small>}
+            </label>
+          ))}
+          <label class="ccheck"><input type="checkbox" data-k="usage.hospital" /><span>A hospital stay this year</span></label>
+        </div>
+      </section>
+
+      <section class="card calc-group">
+        <h2 class="calc-h"><span class="calc-n">2</span>About you</h2>
+        <div class="seg seg-2" role="radiogroup" aria-label="Who is covered">
+          <label class="seg-opt"><input type="radio" name="tier" value="self" checked /><span><b>Just me</b></span></label>
+          <label class="seg-opt"><input type="radio" name="tier" value="family" /><span><b>A family</b></span></label>
+        </div>
+        <div class="calc-fields">
+          <label class="cfield">
+            <span class="cl">Federal tax bracket</span>
+            <span class="cin"><select data-k="bracket">{brackets.map((b) => <option value={b}>{Math.round(b * 100)}%</option>)}</select></span>
+          </label>
+          <label class="cfield">
+            <span class="cl">Monthly premium tax credit</span>
+            <span class="cin"><i>$</i><input type="number" inputmode="numeric" min="0" step="10" data-k="credit" /></span>
+            <small class="ch">Leave at $0 if you don't qualify. HealthCare.gov shows yours.</small>
+          </label>
+          <label class="ccheck"><input type="checkbox" data-k="catchUp" /><span>55 or older (adds $1,000 to the HSA limit)</span></label>
+        </div>
+        <p class="calc-note" id="family-note" hidden>Family limits are on: the HSA limit is ${LIMITS.hsa.family.toLocaleString('en-US')} and no plan can charge more than ${LIMITS.oopMax.family.toLocaleString('en-US')} out of pocket. We doubled both plans' deductibles and caps, the usual family rule. Premiums and the DPC fee are still for one adult, so enter your family's quotes in step 3.</p>
+      </section>
+
+      <details class="card calc-group calc-more">
+        <summary class="calc-h"><span class="calc-n">3</span>Plan prices <span class="calc-sum" id="sum-plans"></span><Icon name="chevron" size={18} stroke={2} /></summary>
+        <p class="calc-note">Assumed prices, not quotes. They start from 2026 national averages for a 40-year-old plus about 15% for 2027. Your ZIP code changes them a lot, so paste in your own.</p>
+        <fieldset class="plan-set"><legend>Silver plan</legend>
+          <div class="calc-fields">
+            {silverFields.map((f) => (
+              <label class="cfield"><span class="cl">{f.label}</span><span class="cin">{f.prefix && <i>{f.prefix}</i>}<input type="number" inputmode="decimal" min="0" step={f.step ?? 1} data-k={f.k} data-pct={f.pct ? '1' : undefined} />{f.suffix && <i>{f.suffix}</i>}</span></label>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset class="plan-set"><legend>Bronze plan (or catastrophic)</legend>
+          <div class="calc-fields">
+            {bronzeFields.map((f) => (
+              <label class="cfield"><span class="cl">{f.label}</span><span class="cin">{f.prefix && <i>{f.prefix}</i>}<input type="number" inputmode="decimal" min="0" step={f.step ?? 1} data-k={f.k} data-pct={f.pct ? '1' : undefined} />{f.suffix && <i>{f.suffix}</i>}</span></label>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset class="plan-set"><legend>Direct primary care</legend>
+          <div class="calc-fields">
+            {dpcFields.map((f) => (
+              <label class="cfield"><span class="cl">{f.label}</span><span class="cin">{f.prefix && <i>{f.prefix}</i>}<input type="number" inputmode="decimal" min="0" step={f.step ?? 1} data-k={f.k} /></span>{f.hint && <small class="ch">{f.hint}</small>}</label>
+            ))}
+            <label class="ccheck"><input type="checkbox" data-k="dpc.useCash" /><span>Pay cash for scans the practice arranges (cash prices don't count toward the deductible)</span></label>
+          </div>
+        </fieldset>
+      </details>
+
+      <details class="card calc-group calc-more">
+        <summary class="calc-h"><span class="calc-n">4</span>What care costs <span class="calc-sum">Full prices before insurance</span><Icon name="chevron" size={18} stroke={2} /></summary>
+        <p class="calc-note">What a visit, test or stay costs when it counts toward your deductible. The silver plan's copays replace some of these.</p>
+        <div class="calc-fields">
+          {priceFields.map((f) => (
+            <label class="cfield"><span class="cl">{f.label}</span><span class="cin"><i>$</i><input type="number" inputmode="decimal" min="0" step={f.step ?? 1} data-k={f.k} /></span></label>
+          ))}
+        </div>
+      </details>
+
+      <details class="card calc-group calc-more">
+        <summary class="calc-h"><span class="calc-n">5</span>HSA and extras <span class="calc-sum" id="sum-extras"></span><Icon name="chevron" size={18} stroke={2} /></summary>
+        <div class="seg seg-2" role="radiogroup" aria-label="HSA contribution">
+          <label class="seg-opt"><input type="radio" name="hsaMode" value="match" checked /><span><b>Cover my costs</b><small>Put in what I spend, up to the limit</small></span></label>
+          <label class="seg-opt"><input type="radio" name="hsaMode" value="fixed" /><span><b>A set amount</b><small>Unspent money stays yours</small></span></label>
+        </div>
+        <div class="calc-fields" id="hsa-amount" hidden>
+          <label class="cfield"><span class="cl">Yearly HSA contribution</span><span class="cin"><i>$</i><input type="number" inputmode="numeric" min="0" step="100" data-k="hsa.amount" /></span></label>
+        </div>
+        <label class="ccheck" style="margin-top: 18px"><input type="checkbox" data-k="extra.on" /><span>Add value-added benefits to the DPC stack</span></label>
+        <div id="extra-fields" hidden>
+          <p class="calc-note">Telehealth, discount cards and similar services aren't insurance. Much of a typical bundle overlaps with DPC, so enter only what you'd pay. If your bundle includes a fixed-cash hospital policy, enter what it pays per stay. The numbers here are examples, not quotes.</p>
+          <div class="calc-fields">
+            <label class="cfield"><span class="cl">Monthly cost</span><span class="cin"><i>$</i><input type="number" inputmode="decimal" min="0" data-k="extra.monthly" /></span></label>
+            <label class="cfield"><span class="cl">Cash it pays for a hospital stay</span><span class="cin"><i>$</i><input type="number" inputmode="decimal" min="0" step="100" data-k="extra.hospitalPays" /></span></label>
+          </div>
+        </div>
+      </details>
+
+      <div class="calc-actions">
+        <button type="button" class="btn small white" id="calc-reset">Reset to the guide's numbers</button>
+        <button type="button" class="btn small coral" id="calc-share"><Icon name="link" size={16} stroke={2} /><span>Copy a link to these numbers</span></button>
+      </div>
+    </form>
+
+    <section class="calc-out" aria-labelledby="results-h">
+      <div class="card calc-results">
+        <div class="res-head">
+          <h2 id="results-h" class="h-l">Your <em id="res-year">typical year</em></h2>
+          <ul class="res-legend" aria-label="Bar colors">
+            {legend.map((l) => <li><span class={`sw ${l.cls}`}></span>{l.label}</li>)}
+          </ul>
+        </div>
+        <div class="res-list" aria-live="polite">
+          {stacks.map((s) => (
+            <article class="res" data-stack={s.key}>
+              <div class="res-top">
+                <div>
+                  <h3 class="res-name">{s.name}</h3>
+                  <div class="res-layers">{s.layers.map((l) => <span>{l}</span>)}<span class="res-extra-layer" hidden>Value-added benefits</span></div>
+                </div>
+                <div class="res-total"><span class="res-low" hidden>Lowest this year</span><b data-out="total">—</b><small>a year, after tax savings</small></div>
+              </div>
+              <div class="res-bar" data-out="bar" aria-hidden="true"></div>
+              <dl class="res-meta">
+                <div><dt>HSA tax savings</dt><dd data-out="hsa">—</dd></div>
+                <div><dt>Bad year</dt><dd data-out="worst">—</dd></div>
+              </dl>
+              <p class="res-warn" data-out="warn" hidden></p>
+            </article>
+          ))}
+        </div>
+        <p class="res-say" id="res-say"></p>
+      </div>
+
+      <div class="card calc-table-card">
+        <h2 class="calc-h" style="margin-bottom: 14px">The line items</h2>
+        <div class="calc-table-wrap">
+          <table class="calc-table">
+            <thead><tr><th scope="col"></th><th scope="col">Silver</th><th scope="col">Bronze alone</th><th scope="col" id="th-stack">Bronze + DPC + HSA</th></tr></thead>
+            <tbody id="calc-tbody"></tbody>
+          </table>
+        </div>
+        <p class="calc-note" style="margin-bottom: 0">"Bad year" adds a hospital stay large enough to reach each plan's out-of-pocket max on top of the routine care above.</p>
+      </div>
+
+      <div class="notice calc-disclaimer" role="note">
+        <Icon name="info" size={20} stroke={2} />
+        <p style="margin: 0">An educational estimate, not a recommendation for you. It shows how the setups compare under the assumptions you see. {NOT_ADVICE} Check real prices on HealthCare.gov or your state's Marketplace, and talk to a free navigator, a licensed agent or a tax professional before you choose.</p>
+      </div>
+    </section>
   </div>
+
+  <section class="card span-all calc-how" id="formulas">
+    <div class="section-head" style="margin-bottom: 20px">
+      <h2 class="h-xl">How it works, <em>formula by formula.</em></h2>
+      <a href="/methodology/" style="font-weight: 600">Our methodology</a>
+    </div>
+    <div class="how-grid">
+      <div class="promise">
+        <h3>Premiums</h3>
+        <p><code>(monthly premium − monthly tax credit) × 12</code>, never below zero. The bronze plan alone and the DPC stack use the same bronze plan.</p>
+      </div>
+      <div class="promise">
+        <h3>What you pay inside the plan</h3>
+        <p>Copays first, then charges up to the deductible, then your coinsurance share of the rest. The total stops at the out-of-pocket max. Silver uses copays for visits and generics. Bronze sends everything to the deductible.</p>
+      </div>
+      <div class="promise">
+        <h3>The DPC stack</h3>
+        <p>Primary care visits cost $0 beyond the membership. Labs and generics are billed at the practice's prices, outside the plan. Scans are paid cash if you choose, which skips the deductible. Specialists and hospital care go through bronze.</p>
+      </div>
+      <div class="promise">
+        <h3>HSA tax savings</h3>
+        <p><code>tax bracket × contribution</code>. By default the contribution equals what you spend on care and DPC fees, up to {money(LIMITS.hsa.self)} for one person or {money(LIMITS.hsa.family)} for a family in 2027 (plus $1,000 at 55 or older). Premiums don't count. Federal income tax only, no state or payroll tax.</p>
+      </div>
+      <div class="promise">
+        <h3>When the HSA drops out</h3>
+        <p>Silver is treated as not HSA-compatible. The DPC stack loses its HSA savings if the membership goes over {money(LIMITS.dpcFeeCap.self)} a month for one person or {money(LIMITS.dpcFeeCap.family)} for more than one.</p>
+      </div>
+      <div class="promise">
+        <h3>What it leaves out</h3>
+        <p>Cost-sharing reductions on silver below 250% of the poverty line, separate per-person family deductibles, out-of-network care, and the catastrophic plan's free primary care visits. Each can change the answer, and our <a href="/blog/dpc-plus-bronze-worked-numbers/#when-the-math-changes">worked-numbers guide</a> explains how.</p>
+      </div>
+    </div>
+    <div class="sources calc-sources">
+      <h2>Where the limits come from</h2>
+      <ol>
+        <li><a href="https://www.cms.gov/files/document/2027-papi-parameters-guidance-2026-01-29.pdf">CMS, 2027 maximum annual limitation on cost sharing</a> ($12,000 one person, $24,000 family) <span class="grade primary">Primary source</span></li>
+        <li><a href="https://www.irs.gov/pub/irs-drop/rp-26-24.pdf">IRS, Revenue Procedure 2026-24</a> (2027 HSA limits and the DPC fee caps) <span class="grade primary">Primary source</span></li>
+        <li><a href="https://www.irs.gov/pub/irs-drop/n-26-05.pdf">IRS, Notice 2026-5</a> (bronze and catastrophic plans are HSA-compatible; DPC fees payable from an HSA) <span class="grade primary">Primary source</span></li>
+        <li><a href="https://www.kff.org/affordable-care-act/state-indicator/average-marketplace-premiums-by-metal-tier/">KFF, average Marketplace premiums by metal tier</a> (starting point for the assumed premiums) <span class="grade">Independent research</span></li>
+        <li><a href="https://blog.hint.com/state-of-dpc-2026-key-takeaways-from-the-dpc-alliances-physician-survey">DPC Alliance, State of Direct Primary Care 2026, summary by Hint</a> (average DPC fee) <span class="grade">Independent research</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="span-all"><Signup /></div>
 </Base>
+
+<script>
+  import { DEFAULTS, LIMITS, PRESETS, calculate, worstCase, type Inputs, type StackResult } from '../lib/calc';
+
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const clone = <T,>(o: T): T => JSON.parse(JSON.stringify(o));
+  const money = (n: number) => (n < 0 ? '−$' : '$') + Math.round(Math.abs(n)).toLocaleString('en-US');
+  const YEAR_NAME: Record<string, string> = { light: 'light year', typical: 'typical year', bad: 'bad year', custom: 'year' };
+
+  let state: Inputs = clone(DEFAULTS);
+
+  const get = (o: any, path: string) => path.split('.').reduce((a, k) => a?.[k], o);
+  const set = (o: any, path: string, v: unknown) => {
+    const ks = path.split('.');
+    const last = ks.pop()!;
+    ks.reduce((a, k) => a[k], o)[last] = v;
+  };
+
+  // Restore from a shared link.
+  try {
+    const q = new URLSearchParams(location.search).get('s');
+    if (q) {
+      const saved = JSON.parse(atob(q.replace(/-/g, '+').replace(/_/g, '/')));
+      const merge = (base: any, over: any) => {
+        for (const k of Object.keys(base)) {
+          if (over?.[k] === undefined) continue;
+          if (typeof base[k] === 'object' && base[k] !== null) merge(base[k], over[k]);
+          else if (typeof base[k] === typeof over[k]) base[k] = over[k];
+        }
+      };
+      merge(state, saved);
+    }
+  } catch { /* a broken link falls back to the defaults */ }
+
+  const fields = () => form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-k]');
+
+  function paint() {
+    for (const el of fields()) {
+      const v = get(state, el.dataset.k!);
+      if (el instanceof HTMLInputElement && el.type === 'checkbox') el.checked = !!v;
+      else if (el instanceof HTMLInputElement && el.dataset.pct) el.value = String(Math.round(v * 1000) / 10);
+      else el.value = String(v);
+    }
+    (form.querySelector(`[name=preset][value=${state.preset}]`) as HTMLInputElement).checked = true;
+    (form.querySelector(`[name=tier][value=${state.tier}]`) as HTMLInputElement).checked = true;
+    (form.querySelector(`[name=hsaMode][value=${state.hsa.mode}]`) as HTMLInputElement).checked = true;
+  }
+
+  function bar(r: StackResult, max: number) {
+    const parts = [
+      ['seg-prem', r.premiums, 'Premiums'],
+      ['seg-dpc', r.dpcFees, 'DPC membership'],
+      ['seg-care', r.inPlan + r.outside, 'Care you pay for'],
+      ['seg-extra', r.extraCost, 'Value-added benefits'],
+    ] as const;
+    return parts
+      .filter(([, v]) => v > 0)
+      .map(([cls, v, name]) => `<span class="${cls}" style="width:${(v / max) * 100}%" title="${name}: ${money(v)}"></span>`)
+      .join('');
+  }
+
+  function render() {
+    const rs = calculate(state);
+    const ws = worstCase(state);
+    const max = Math.max(...rs.map((r) => r.premiums + r.dpcFees + r.inPlan + r.outside + r.extraCost), 1);
+    const low = Math.min(...rs.map((r) => r.total));
+    const extraOn = state.extra.on;
+    const stackName = extraOn ? 'Bronze + DPC + HSA + extras' : 'Bronze + DPC + HSA';
+
+    rs.forEach((r, k) => {
+      const card = document.querySelector<HTMLElement>(`.res[data-stack=${r.key}]`)!;
+      const out = (n: string) => card.querySelector<HTMLElement>(`[data-out=${n}]`)!;
+      out('total').textContent = money(r.total);
+      out('bar').innerHTML = bar(r, max);
+      out('hsa').textContent = r.hsaSavings > 0 ? money(-r.hsaSavings) : r.key === 'silver' ? 'Not HSA-compatible' : '$0';
+      out('worst').textContent = money(ws[k].total);
+      card.querySelector<HTMLElement>('.res-low')!.hidden = Math.round(r.total) !== Math.round(low);
+      card.classList.toggle('is-low', Math.round(r.total) === Math.round(low));
+      if (r.key === 'stack') {
+        card.querySelector('.res-name')!.textContent = stackName;
+        card.querySelector<HTMLElement>('.res-extra-layer')!.hidden = !extraOn;
+        const warn = out('warn');
+        warn.hidden = r.hsaOk;
+        warn.textContent = r.hsaOk ? '' : `The membership is over the $${LIMITS.dpcFeeCap[state.tier]} a month HSA cap, so this stack loses its HSA tax savings.`;
+      }
+    });
+
+    // Plain-language comparison against the next-lowest setup.
+    const names = ['Silver', 'Bronze alone', stackName];
+    const order = rs.map((r, k) => ({ k, t: r.total })).sort((a, b) => a.t - b.t);
+    const gap = Math.round(order[1].t) - Math.round(order[0].t);
+    const say = document.getElementById('res-say')!;
+    say.textContent = gap < 50
+      ? `In this year, ${names[order[0].k]} and ${names[order[1].k]} cost about the same.`
+      : `In this year, ${names[order[0].k]} comes out about ${money(gap)} lower than ${names[order[1].k]}. In a bad year, the lowest is ${names[ws.map((w, k) => ({ k, t: w.total })).sort((a, b) => a.t - b.t)[0].k]}.`;
+
+    document.getElementById('res-year')!.textContent = YEAR_NAME[state.preset];
+    document.getElementById('th-stack')!.textContent = stackName;
+
+    type Row = { label: string; val: (r: StackResult) => number; total?: boolean; worst?: boolean };
+    const rows: Row[] = [
+      { label: 'Premiums', val: (r) => r.premiums },
+      { label: 'DPC membership', val: (r) => r.dpcFees },
+      { label: 'Care through the plan', val: (r) => r.inPlan },
+      { label: 'Care outside the plan', val: (r) => r.outside },
+      ...(extraOn
+        ? [
+            { label: 'Value-added benefits', val: (r: StackResult) => r.extraCost },
+            { label: 'Cash payout for a hospital stay', val: (r: StackResult) => -r.extraPays },
+          ]
+        : []),
+      { label: 'HSA tax savings', val: (r) => -r.hsaSavings },
+      { label: 'Total for the year', val: (r) => r.total, total: true },
+      { label: 'Total in a bad year', val: (r) => r.total, total: true, worst: true },
+    ];
+    document.getElementById('calc-tbody')!.innerHTML = rows
+      .map((row) => {
+        const cells = (row.worst ? ws : rs).map((r) => {
+          const v = row.val(r);
+          const txt = Math.round(v) === 0 && !row.total ? '<span class="muted">—</span>' : money(v);
+          const cap = row.label === 'Care through the plan' && r.hitCap ? ' <small class="cap">at cap</small>' : '';
+          return `<td>${row.total ? `<b>${txt}</b>` : txt}${cap}</td>`;
+        });
+        return `<tr${row.total ? ' class="tot"' : ''}><th scope="row">${row.label}</th>${cells.join('')}</tr>`;
+      })
+      .join('');
+
+    document.getElementById('sum-plans')!.textContent = `Silver $${state.silver.premium} · Bronze $${state.bronze.premium} · DPC $${state.dpc.fee} a month`;
+    document.getElementById('sum-extras')!.textContent = `${state.hsa.mode === 'match' ? 'HSA covers costs' : 'HSA ' + money(state.hsa.amount)}${extraOn ? ' · extras on' : ''}`;
+    document.getElementById('hsa-amount')!.hidden = state.hsa.mode !== 'fixed';
+    document.getElementById('extra-fields')!.hidden = !extraOn;
+    document.getElementById('family-note')!.hidden = state.tier !== 'family';
+  }
+
+  form.addEventListener('input', (e) => {
+    const el = e.target as HTMLInputElement | HTMLSelectElement;
+    if (el.name === 'preset') {
+      state.preset = el.value as Inputs['preset'];
+      if (state.preset !== 'custom') state.usage = clone(PRESETS[state.preset]);
+      paint();
+    } else if (el.name === 'tier') {
+      const from = state.tier;
+      state.tier = el.value as Inputs['tier'];
+      // Family deductibles and out-of-pocket caps are usually twice the single amounts, so scale both plans together.
+      if (from !== state.tier) {
+        const f = state.tier === 'family' ? 2 : 0.5;
+        for (const plan of [state.silver, state.bronze]) {
+          plan.deductible = Math.round(plan.deductible * f);
+          plan.oopMax = Math.min(Math.round(plan.oopMax * f), LIMITS.oopMax[state.tier]);
+        }
+        if (state.hsa.amount === LIMITS.hsa[from]) state.hsa.amount = LIMITS.hsa[state.tier];
+      }
+      paint();
+    } else if (el.name === 'hsaMode') {
+      state.hsa.mode = el.value as 'match' | 'fixed';
+    } else if (el.dataset.k) {
+      const k = el.dataset.k;
+      let v: unknown;
+      if (el instanceof HTMLInputElement && el.type === 'checkbox') v = el.checked;
+      else {
+        const n = parseFloat(el.value);
+        v = Number.isFinite(n) ? Math.max(0, el.dataset.pct ? Math.min(n, 100) / 100 : n) : 0;
+      }
+      set(state, k, v);
+      if (k.startsWith('usage.') && state.preset !== 'custom') {
+        state.preset = 'custom';
+        (form.querySelector('[name=preset][value=custom]') as HTMLInputElement).checked = true;
+      }
+    }
+    render();
+  });
+
+  document.getElementById('calc-reset')!.addEventListener('click', () => {
+    state = clone(DEFAULTS);
+    history.replaceState(null, '', location.pathname);
+    paint();
+    render();
+  });
+
+  document.getElementById('calc-share')!.addEventListener('click', async (e) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    const label = btn.querySelector('span')!;
+    const s = btoa(JSON.stringify(state)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const url = `${location.origin}${location.pathname}?s=${s}`;
+    history.replaceState(null, '', url);
+    try {
+      await navigator.clipboard.writeText(url);
+      label.textContent = 'Link copied';
+    } catch {
+      label.textContent = 'Link is in the address bar';
+    }
+    setTimeout(() => (label.textContent = 'Copy a link to these numbers'), 2400);
+  });
+
+  paint();
+  render();
+</script>
