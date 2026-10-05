@@ -4,4 +4,9 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://example.com',
   trailingSlash: 'ignore',
+  // Guides moved to /blog/ on 2026-10-05; keep old links working.
+  redirects: {
+    '/guides': '/blog',
+    '/guides/[slug]': '/blog/[slug]',
+  },
 });

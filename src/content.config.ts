@@ -36,4 +36,20 @@ const guides = defineCollection({
   }),
 });
 
-export const collections = { guides };
+// Podcast episodes. `status: planned` shows as a clearly marked upcoming episode with no player.
+const episodes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/episodes' }),
+  schema: z.object({
+    number: z.number(),
+    title: z.string(),
+    summary: z.string(),
+    status: z.enum(['planned', 'published']).default('planned'),
+    date: z.coerce.date().optional(),
+    minutes: z.number().optional(),
+    audioUrl: z.string().url().optional(),
+    guests: z.array(z.string()).default([]),
+    relatedGuide: z.string().optional(), // slug of a blog post
+  }),
+});
+
+export const collections = { guides, episodes };

@@ -11,16 +11,16 @@ const published = new Set(guides.map((g) => g.data.title));
 const upcoming = PLANNED.filter((p) => !published.has(p.title));
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
-<Base title="Guides" description="Plain-language guides to direct primary care, HSAs, bronze and catastrophic plans, and the extras.">
+<Base title="Blog" description="Plain-language guides to direct primary care, HSAs, bronze and catastrophic plans, and the extras.">
   <header class="page-hero bg-butter">
     <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>{guides.length} published · {upcoming.length} in the works</span>
-    <h1 class="display rise d1">Guides, <em>with the math shown.</em></h1>
+    <h1 class="display rise d1">The blog, <em>with the math shown.</em></h1>
     <p class="dek rise d2">Every guide uses the same template: what it is, who it fits, who should skip it, costs, risks and evidence. Each one shows when it was last reviewed and by whom.</p>
   </header>
 
   <div class="bento">
     {guides.map((g) => (
-      <a href={`/guides/${g.id}/`} class="tile reveal" id={g.data.categorySlug}>
+      <a href={`/blog/${g.id}/`} class="tile reveal" id={g.data.categorySlug}>
         <span class="meta"><span>{g.data.category}</span><span>{g.data.readMinutes} min</span></span>
         <span style="display: flex; flex-direction: column; gap: 12px">
           <span class="t">{g.data.title}</span>

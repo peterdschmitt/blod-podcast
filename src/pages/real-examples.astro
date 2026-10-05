@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import ExampleCard from '../components/ExampleCard.astro';
+import Signup from '../components/Signup.astro';
+import { EXAMPLES, FACTS, EXAMPLE_SOURCES } from '../data/examples';
+import { NOT_ADVICE } from '../site';
+const gradeClass = (g: string) => (g === 'Primary source' ? 'primary' : g.startsWith('Vendor') ? 'vendor' : '');
+const facts = [FACTS.practices, FACTS.avgFee, FACTS.payments, FACTS.ichra];
+const factBg = ['bg-butter', 'bg-white', 'bg-lilac', 'bg-sage'];
+---
+<Base title="Real examples" description="Why direct primary care plus the right overlay coverage makes sense for some households, and when it doesn't. Worked examples with sources.">
+  <header class="page-hero bg-sage">
+    <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>Why it's catching on</span>
+    <h1 class="display rise d1">Why it makes sense, <em>with real examples.</em></h1>
+    <p class="dek rise d2">Direct primary care is growing fast as premiums climb. Here is how the stack works for five kinds of households, including one where it usually doesn't fit.</p>
+  </header>
+
+  <div class="bento">
+    {facts.map((f, i) => (
+      <div class:list={['stat', factBg[i], 'reveal']}>
+        <span class="eyebrow">{f.label}</span>
+        <div><div class="num">{f.value}</div><p>{f.note}. Source: <a href={f.url}>{f.source}</a></p></div>
+      </div>
+    ))}
+  </div>
+
+  <div class="examples">
+    {EXAMPLES.map((ex) => <ExampleCard ex={ex} full />)}
+  </div>
+
+  <div class="bento">
+    <section class="card span-all reveal">
+      <p class="hypo" style="margin-bottom: 18px">These are hypothetical households built to explain how each layer works. They are general education, not a recommendation for your situation. {NOT_ADVICE}</p>
+      <div class="sources" style="margin-top: 0">
+        <h2>Sources</h2>
+        <ol>{EXAMPLE_SOURCES.map((s) => <li><a href={s.url} rel="noopener">{s.title}</a> <span class:list={['grade', gradeClass(s.grade)]}>{s.grade}</span></li>)}</ol>
+      </div>
+    </section>
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>

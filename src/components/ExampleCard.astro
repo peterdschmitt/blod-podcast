@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+import type { Example } from '../data/examples';
+interface Props { ex: Example; full?: boolean }
+const { ex, full = false } = Astro.props;
+const bg = { butter: 'bg-butter', sage: 'bg-sage', lilac: 'bg-lilac', white: 'bg-white', navy: 'bg-ink' }[ex.color];
+---
+<article id={ex.slug} class:list={['example', bg, { full }]}>
+  <div class="ex-head">
+    <span class="pill white ex-tag">{ex.tag}</span>
+    {!ex.fits && <span class="pill ex-warn">Usually not a fit</span>}
+  </div>
+  <h3 class="ex-who">{ex.who}</h3>
+  <p class="ex-sit">{ex.situation}</p>
+  <div class="ex-stack" aria-label="The stack">
+    {ex.stack.map((s, i) => <span class:list={['ex-layer', `l${i}`]}>{s}</span>)}
+  </div>
+  {full ? (
+    <div class="ex-cols">
+      <div>
+        <b class="ex-label">{ex.fits ? 'Why it can make sense' : 'Why'}</b>
+        <ul>{ex.why.map((w) => <li><Icon name="check" size={16} stroke={2.2} />{w}</li>)}</ul>
+      </div>
+      <div>
+        <b class="ex-label">Watch out for</b>
+        <ul class="watch">{ex.watch.map((w) => <li><Icon name="info" size={16} stroke={2} />{w}</li>)}</ul>
+      </div>
+    </div>
+  ) : (
+    <p class="ex-why"><Icon name="check" size={16} stroke={2.2} />{ex.why[ex.why.length > 2 ? 2 : 0]}</p>
+  )}
+  {!full && <a href={`/real-examples/#${ex.slug}`} class="ex-more">See the full example <Icon name="arrow" size={16} stroke={2.2} /></a>}
+</article>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import EpisodeRow from '../components/EpisodeRow.astro';
+import Signup from '../components/Signup.astro';
+import { SITE } from '../site';
+
+const episodes = (await getCollection('episodes')).sort((a, b) => b.data.number - a.data.number);
+const live = episodes.filter((e) => e.data.status === 'published');
+const bars = [18, 34, 26, 48, 30, 56, 22, 40, 52, 28, 44, 20, 36, 50, 24, 42, 32, 54, 26, 38];
+---
+<Base title="Podcast" description={`The ${SITE.name} podcast: conversations about direct primary care, HSAs and the coverage around them.`}>
+  <header class="page-hero bg-ink" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: end">
+    <div style="display: flex; flex-direction: column; gap: 22px">
+      <span class="pill rise" style="align-self: flex-start; background: #2D4C7C; color: #fff"><Icon name="mic" size={16} /> The {SITE.name} podcast</span>
+      <h1 class="display rise d1">Plain talk about <em>the new way to cover yourself.</em></h1>
+      <p class="dek rise d2 on-dark-muted">Doctors, benefits experts and real families on direct primary care, HSAs and value-added benefits. What works, what doesn't, and who each option is wrong for.</p>
+      <div class="listen rise d3">
+        <span><Icon name="headphones" size={18} /> Apple Podcasts <small>soon</small></span>
+        <span><Icon name="headphones" size={18} /> Spotify <small>soon</small></span>
+        <span><Icon name="headphones" size={18} /> YouTube <small>soon</small></span>
+      </div>
+    </div>
+    <div class="wave rise d2" aria-hidden="true" style="justify-content: flex-end">{bars.map((h) => <i style={`height: ${h}px`}></i>)}</div>
+  </header>
+
+  <div class="bento">
+    <section class="card span-all reveal">
+      <div class="section-head">
+        <h2 class="h-xl">{live.length ? 'Episodes' : <>First season, <em>in production</em></>}</h2>
+        <p class="muted">{live.length ? `${live.length} episodes so far.` : 'These are the episodes we are recording first. Subscribe below to hear when episode 1 is out.'}</p>
+      </div>
+      <div class="episodes">{episodes.map((ep) => <EpisodeRow ep={ep} />)}</div>
+    </section>
+
+    <div class="card pad-s reveal"><Icon name="doc" size={28} /><h2 class="serif" style="font-size: 30px; margin: 18px 0 8px; line-height: 1.05">Every episode has show notes</h2><p class="muted" style="margin: 0">Sources, graded the same way as the blog, plus a link to the matching guide.</p></div>
+    <div class="card pad-s reveal"><Icon name="ban" size={28} /><h2 class="serif" style="font-size: 30px; margin: 18px 0 8px; line-height: 1.05">No paid guests</h2><p class="muted" style="margin: 0">Guests can't buy a spot. Any business tie a guest has is disclosed at the top of the episode.</p></div>
+    <div class="card pad-s reveal"><Icon name="info" size={28} /><h2 class="serif" style="font-size: 30px; margin: 18px 0 8px; line-height: 1.05">Education, not advice</h2><p class="muted" style="margin: 0">For your own situation, start with HealthCare.gov, a navigator or a licensed agent in your state.</p></div>
+
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>

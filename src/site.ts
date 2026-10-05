@@ -11,9 +11,10 @@ export const DISCLOSURE_LINE = `This site is published by ${SITE.publisher}, whi
 export const NOT_ADVICE = 'We are not a licensed insurance agency and do not sell insurance. This is general information, not advice about your situation.';
 
 export const NAV = [
-  { href: '/guides/', label: 'Guides' },
-  { href: '/calculator/', label: 'Calculator' },
-  { href: '/methodology/', label: 'Our methodology' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/podcast/', label: 'Podcast' },
+  { href: '/real-examples/', label: 'Real examples' },
+  { href: '/methodology/', label: 'Methodology' },
   { href: '/about/', label: 'About' },
 ];
 

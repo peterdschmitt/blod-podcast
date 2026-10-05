@@ -23,7 +23,7 @@ const titleMain = d.titleEm && d.title.endsWith(d.titleEm) ? d.title.slice(0, -d
   <div class="progress" aria-hidden="true"><span></span></div>
   <article style="display: flex; flex-direction: column; gap: var(--gap)">
     <header class:list={['art-hero', heroBg]}>
-      <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/guides/">Guides</a><a href={`/guides/#${d.categorySlug}`}>{d.category}</a></nav>
+      <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/blog/">Blog</a><a href={`/blog/#${d.categorySlug}`}>{d.category}</a></nav>
       <h1 class="display rise d1">{titleMain}{d.titleEm && titleMain !== d.title && <em>{d.titleEm}</em>}</h1>
       <p class="dek rise d2">{d.dek}</p>
       <div class="byline rise d3">
@@ -93,7 +93,7 @@ const titleMain = d.titleEm && d.title.endsWith(d.titleEm) ? d.title.slice(0, -d
           <a href="/methodology/#evidence" style="font-size: 14px; font-weight: 600">How we grade evidence</a>
         </div>
         {next ? (
-          <a href={`/guides/${next.id}/`} class="next bg-ink card" style="padding: 24px">
+          <a href={`/blog/${next.id}/`} class="next bg-ink card" style="padding: 24px">
             <span style="font-size: 14px; color: var(--on-dark-muted)">Next guide</span>
             <span class="t">{next.data.title}</span>
           </a>
