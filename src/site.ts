@@ -1,6 +1,6 @@
 // Site-wide settings. Placeholders in [BRACKETS] still need Peter's input.
 export const SITE = {
-  name: 'Coverage Stack', // working name
+  name: 'Straight Talk on Healthcare Options',
   publisher: 'Conversely',
   services: '[SERVICES]',
   tagline: 'Independent guides to direct primary care, high-deductible plans, HSAs and the extras.',

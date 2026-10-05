@@ -1,4 +1,4 @@
-/* Coverage Stack: design direction C, "Bento". */
+/* Straight Talk on Healthcare Options: design direction C, "Bento". */
 :root {
   /* Paper palette, from Natrex's "Paper" theme. */
   --bg: #F7F3EC;            /* paper ground */
@@ -84,7 +84,9 @@ a:hover { color: var(--coral-deep); }
 .brand-mark { display: grid; grid-template-columns: repeat(2, 11px); gap: 3px; transition: transform .5s var(--ease); }
 .brand:hover .brand-mark { transform: rotate(90deg); }
 .brand-mark span { height: 11px; border-radius: 4px; }
-.brand-name { font-family: var(--serif); font-size: 28px; letter-spacing: -.01em; line-height: 1; }
+.brand-name { font-family: var(--serif); font-size: 26px; letter-spacing: -.01em; line-height: 1; }
+@media (max-width: 1180px) { .brand-name { font-size: 22px; } .site-header .nav a { padding: 12px 10px; } .site-header .nav { gap: 2px; } }
+@media (max-width: 520px) { .brand-name { font-size: 19px; max-width: 13ch; line-height: 1.05; } }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px; font-weight: 500; }
 .nav a { text-decoration: none; padding: 12px 16px; border-radius: var(--pill); transition: background .2s; }
 .nav a:hover { background: var(--bg); color: var(--ink); }
@@ -94,7 +96,7 @@ a:hover { color: var(--coral-deep); }
 .nav .nav-cta:hover { background: #2E2620; color: #fff; }
 .menu-btn { display: none; }
 
-@media (max-width: 900px) {
+@media (max-width: 1020px) {
   .site-header { border-radius: 28px; padding: 10px 10px 10px 20px; }
   .menu-btn {
     display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px;
