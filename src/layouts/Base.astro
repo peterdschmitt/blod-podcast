@@ -46,13 +46,29 @@ const year = new Date().getFullYear();
           <BrandMark />
           <span class="brand-name">{SITE.name}</span>
         </a>
-        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menu"><Icon name="menu" /></button>
+        <div class="header-tools">
+          <button class="search-btn" type="button" aria-haspopup="dialog" aria-controls="site-search" aria-label="Search the site"><Icon name="search" size={18} stroke={2} /><span class="search-label">Search</span><kbd>/</kbd></button>
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menu"><Icon name="menu" /></button>
+        </div>
         <nav id="main-nav" class="nav" aria-label="Main">
           {NAV.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
           <a href="/for-agencies/" class="nav-agencies" aria-current={isCurrent('/for-agencies/') ? 'page' : undefined}>For agencies</a>
           <a href="/#subscribe" class="nav-cta">Subscribe</a>
         </nav>
       </header>
+
+      <dialog id="site-search" class="search-dlg" aria-label="Search the site">
+        <div class="search-box">
+          <label class="search-field">
+            <Icon name="search" size={20} stroke={2} />
+            <span class="sr-only">Search blog posts, Q&amp;A calls, examples and pages</span>
+            <input type="search" id="search-q" placeholder="Search posts, Q&amp;A, examples…" autocomplete="off" spellcheck="false" />
+            <button type="button" class="search-close" aria-label="Close search"><Icon name="x" size={18} stroke={2} /></button>
+          </label>
+          <p class="search-status" id="search-status" aria-live="polite">Try “HSA”, “bronze”, “Medicare” or “ICHRA”.</p>
+          <ol class="search-results" id="search-results" role="listbox" aria-label="Results"></ol>
+        </div>
+      </dialog>
 
       <main id="main" style="display: contents">
         <slot />
@@ -85,6 +101,78 @@ const year = new Date().getFullYear();
       const open = header!.dataset.open !== 'true';
       header!.dataset.open = String(open);
       btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Site search: lazy-loads /search.json and filters it client-side.
+    type Item = { s: string; t: string; u: string; d: string; x: string };
+    const dlg = document.querySelector<HTMLDialogElement>('#site-search')!;
+    const q = document.querySelector<HTMLInputElement>('#search-q')!;
+    const list = document.querySelector<HTMLOListElement>('#search-results')!;
+    const status = document.querySelector<HTMLElement>('#search-status')!;
+    let index: Item[] | null = null;
+    let active = -1;
+    const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+    const mark = (s: string, terms: string[]) => {
+      let out = esc(s);
+      for (const t of terms) out = out.replace(new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>');
+      return out;
+    };
+    const snippet = (it: Item, terms: string[]) => {
+      const hay = `${it.d} ${it.x}`;
+      const i = hay.toLowerCase().indexOf(terms[0]);
+      if (i < 0 || i < 140) return hay.slice(0, 170) + (hay.length > 170 ? '…' : '');
+      return '…' + hay.slice(i - 60, i + 110) + '…';
+    };
+    const run = () => {
+      const terms = q.value.toLowerCase().split(/\s+/).filter((t) => t.length > 1);
+      active = -1;
+      if (!index || !terms.length) { list.innerHTML = ''; status.textContent = index ? 'Try “HSA”, “bronze”, “Medicare” or “ICHRA”.' : 'Loading…'; return; }
+      const hits = index.map((it) => {
+        const t = it.t.toLowerCase(), d = it.d.toLowerCase(), x = it.x.toLowerCase();
+        let score = 0;
+        for (const term of terms) {
+          const st = (t.includes(term) ? 10 : 0) + (d.includes(term) ? 4 : 0) + (x.includes(term) ? 1 : 0);
+          if (!st) return null;
+          score += st;
+        }
+        if (it.s.startsWith('Blog')) score += 1;
+        return { it, score };
+      }).filter(Boolean).sort((a, b) => b!.score - a!.score).slice(0, 12) as { it: Item }[];
+      status.textContent = hits.length ? `${hits.length === 12 ? 'Top 12' : hits.length} result${hits.length === 1 ? '' : 's'}` : 'No matches. Try a broader word.';
+      list.innerHTML = hits.map(({ it }, i) => `<li role="option" id="sr-${i}"><a href="${it.u}"><span class="sr-sec">${esc(it.s)}</span><span class="sr-t">${mark(it.t, terms)}</span><span class="sr-d">${mark(snippet(it, terms), terms)}</span></a></li>`).join('');
+    };
+    const open = async () => {
+      if (!dlg.open) dlg.showModal();
+      q.focus(); q.select();
+      if (!index) {
+        status.textContent = 'Loading…';
+        try { index = await (await fetch('/search.json')).json(); } catch { status.textContent = 'Search could not load. Please try again.'; return; }
+      }
+      run();
+    };
+    document.querySelectorAll('.search-btn').forEach((b) => b.addEventListener('click', open));
+    dlg.querySelector('.search-close')!.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => { list.innerHTML = ''; q.value = ''; });
+    list.addEventListener('click', (e) => { if ((e.target as Element).closest('a')) dlg.close(); });
+    q.addEventListener('input', run);
+    q.addEventListener('keydown', (e) => {
+      const items = list.querySelectorAll('li');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (!items.length) return;
+        active = (active + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+        items.forEach((li, i) => li.setAttribute('aria-selected', String(i === active)));
+        items[active].scrollIntoView({ block: 'nearest' });
+        q.setAttribute('aria-activedescendant', `sr-${active}`);
+      } else if (e.key === 'Enter') {
+        const a = items[Math.max(active, 0)]?.querySelector('a');
+        if (a) { e.preventDefault(); dlg.close(); location.href = a.href; }
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      const tag = (e.target as HTMLElement).tagName;
+      if ((e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(tag)) || (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); open(); }
     });
 
     // Scroll reveal
