@@ -1,0 +1,74 @@
+---
+import Icon from './Icon.astro';
+import { TOPICS, type Call } from '../data/calls';
+interface Props { call: Call }
+const { call } = Astro.props;
+
+const topic = TOPICS.find((t) => t.key === call.topic)!;
+const dateLabel = new Date(`${call.date}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+
+// Running timestamps from word count (~140 words a minute plus a pause per turn).
+const mmss = (s: number) => { const t = Math.round(s); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };
+let clock = 9; // greeting and verification
+const turns = call.turns.map((turn, i) => {
+  const at = clock;
+  clock += turn.t.split(/\s+/).length / 2.3 + 6;
+  const followUp = call.turns.slice(0, i + 1).filter((x) => x.s === 'm').length - 1;
+  return { ...turn, at: mmss(at), followUp, paras: turn.t.split('\n\n') };
+});
+const minutes = Math.ceil((clock + 20) / 60);
+const followUps = call.turns.filter((t) => t.s === 'm').length - 1;
+const agentFirst = call.agent.split(' ')[0];
+---
+<article id={call.id} class="call reveal" data-topic={call.topic}>
+  <header class="call-bar">
+    <span class="call-num"><span class="rec" aria-hidden="true"></span>Call #{call.num}</span>
+    <dl class="call-meta">
+      <div><dt>Date</dt><dd>{dateLabel}</dd></div>
+      <div><dt>Time</dt><dd>{call.time} ET</dd></div>
+      <div><dt>Length</dt><dd>{minutes} min</dd></div>
+      <div><dt>Topic</dt><dd>{topic.label}</dd></div>
+    </dl>
+  </header>
+
+  <div class="call-people">
+    <div class="person-chip agent">
+      <span class="initial" aria-hidden="true">{call.agent[0]}</span>
+      <span><small>Agent</small><b>{call.agent}</b></span>
+    </div>
+    <div class="person-chip member">
+      <span class="initial" aria-hidden="true">{call.member[0]}</span>
+      <span><small>Member</small><b>{call.member}</b><em>{call.memberNote}</em></span>
+    </div>
+  </div>
+
+  <h2 class="call-q">{call.question}</h2>
+
+  <ol class="transcript">
+    {turns.map((turn) => (
+      <li class:list={['turn', turn.s === 'm' ? 'm' : 'a']}>
+        <span class="ts">{turn.at}</span>
+        <div class="turn-body">
+          <span class="who">
+            {turn.s === 'm' ? call.member : call.agent}
+            <span class="role">{turn.s === 'm' ? 'Member' : 'Agent'}</span>
+            {turn.s === 'm' && <span class:list={['qtag', { first: turn.followUp === 0 }]}>{turn.followUp === 0 ? 'Question' : `Follow-up ${turn.followUp}`}</span>}
+          </span>
+          {turn.paras.map((p) => <p>{p}</p>)}
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <footer class="call-foot">
+    <div class="short">
+      <span class="label">The short version</span>
+      <p>{call.takeaway}</p>
+    </div>
+    <div class="call-links">
+      <span class="muted">{followUps} follow-up{followUps === 1 ? '' : 's'} · answered by {agentFirst}</span>
+      {call.related && <a href={call.related.href}>{call.related.label} <Icon name="arrow" size={15} stroke={2.2} /></a>}
+      <a href={`#${call.id}`} class="permalink">Link to this call</a>
+    </div>
+  </footer>
+</article>
