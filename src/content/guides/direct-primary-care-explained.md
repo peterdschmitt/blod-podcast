@@ -14,7 +14,7 @@ summary:
   - It typically includes visits, texting or video with your doctor, basic in-office procedures, and labs and generic drugs at close to cost.
   - It never covers specialists, hospital stays, surgery, most imaging or the ER. That is the job of an insurance plan.
   - DPC is not insurance, and that is the point. Paying for routine care directly removes the billing layer that makes routine care slow and expensive.
-  - Since 2026, a qualifying DPC fee works with an HSA, which makes DPC plus a bronze or catastrophic plan a mainstream combination.
+  - Since 2026, you can pay a qualifying DPC fee from an HSA, and bronze and catastrophic plans now count as HSA-compatible. That makes the two easier to pair.
 evidence:
   level: 2
   label: Moderate
@@ -38,26 +38,29 @@ sources:
   - title: DPC Referee, skeptic commentary on DPC savings claims
     url: https://dpcreferee.com/
     grade: Anecdotal
+  - title: IRS Notice 2026-5, guidance on HSA changes including direct primary care service arrangements
+    url: https://www.irs.gov/pub/irs-drop/n-26-05.pdf
+    grade: Primary source
 next: value-added-benefits-explained
 ---
 
 ## What DPC is
 
-Direct primary care is a membership agreement between you and a primary care practice. You pay a fixed fee every month. In return you get ongoing access to a doctor (or a nurse practitioner or physician assistant) for everyday care. The practice does not send claims to an insurance company for that care, so there are no copays, no deductibles and no surprise bills for an office visit.
+Direct primary care is a membership with a primary care practice. You pay a set fee every month. In return you get your own doctor (or a nurse practitioner or physician assistant) for everyday care. The practice doesn't send claims to an insurance company for that care. So there's no copay, no deductible and no surprise bill for an office visit.
 
-The model has grown fast. The DPC Alliance counts more than 3,600 practices in the U.S., growing more than 19% a year since 2022, in every state except Alaska.<sup><a href="#src-1">1</a></sup>
+The model has grown fast. The DPC Alliance counted more than 3,600 practices in the U.S. as of early 2025, up more than 19% a year since 2022. There's at least one in every state except Alaska.<sup><a href="#src-1">1</a></sup>
 
 <div class="figs">
   <div class="fig bg-sage"><div class="n">3,600+</div><div class="l">DPC practices in the U.S.</div></div>
   <div class="fig bg-butter"><div class="n">$98.64</div><div class="l">average monthly fee per member</div></div>
-  <div class="fig bg-lilac"><div class="n">400–700</div><div class="l">patients per doctor at a mature practice, far fewer than a typical insurance-based panel</div></div>
+  <div class="fig bg-lilac"><div class="n">400–700</div><div class="l">patients per doctor at a typical DPC practice</div></div>
 </div>
 
-That last number is the heart of it. A smaller patient panel is what pays for same-day appointments, 30 to 60 minute visits and a doctor who answers your text.
+That last number is the heart of it. A small patient list is what makes room for same-day appointments, longer visits and a doctor who actually answers your text.
 
 ## What a membership usually includes
 
-Every practice writes its own contract, so read it. But most pure DPC practices include:
+Every practice writes its own contract, so read yours. Most pure DPC practices include:
 
 <div class="split">
   <div>
@@ -67,7 +70,7 @@ Every practice writes its own contract, so read it. But most pure DPC practices 
       <li>Texting, phone and video with your own clinician</li>
       <li>Annual physicals and chronic care management (blood pressure, diabetes, thyroid)</li>
       <li>Basic procedures: stitches, wart and mole removal, joint injections, EKGs</li>
-      <li>Labs at wholesale price, often far below list price</li>
+      <li>Labs at wholesale prices, often far below list price</li>
       <li>Generic medications dispensed at close to cost, where state law allows</li>
     </ul>
   </div>
@@ -86,21 +89,21 @@ Every practice writes its own contract, so read it. But most pure DPC practices 
 
 ## What it costs in 2026
 
-The national average is $98.64 per member per month. Prices vary by region: about $113 in the West, $110 in the Northeast, $98 in the South and $80 in the Midwest. Urban practices average about $110 and rural ones about $82.<sup><a href="#src-1">1</a></sup>
+The national average is $98.64 per member per month. Where you live matters. Practices average about $113 in the West, $110 in the Northeast, $98 in the South and $80 in the Midwest. City practices run about $110 and rural ones about $82.<sup><a href="#src-1">1</a></sup>
 
-Most practices (76%) charge by age, so a 25-year-old may pay $60 while a 60-year-old pays $120. Children are often discounted when a parent is a member. Some practices add a one-time enrollment fee.
+About three in four practices (76%) price by age.<sup><a href="#src-1">1</a></sup> A 25-year-old might pay $60 while a 60-year-old pays $120. Kids are often cheaper when a parent joins. Some practices also charge a one-time enrollment fee.
 
-**A quick sense check.** At $100 a month you pay $1,200 a year. If you would otherwise see a doctor three times a year at a $150 cash price, plus a couple of lab panels at $100 each, you would spend about $650. DPC wins on price only if you use it more than that, or if the labs, drugs and time saved are worth the difference to you. For many people with a chronic condition, or a family with young kids, the math tips quickly. For a healthy adult who sees a doctor once a year, it often does not, and that is fine to admit.
+**A quick sense check.** At $100 a month you pay $1,200 a year. Say you'd otherwise see a doctor three times a year at a $150 cash price and get two lab panels at $100 each. That's about $650. DPC only wins on price if you use more care than that, or if cheaper labs, cheaper drugs and saved time make up the gap. For someone with a chronic condition, or a family with young kids, the math can tip fast. For a healthy adult who sees a doctor once a year, it often doesn't. That's fine to admit.
 
 ## Why DPC is not insurance, on purpose
 
-Insurance is a way to pay for things that are rare and expensive: a car crash, a cancer diagnosis, a premature baby. Pooling risk across thousands of people makes sense for those.
+Insurance is a way to pay for things that are rare and expensive: a car crash, a cancer diagnosis, a premature baby. Spreading that risk across thousands of people makes sense.
 
-Primary care is the opposite. It is frequent, predictable and cheap. Running a $100 visit through an insurance claim adds billing staff, coding, prior authorizations and denials. The AAFP describes DPC as a way to remove that third-party billing so the practice can spend its time on patients instead.<sup><a href="#src-2">2</a></sup>
+Primary care is different. It happens often, you can see it coming, and each visit is fairly cheap. Running a $100 visit through an insurance claim adds billing staff, coding, prior authorizations and denials. The American Academy of Family Physicians says DPC cuts the overhead of billing insurers and gives doctors more time with patients.<sup><a href="#src-2">2</a></sup>
 
 > Insurance works best for the rare and expensive. DPC works best for the frequent and predictable. Using each for its own job is the whole idea.
 
-That is also why **DPC alone is never enough.** One night in the hospital can cost more than ten years of membership fees. The honest pairing is DPC for everyday care plus a real insurance plan for the big, rare bills. We walk through that combination in [DPC plus a bronze plan, with worked numbers](/blog/dpc-plus-bronze-worked-numbers/).
+That's also why **DPC alone is never enough.** It won't pay for an ER visit, a hospital stay or a cancer treatment, and a single hospital stay can cost more than years of membership fees. The honest pairing is DPC for everyday care plus real health insurance for the big, rare bills. If you need help comparing plans, HealthCare.gov and its free local navigators can walk you through your options. We show one common pairing, with numbers, in [DPC plus a bronze plan, with worked numbers](/blog/dpc-plus-bronze-worked-numbers/).
 
 ## DPC, concierge and hybrid: not the same thing
 
@@ -114,17 +117,17 @@ That is also why **DPC alone is never enough.** One night in the hospital can co
 
 </div>
 
-The difference matters for your HSA. A hybrid practice that bills insurance, or charges for services beyond primary care, may not meet the IRS definition of a qualifying DPC arrangement.<sup><a href="#src-4">4</a></sup> Ask the practice in writing. Our [DPC and your HSA](/blog/dpc-and-your-hsa-2026/) guide covers the rules.
+The difference matters for your HSA. Starting in 2026, you can pay DPC fees from an HSA tax-free, but only if the arrangement qualifies.<sup><a href="#src-4">4</a></sup> Under IRS rules, the fee must be the only charge for the care it covers, and it can't top $150 a month for one person or $300 for a family. The membership must cover only primary care. It can't include prescription drugs other than vaccines, procedures that need general anesthesia, or lab work not usually done in a primary care office.<sup><a href="#src-7">7</a></sup> Concierge retainers and many hybrid setups won't fit. Ask the practice to confirm in writing. Our [DPC and your HSA](/blog/dpc-and-your-hsa-2026/) guide covers the rules.
 
 ## What the evidence says
 
-The most cited independent study is a 2020 Milliman analysis for the Society of Actuaries.<sup><a href="#src-3">3</a></sup> It found DPC members had:
+The most cited independent study is a 2020 Milliman analysis for the Society of Actuaries.<sup><a href="#src-3">3</a></sup> It followed one midsized employer with about 2,000 covered people, roughly half of them in a DPC option. After adjusting for health status, DPC members had:
 
 - about 12.6% lower risk-adjusted claim costs,
 - about 40.5% fewer emergency room visits,
 - but after adding the DPC fees, total employer cost was about 1.3% **higher**.
 
-It looked at one employer, did not measure quality of care, and the DPC group was healthier to start with. Vendor-funded studies often report much larger savings, and skeptics publish detailed rebuttals.<sup><a href="#src-6">6</a></sup> Our honest read: DPC reliably improves access and time with a doctor. Whether it saves money depends on the person, the practice and what it is paired with.
+That's one employer. The study didn't measure quality of care, and the DPC group started out healthier. Studies paid for by DPC companies often claim much bigger savings, and at least one independent critic has picked those apart in detail.<sup><a href="#src-6">6</a></sup> Our read: DPC tends to buy you easier access and more time with a doctor. Whether it saves money depends on the person, the practice and the insurance it's paired with.
 
 ## Who it fits, and who should skip it
 
@@ -151,7 +154,16 @@ It looked at one employer, did not measure quality of care, and the DPC group wa
 
 ## A note for anyone near 65
 
-About 81% of surveyed DPC physicians have opted out of Medicare.<sup><a href="#src-1">1</a></sup> If your doctor has opted out, Medicare will not pay for any service you get from that doctor, even one Medicare normally covers, and you sign a private contract to pay them directly.<sup><a href="#src-5">5</a></sup> Plenty of people keep their DPC doctor after 65 for exactly that reason, but you should know it going in. Your State Health Insurance Assistance Program (SHIP) can help for free.
+About 81% of surveyed DPC physicians have opted out of Medicare.<sup><a href="#src-1">1</a></sup> If your doctor has opted out, Medicare won't pay for care you get from that doctor, except in emergencies, even if Medicare would normally cover it. You pay the doctor directly under a private contract.<sup><a href="#src-5">5</a></sup> Some people keep their DPC doctor after 65 anyway and use Medicare for everything else. Just know the rules going in. Your State Health Insurance Assistance Program (SHIP) gives free, unbiased Medicare counseling.
+
+## In the news
+
+Recent national coverage of membership-style primary care and the new HSA rules:
+
+- **NPR**, Mar 28, 2025: [Long wait for a rushed doctor's visit? Maybe you'll get more with a 'membership' fee](https://www.npr.org/sections/shots-health-news/2025/03/28/nx-s1-5342632/concierge-membership-primary-care-doctor-shortage-rural-health-access). A look at why more patients are paying monthly fees for easier access to a doctor, and the trade-offs.
+- **KFF Health News**, Apr 16, 2025: [In Rural Massachusetts, Patients and Physicians Weigh Trade-Offs of Concierge Medicine](https://kffhealthnews.org/news/article/concierge-medicine-direct-primary-care-doctor-shortage-rural-western-massachusetts/). It shows DPC patients still need separate insurance for care the practice doesn't provide.
+- **CNBC**, Nov 17, 2025: [4 million more Americans may adopt this 'powerful, yet underutilized' financial tool next year, researchers say](https://www.cnbc.com/2025/11/17/health-savings-accounts-expanded-access.html). The 2026 HSA expansion is the same law that lets you pay qualifying DPC fees from an HSA.
+- **NPR**, Feb 16, 2026: [Primary care is in trouble. Doctors are banding together to increase market power](https://www.npr.org/2026/02/16/nx-s1-5715996/primary-care-independent-physician-association-ipa-medicaid-cuts-value-based-reimbursement). Explains the money squeeze on primary care that is pushing some doctors toward DPC.
 
 ## Questions to ask before you join
 
