@@ -30,6 +30,7 @@ const statFacts = [FACTS.practices, FACTS.avgFee, FACTS.payments];
           <a href="/blog/" class="btn coral">Read the blog <Icon name="arrow" size={18} stroke={2.2} /></a>
           <a href="/podcast/" class="btn"><Icon name="headphones" size={18} /> Listen to the podcast</a>
         </div>
+        <a href="#start" class="start-link">New here? Start with what DPC is <Icon name="arrow" size={16} stroke={2.2} /></a>
       </div>
 
       <div class="card bg-ink stack rise d2" aria-label="How a coverage stack fits together">
@@ -39,6 +40,50 @@ const statFacts = [FACTS.practices, FACTS.avgFee, FACTS.payments];
         <div class="layer drop" style="background: var(--sage)"><span><b>Bronze or catastrophic</b><small>For the big, rare bills</small></span><Icon name="shield" /></div>
         <div class="layer base drop" style="background: var(--butter)"><span><b>Direct primary care</b><small>Your doctor, flat monthly fee</small></span><Icon name="stetho" /></div>
         <p style="margin: 12px 0 0; font-size: 14px; color: var(--on-dark-faint)">Each layer does one job. Most people need two or three, not all four.</p>
+      </div>
+    </section>
+
+    <section id="start" class="span-all explain reveal" aria-labelledby="explain-h">
+      <div class="hub-head"><h2 id="explain-h">Start here: <em>the two building blocks</em></h2></div>
+      <div class="explain-grid">
+        <article class="explain-card bg-butter">
+          <div class="explain-top"><span class="explain-num">1</span><span class="pill white not-ins"><Icon name="x" size={14} stroke={2.4} /> Not insurance</span></div>
+          <h3>What is direct primary care?</h3>
+          <p class="explain-lede">You pay your own doctor a flat monthly membership, often around $100 a month, and get your everyday care directly from them.</p>
+          <ul class="explain-list">
+            <li><Icon name="check" size={18} stroke={2.2} />Office visits, check-ups and sick visits with no co-pay or claim.</li>
+            <li><Icon name="check" size={18} stroke={2.2} />Often same-day or next-day visits, and you can text or call your doctor.</li>
+            <li><Icon name="check" size={18} stroke={2.2} />Many practices offer labs and generic drugs at close to cost.</li>
+          </ul>
+          <div class="explain-why">
+            <span class="eyebrow">Why it's not insurance, on purpose</span>
+            <p>No insurance company sits in the middle, so there are no claims, deductibles or surprise bills for primary care. Doctors skip the billing paperwork, keep fewer patients and spend more time with each one. Many states have laws saying a DPC agreement is not insurance.</p>
+          </div>
+        </article>
+
+        <article class="explain-card bg-sage">
+          <div class="explain-top"><span class="explain-num">2</span><span class="pill white not-ins"><Icon name="x" size={14} stroke={2.4} /> Not insurance</span></div>
+          <h3>What are value-added benefits?</h3>
+          <p class="explain-lede">Low-cost memberships that make care easier or cheaper to use. They sit alongside your coverage and don't replace it.</p>
+          <ul class="explain-list">
+            <li><Icon name="check" size={18} stroke={2.2} />24/7 telemedicine visits for a flat fee.</li>
+            <li><Icon name="check" size={18} stroke={2.2} />Prescription, dental and vision discount programs.</li>
+            <li><Icon name="check" size={18} stroke={2.2} />Help finding fair prices, second opinions and navigating bills.</li>
+          </ul>
+          <div class="explain-why">
+            <span class="eyebrow">Why it's not insurance, on purpose</span>
+            <p>You pay a small, predictable fee and use the service right away. There's no underwriting, no claim forms and no deductible to meet first. With a discount program, you still pay the provider, just at a lower price.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="explain-gap bg-ink">
+        <Icon name="shield" size={28} color="#fff" />
+        <div>
+          <b>What neither one covers</b>
+          <p>The big, rare costs: emergency rooms, hospital stays, surgery, cancer care and most specialists. Neither counts as health insurance under the ACA. That's why people pair them with an insurance plan for the big bills, usually a bronze, catastrophic or other high-deductible plan.</p>
+        </div>
+        <a href="/real-examples/" class="btn white small">See how people combine them</a>
       </div>
     </section>
 
