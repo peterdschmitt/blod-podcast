@@ -6,7 +6,6 @@ category: DPC basics
 categorySlug: dpc-basics
 readMinutes: 11
 author: Sophia Cranbrook
-reviewer: "[PHYSICIAN REVIEWER, MD]"
 lastReviewed: 2026-10-05
 heroColor: sage
 summary:
