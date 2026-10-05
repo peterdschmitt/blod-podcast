@@ -1,6 +1,6 @@
 # Coverage Stack (working name)
 
-Independent, educational guides to direct primary care, HSAs, bronze and catastrophic plans, and value-added benefits. Published by Conversely. Built with [Astro](https://astro.build), design direction C ("Bento").
+Independent, educational guides to direct primary care, HSAs, bronze and catastrophic plans, and value-added benefits. Published by Conversely. Built with [Astro](https://astro.build), design direction C ("Bento") in the Paper palette and type from Natrex (Instrument Serif, IBM Plex Sans and Mono).
 
 ## Run it
 

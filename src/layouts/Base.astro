@@ -1,7 +1,13 @@
 ---
 import '@fontsource/instrument-serif/latin-400.css';
 import '@fontsource/instrument-serif/latin-400-italic.css';
-import '@fontsource-variable/hanken-grotesk/wght.css';
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-700.css';
+import '@fontsource/ibm-plex-sans/latin-400-italic.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
 import '../styles/global.css';
 import BrandMark from '../components/BrandMark.astro';
 import Icon from '../components/Icon.astro';
@@ -27,7 +33,7 @@ const year = new Date().getFullYear();
   <meta property="og:title" content={title ?? SITE.name} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content={article ? 'article' : 'website'} />
-  <meta name="theme-color" content="#E9EDEF" />
+  <meta name="theme-color" content="#F7F3EC" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <slot name="head" />
 </head>

@@ -1,32 +1,44 @@
 /* Coverage Stack: design direction C, "Bento". */
 :root {
-  --bg: #E9EDEF;
+  /* Paper palette, from Natrex's "Paper" theme. */
+  --bg: #F7F3EC;            /* paper ground */
   --card: #FFFFFF;
-  --soft: #F4F6F7;
-  --ink: #0E1B2B;
-  --ink-2: #33424F;
-  --muted: #4B5A6A;
-  --on-dark-muted: #C5CFDA;
-  --on-dark-faint: #A9B6C4;
-  --line: #D5DCE1;
-  --coral: #FF7A52;
-  --coral-deep: #B23A1A;
-  --sage: #9CC7AE;
-  --lilac: #B9B1EE;
-  --lilac-soft: #DCD8F5;
-  --butter: #F6E7A8;
-  --accent: var(--coral);
+  --soft: #FBF8F3;
+  --ink: #1B1613;
+  --ink-2: #4A4239;
+  --muted: #6F6559;
+  --on-dark-muted: #D6CEBF;
+  --on-dark-faint: #B5AA9A;
+  --line: #E9E3D8;
+  --hairline: rgba(27, 22, 19, .12);
+  --navy: #1F3A66;          /* primary accent: "you" */
+  --teal: #2F7A65;
+  --steel: #4A7AB5;
+  --ochre: #8A6318;
+  --warm-gray: #8A7F72;
+  --red: #B8433A;
+  --heat: #EFE9DE;
 
-  --r-xl: 32px;
-  --r-lg: 28px;
-  --r-md: 24px;
-  --r-sm: 20px;
-  --r-xs: 14px;
+  /* Legacy names from the Bento build, remapped to Paper washes. */
+  --coral: var(--navy);
+  --coral-deep: var(--navy);
+  --sage: #DCEBE3;          /* teal wash */
+  --lilac: #D3DFEE;         /* steel wash */
+  --lilac-soft: #E6ECF4;
+  --butter: #F2E6CC;        /* ochre wash */
+  --accent: var(--navy);
+
+  --r-xl: 22px;
+  --r-lg: 20px;
+  --r-md: 16px;
+  --r-sm: 14px;
+  --r-xs: 10px;
   --pill: 999px;
   --gap: 12px;
 
-  --serif: 'Instrument Serif', ui-serif, Georgia, serif;
-  --sans: 'Hanken Grotesk Variable', 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
@@ -79,7 +91,7 @@ a:hover { color: var(--coral-deep); }
 .nav a[aria-current="page"] { background: var(--bg); font-weight: 600; }
 .nav .nav-agencies { color: var(--muted); border: 1px solid var(--line); }
 .nav .nav-cta { background: var(--ink); color: #fff; padding: 12px 20px; margin-left: 4px; }
-.nav .nav-cta:hover { background: #22344A; color: #fff; }
+.nav .nav-cta:hover { background: #2E2620; color: #fff; }
 .menu-btn { display: none; }
 
 @media (max-width: 900px) {
@@ -160,7 +172,7 @@ a.bg-ink:hover { color: #fff; }
 }
 .layer b { display: block; font-weight: 600; }
 .layer small { font-size: 14px; }
-.layer.optional { background: #2A3A4E; border: 1.5px dashed #6F8299; color: #fff; }
+.layer.optional { background: #3A322B; border: 1.5px dashed #8A7F72; color: #fff; }
 .layer.optional small, .layer.optional span.tag { color: var(--on-dark-muted); font-size: 13px; }
 .layer.base { padding: 22px 18px; }
 .layer.base b { font-weight: 700; font-size: 18px; }
@@ -334,3 +346,47 @@ a:hover .round-arrow { transform: rotate(45deg); }
 /* Cross-document view transitions (progressive enhancement, no JS). */
 @view-transition { navigation: auto; }
 .site-header { view-transition-name: site-header; }
+
+
+/* ---------- Paper overrides ---------- */
+.card, .tile, .stat, .feature, .toc, .art-main, .art-hero, .page-hero, .signup, .evidence, .site-header { border: 1px solid var(--hairline); }
+.bg-ink { background: var(--ink); border-color: var(--ink); }
+.bg-coral, .bg-coral a { background: var(--navy); color: #fff; }
+.signup.bg-coral h2, .fig.bg-coral, .stat.bg-coral, .avatar.bg-coral { color: #fff; }
+.btn.coral, .chip.on { background: var(--navy); color: #fff; }
+.btn.coral:hover, .chip:hover { background: var(--navy); color: #fff; }
+.btn { border: 1px solid var(--hairline); }
+.btn.white { background: #fff; color: var(--ink); }
+.nav .nav-cta { background: var(--navy); }
+.nav .nav-cta:hover { background: #172C4F; }
+.hero-main h1 em, .display em, .h-xl em { color: var(--navy); }
+.bg-ink .display em, .bg-ink .h-xl em { color: #fff; }
+.layer.base, .layer { border: 1px solid rgba(27, 22, 19, .08); }
+.layer.optional { border: 1.5px dashed var(--warm-gray); }
+.split > div { border-color: var(--teal); }
+.split > div.no { border-color: var(--red); }
+.split .tag { background: var(--teal); color: #fff; }
+.split .no .tag { background: var(--red); color: #fff; }
+.prose sup a, .prose a.fn { color: var(--navy); }
+a:hover { color: var(--navy); }
+.grade.primary { background: var(--sage); color: #1E5C4B; }
+.grade.vendor { background: #F6DCD8; color: #8E2F27; }
+.notice.warn { background: var(--butter); }
+.meter span { background: rgba(255, 255, 255, .7); }
+.evidence.bg-sage .meter span.on { background: var(--teal); }
+.tldr li::before { background: var(--navy); }
+.rule-list li::before { color: var(--navy); }
+.progress span { background: var(--navy); }
+.dot { background: var(--teal); }
+
+/* Mono micro-labels, Paper's signature detail */
+.eyebrow, .pill, .tile .meta, .tile .soon, .crumbs a, .byline span, .grade, .field, .toc > span:first-child,
+.stack-head span:last-child, .label-banner, .site-footer nav b, .site-footer .legal, .sources h2, .evidence > span:first-child, .next > span:first-child {
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 11.5px;
+}
+.byline span strong { font-weight: 600; letter-spacing: .04em; }
+.stat .num, .fig .n { font-variant-numeric: tabular-nums; }
