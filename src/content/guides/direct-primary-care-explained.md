@@ -5,7 +5,7 @@ dek: A flat monthly fee for your own doctor, with no copays and no claims. Here 
 category: DPC basics
 categorySlug: dpc-basics
 readMinutes: 11
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 reviewer: "[PHYSICIAN REVIEWER, MD]"
 lastReviewed: 2026-10-05
 heroColor: sage

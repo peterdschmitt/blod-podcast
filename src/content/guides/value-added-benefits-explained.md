@@ -5,7 +5,7 @@ dek: Telehealth, discount drug cards, cash-price imaging and care navigation are
 category: Value-added benefits
 categorySlug: value-added-benefits
 readMinutes: 10
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05
 heroColor: butter

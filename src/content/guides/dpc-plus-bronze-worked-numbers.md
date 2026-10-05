@@ -5,7 +5,7 @@ dek: We ran one hypothetical person through a light year, a typical year and a b
 category: The math
 categorySlug: the-math
 readMinutes: 12
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05
 heroColor: lilac

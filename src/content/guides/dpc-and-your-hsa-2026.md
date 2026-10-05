@@ -5,7 +5,7 @@ dek: For the first time, you can pay for direct primary care and keep contributi
 category: DPC and HSAs
 categorySlug: dpc-and-hsas
 readMinutes: 9
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 reviewer: "[PHYSICIAN REVIEWER, MD]"
 mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05

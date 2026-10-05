@@ -5,7 +5,7 @@ dek: The extra ACA subsidies ended with 2025, and 2027 premiums are rising again
 category: Your options
 categorySlug: your-options
 readMinutes: 14
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05
 heroColor: coral
