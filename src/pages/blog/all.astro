@@ -1,0 +1,38 @@
+---
+// Every published blog post as a compact list, newest first. New posts appear automatically.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+
+const posts = (await getCollection('guides', (g) => !g.data.draft))
+  .sort((a, b) => +b.data.lastReviewed - +a.data.lastReviewed || a.data.title.localeCompare(b.data.title));
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="All blog posts" description="Every blog post on one page, newest first, with a short summary of each.">
+  <header class="page-hero bg-butter list-hero">
+    <div class="list-hero-row">
+      <h1 class="display rise d1">Every post, <em>at a glance.</em></h1>
+      <a href="/blog/" class="btn white small rise d2">Back to the blog</a>
+    </div>
+    <p class="dek rise d2">A short summary of every post, newest first. Click any title to read it.</p>
+  </header>
+
+  <section class="card post-list-card" aria-label="All blog posts">
+    <ol class="post-list">
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}/`}>
+            <span class="pl-meta">
+              <time datetime={p.data.lastReviewed.toISOString().slice(0, 10)}>{fmt(p.data.lastReviewed)}</time>
+              <span>{p.data.category}</span>
+              <span>{p.data.readMinutes} min</span>
+            </span>
+            <span class="pl-t">{p.data.title}</span>
+            <span class="pl-d">{p.data.dek}</span>
+            <Icon name="arrow" size={18} stroke={2} class="pl-go" />
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
