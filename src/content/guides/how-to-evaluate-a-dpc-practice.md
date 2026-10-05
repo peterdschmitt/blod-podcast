@@ -5,7 +5,7 @@ dek: Twenty questions to ask before you sign a membership agreement, what a good
 category: Checklist
 categorySlug: checklist
 readMinutes: 8
-author: "[AUTHOR NAME]"
+author: Sophia Cranbrook
 reviewer: "[PHYSICIAN REVIEWER, MD]"
 lastReviewed: 2026-10-05
 heroColor: white
