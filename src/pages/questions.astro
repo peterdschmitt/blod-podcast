@@ -1,0 +1,113 @@
+---
+import '../styles/qa.css';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Signup from '../components/Signup.astro';
+import CallTranscript from '../components/CallTranscript.astro';
+import { CALLS, TOPICS, AGENTS, CALL_SOURCES } from '../data/calls';
+import { NOT_ADVICE } from '../site';
+
+const calls = [...CALLS].sort((a, b) => TOPICS.findIndex((t) => t.key === a.topic) - TOPICS.findIndex((t) => t.key === b.topic));
+const count = (key: string) => calls.filter((c) => c.topic === key).length;
+const gradeClass = (g: string) => (g === 'Primary source' ? 'primary' : g.startsWith('Vendor') ? 'vendor' : '');
+---
+<Base title="Q&A: questions from the phone lines" description="A detailed Q&A on direct primary care, HSAs, value-added benefits, overlay plans and ACA subsidies, written as illustrative call transcripts.">
+  <header class="page-hero bg-lilac qa-hero">
+    <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>Q&amp;A · {calls.length} calls · {TOPICS.length} topics</span>
+    <h1 class="display rise d1">The questions people ask, <em>answered call by call.</em></h1>
+    <p class="dek rise d2">Each transcript starts with a member's full question, then the follow-ups that usually come next. The agents explain how things work and what to check. They don't sell plans or tell anyone which one to buy.</p>
+    <div class="qa-illustrative rise d3" role="note">
+      <Icon name="info" size={18} stroke={2} />
+      <p><strong>Illustrative calls, not recordings.</strong> Each call is a composite our editors wrote from the questions people ask most about these topics. Names, dates and times are invented, and no real person's call is shown. Facts are current as of October 2026 and sourced at the bottom of the page.</p>
+    </div>
+  </header>
+
+  <div class="qa-layout">
+    <aside class="qa-side" aria-label="Find a question">
+      <div class="qa-panel">
+        <label class="qa-search">
+          <span class="sr-only">Search the calls</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="qa-q" placeholder="Search: HSA, Medicare, bronze…" autocomplete="off" />
+        </label>
+        <div class="qa-topics" role="group" aria-label="Filter by topic">
+          <button type="button" data-topic="all" aria-pressed="true">All topics <span>{calls.length}</span></button>
+          {TOPICS.map((t) => <button type="button" data-topic={t.key} aria-pressed="false">{t.label} <span>{count(t.key)}</span></button>)}
+        </div>
+      </div>
+      <nav class="qa-panel qa-index" aria-label="All questions">
+        <span class="qa-label">Every question</span>
+        <ol>
+          {calls.map((c) => <li data-topic={c.topic} data-for={c.id}><a href={`#${c.id}`}>{c.question}</a></li>)}
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="qa-main">
+      <p class="qa-status" id="qa-status" aria-live="polite">Showing all {calls.length} calls</p>
+      {TOPICS.map((t) => (
+        <section class="qa-group" data-group={t.key} aria-labelledby={`g-${t.key}`}>
+          <div class="qa-group-head">
+            <h2 id={`g-${t.key}`}>{t.label}</h2>
+            <p>{t.blurb}</p>
+          </div>
+          {calls.filter((c) => c.topic === t.key).map((c) => <CallTranscript call={c} />)}
+        </section>
+      ))}
+      <div class="qa-empty" id="qa-empty" hidden>
+        <b>No calls match that search yet.</b>
+        <p>Try a broader word, or pick a topic. Questions we haven't covered go into future calls and blog posts.</p>
+      </div>
+
+      <section class="card qa-about">
+        <h2 class="h-l">About these calls</h2>
+        <div class="qa-about-grid">
+          <div><b>Who the agents are</b><p>{Object.values(AGENTS).join(', ').replace(/, ([^,]*)$/, ' and $1')} are fictional characters who speak for our editorial team. They explain how coverage works. They are not licensed insurance agents and don't recommend specific plans.</p></div>
+          <div><b>Where to get personal help</b><p>For help with your own situation, start with free, unbiased options: <a href="https://www.healthcare.gov/">HealthCare.gov</a>, your state's exchange, or a <a href="https://www.healthcare.gov/find-assistance/">certified navigator</a>. For Medicare, a free SHIP counselor. For tax questions, a tax professional.</p></div>
+          <div><b>Spot something wrong?</b><p>Rules change often. We review every call before each open enrollment and log fixes publicly on our <a href="/methodology/#corrections">corrections log</a>.</p></div>
+        </div>
+        <p class="hypo" style="margin-top: 20px">{NOT_ADVICE}</p>
+        <div class="sources">
+          <h2>Sources</h2>
+          <ol>{CALL_SOURCES.map((s) => <li><a href={s.url} rel="noopener">{s.title}</a> <span class:list={['grade', gradeClass(s.grade)]}>{s.grade}</span></li>)}</ol>
+        </div>
+      </section>
+      <Signup />
+    </div>
+  </div>
+</Base>
+
+<script>
+  const q = document.getElementById('qa-q') as HTMLInputElement;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.qa-topics button')];
+  const calls = [...document.querySelectorAll<HTMLElement>('.call')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.qa-group')];
+  const items = [...document.querySelectorAll<HTMLElement>('.qa-index li')];
+  const status = document.getElementById('qa-status')!;
+  const empty = document.getElementById('qa-empty')!;
+  const text = new Map(calls.map((c) => [c, (c.textContent || '').toLowerCase()]));
+  let topic = 'all';
+
+  function apply() {
+    const words = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const c of calls) {
+      const ok = (topic === 'all' || c.dataset.topic === topic) && words.every((w) => text.get(c)!.includes(w));
+      c.hidden = !ok;
+      c.classList.add('in');
+      if (ok) shown++;
+      const li = items.find((i) => i.dataset.for === c.id);
+      if (li) li.hidden = !ok;
+    }
+    for (const g of groups) g.hidden = !g.querySelector('.call:not([hidden])');
+    empty.hidden = shown > 0;
+    status.textContent = shown === calls.length ? `Showing all ${shown} calls` : `Showing ${shown} of ${calls.length} calls`;
+  }
+
+  buttons.forEach((b) => b.addEventListener('click', () => {
+    topic = b.dataset.topic!;
+    buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    apply();
+  }));
+  q.addEventListener('input', apply);
+</script>
