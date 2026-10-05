@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Signup from '../components/Signup.astro';
+import { SITE, DISCLOSURE_LINE, NOT_ADVICE } from '../site';
+---
+<Base title="About" description={`Why ${SITE.name} exists, who is behind it, and how it is paid for.`}>
+  <header class="page-hero bg-lilac">
+    <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>About {SITE.name}</span>
+    <h1 class="display rise d1">Premiums went up. <em>The choices got harder.</em></h1>
+    <p class="dek rise d2">We built {SITE.name} to explain the newer options, like direct primary care, HSA-paired bronze plans and the extras, without anyone trying to sell you one.</p>
+  </header>
+
+  <div class="bento">
+    <div class="card span-all reveal" style="display: flex; flex-wrap: wrap; gap: 40px">
+      <div style="flex: 1 1 380px">
+        <h2 class="h-xl">Why we <em>exist</em></h2>
+      </div>
+      <div class="prose" style="flex: 2 1 520px; margin: 0; font-size: 19px">
+        <p>Marketplace payments jumped in 2026, deductibles kept climbing, and new rules opened up combinations that were not possible before. Direct primary care can now sit alongside an HSA. Every bronze and catastrophic plan in the individual market now counts as HSA-compatible.</p>
+        <p>Most of what you will find about these options is written by someone who sells them. We want to be the place you check first: clear about how each piece works, honest about who it is wrong for, and open about the math.</p>
+      </div>
+    </div>
+
+    <div class="stat bg-coral reveal"><Icon name="doc" size={28} /><div><div class="serif" style="font-size: 40px; line-height: 1">Explain</div><p>How DPC, HSAs, bronze and catastrophic plans and the extras fit together.</p></div></div>
+    <div class="stat bg-sage reveal"><Icon name="calc" size={28} /><div><div class="serif" style="font-size: 40px; line-height: 1">Compare</div><p>Stacks side by side, with an expected year and a bad year, using published formulas.</p></div></div>
+    <div class="stat bg-butter reveal"><Icon name="gift" size={28} /><div><div class="serif" style="font-size: 40px; line-height: 1">Point</div><p>You to free help first, then to licensed professionals when you need someone.</p></div></div>
+
+    <div class="card span-all reveal" style="display: flex; flex-wrap: wrap; gap: 40px">
+      <div style="flex: 1 1 380px"><h2 class="h-xl">Who is <em>behind it</em></h2></div>
+      <div class="prose" style="flex: 2 1 520px; margin: 0; font-size: 19px">
+        <p>{DISCLOSURE_LINE} <a href="/methodology/">Here is how we keep our guidance independent.</a></p>
+        <p>{SITE.publisher} is a business-to-business company. Its customers are agencies, not consumers, and it does not earn more when you choose one option over another. Its services to agencies are described separately on the clearly labeled <a href="/for-agencies/">For agencies</a> page.</p>
+        <p><strong>{NOT_ADVICE}</strong> For advice about your own plan, start with <a href="https://www.healthcare.gov/">HealthCare.gov</a>, your state exchange or a <a href="https://www.healthcare.gov/find-assistance/">certified navigator</a>. All three are free.</p>
+      </div>
+    </div>
+
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>

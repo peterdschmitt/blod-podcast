@@ -1,0 +1,91 @@
+---
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
+import '../styles/global.css';
+import BrandMark from '../components/BrandMark.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, NAV, DISCLOSURE_LINE, NOT_ADVICE } from '../site';
+
+interface Props { title?: string; description?: string; article?: boolean }
+const { title, description = SITE.tagline, article = false } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name}: ${SITE.tagline}`;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => {
+  const h = href.replace(/\/$/, '');
+  return path === h || (h !== '' && path.startsWith(h + '/'));
+};
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title ?? SITE.name} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={article ? 'article' : 'website'} />
+  <meta name="theme-color" content="#E9EDEF" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="frame">
+    <div class="wrap">
+      <header class="site-header" data-open="false">
+        <a href="/" class="brand" aria-label={`${SITE.name} home`}>
+          <BrandMark />
+          <span class="brand-name">{SITE.name}</span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menu"><Icon name="menu" /></button>
+        <nav id="main-nav" class="nav" aria-label="Main">
+          {NAV.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
+          <a href="/for-agencies/" class="nav-agencies" aria-current={isCurrent('/for-agencies/') ? 'page' : undefined}>For agencies</a>
+          <a href="/#subscribe" class="nav-cta">Subscribe</a>
+        </nav>
+      </header>
+
+      <main id="main" style="display: contents">
+        <slot />
+      </main>
+
+      <footer class="card site-footer">
+        <div class="about">
+          <span class="brand-name" style="color: var(--ink); font-size: 30px">{SITE.name}</span>
+          <p>{DISCLOSURE_LINE} <a href="/methodology/">How we keep our guidance independent</a></p>
+          <p>{NOT_ADVICE}</p>
+        </div>
+        <nav aria-label="Footer">
+          <div><b>Learn</b><a href="/guides/">Guides</a><a href="/calculator/">Calculator</a><a href="/guides/#policy">Policy updates</a></div>
+          <div><b>Trust</b><a href="/methodology/">Methodology</a><a href="/methodology/#disclosures">Disclosures</a><a href="/methodology/#corrections">Corrections log</a></div>
+          <div><b>{SITE.publisher}</b><a href="/for-agencies/">For agencies</a><a href="/about/">About</a></div>
+        </nav>
+        <div class="legal">
+          <span>© {year} {SITE.publisher}. Independent education, not insurance sales.</span>
+          <span>Free help: <a href="https://www.healthcare.gov/">HealthCare.gov</a> · <a href="https://www.healthcare.gov/find-assistance/">Find a navigator</a></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    const header = document.querySelector<HTMLElement>('.site-header');
+    const btn = header?.querySelector<HTMLButtonElement>('.menu-btn');
+    btn?.addEventListener('click', () => {
+      const open = header!.dataset.open !== 'true';
+      header!.dataset.open = String(open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>

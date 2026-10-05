@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, DISCLOSURE_LINE, NOT_ADVICE } from '../site';
+---
+<Base title="Methodology and disclosures" description="Who writes and reviews our guides, how we grade evidence, how we handle money and partners, and how we fix mistakes.">
+  <header class="page-hero bg-sage">
+    <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>How we work</span>
+    <h1 class="display rise d1">Our methodology, <em>in plain sight.</em></h1>
+    <p class="dek rise d2">Who writes and reviews every guide, how we grade evidence, who pays us, and what happens when we get something wrong.</p>
+  </header>
+
+  <div class="doc">
+    <div class="art-main">
+      <div class="prose">
+        <div class="notice" role="note"><Icon name="info" size={20} color="var(--ink)" /><div><strong>The short version:</strong> {DISCLOSURE_LINE} {SITE.publisher}'s business relationships cannot change what our guides conclude.</div></div>
+
+        <h2 id="independence">Editorial independence</h2>
+        <p>{SITE.name} is published by {SITE.publisher}. {SITE.publisher} provides {SITE.services} to insurance agencies and brokers. It does not sell coverage to consumers, and it does not earn more when you pick one option over another.</p>
+        <p>That still creates an indirect interest: {SITE.publisher} does well when agencies do well, and some of the products we explain are sold through those agencies. So we keep two things apart. The consumer guides are the editorial core. The <a href="/for-agencies/">For agencies</a> page describes {SITE.publisher}'s services and is clearly labeled. Consumer guides never link to it from inside the text.</p>
+        <p>[EDITOR NAME] is both an owner of {SITE.publisher} and the editor of this site. We say so plainly so you can weigh what you read.</p>
+
+        <h2 id="rules">The rules every guide follows</h2>
+        <ol class="rule-list">
+          <li><strong>Same template for every option.</strong>What it is, who it fits, who should not buy it, protections, costs, risks and evidence. That includes products from {SITE.publisher}'s partners or sold through its agency clients.</li>
+          <li><strong>Partners are never the default answer.</strong>Comparisons, directories and calculators show every qualifying option. Nothing tied to {SITE.publisher} is pre-selected, ranked first by default or visually highlighted. You control the sort order.</li>
+          <li><strong>No paid placement.</strong>Nobody can buy a ranking or a spot in a directory.</li>
+          <li><strong>Free alternatives come first.</strong>If you can do something yourself for free, through HealthCare.gov, a DPC practice directly or a state navigator, we say so.</li>
+          <li><strong>Education, not individual advice.</strong>We explain product types and use hypothetical households. We never tell a specific reader which plan to buy, never quote plans for a named person, and never take applications.</li>
+          <li><strong>Calculators show their work.</strong>Formulas and assumptions are published, prices are public or entered by you, and partner products get no edge.</li>
+        </ol>
+
+        <h2 id="evidence">How we grade evidence</h2>
+        <p>Every factual claim has a source, and we prefer primary sources: the IRS, CMS, state insurance departments, KFF, and peer-reviewed or actuarial studies. Each source carries a label:</p>
+        <div class="team">
+          <div class="person"><span class="grade primary">Primary source</span><p style="margin: 10px 0 0">Laws, regulations and official guidance.</p></div>
+          <div class="person"><span class="grade">Independent research</span><p style="margin: 10px 0 0">Peer-reviewed studies, independent actuarial work, nonprofit research such as KFF.</p></div>
+          <div class="person"><span class="grade vendor">Vendor-funded</span><p style="margin: 10px 0 0">Studies or numbers from a company with something to sell, including {SITE.publisher} and its partners.</p></div>
+          <div class="person"><span class="grade">Anecdotal</span><p style="margin: 10px 0 0">Individual stories and surveys without a representative sample.</p></div>
+        </div>
+        <p>Each guide also shows an overall evidence meter, from one bar (mostly anecdotal) to four (settled law or strong independent research).</p>
+
+        <h2 id="review">Who reviews what</h2>
+        <div class="team">
+          <div class="person"><div class="avatar bg-coral">A</div><b>[AUTHOR NAME]</b>Writes and maintains the guides.</div>
+          <div class="person"><div class="avatar bg-lilac-strong">P</div><b>[PHYSICIAN REVIEWER, MD]</b>Reviews clinical claims about direct primary care.</div>
+          <div class="person"><div class="avatar bg-sage">M</div><b>[LICENSED AGENT OR ACTUARY]</b>Checks coverage math. Not paid on commission by {SITE.publisher}.</div>
+        </div>
+        <p>Every guide shows a "last reviewed" date. We re-check each one at least once every open enrollment period and whenever the rules change.</p>
+
+        <h2 id="disclosures">Disclosures</h2>
+        <p>{DISCLOSURE_LINE}</p>
+        <p>When a page names a specific product, carrier, DPC network or vendor that {SITE.publisher} works with, or one sold through agencies {SITE.publisher} supports, the page says so on its first screen, before any claim about it.</p>
+        <p>Any other money is listed here too: affiliate links, referral fees, commissions, sponsorships and partner arrangements.</p>
+        <table>
+          <thead><tr><th>Partner</th><th>Relationship</th><th>Since</th></tr></thead>
+          <tbody><tr><td colspan="3" class="muted">[PARTNER LIST] We'll list every carrier, DPC network and vendor {SITE.publisher} works with before any guide names one.</td></tr></tbody>
+        </table>
+        <p>{SITE.name} does not currently use affiliate links, accept sponsorships or receive referral fees.</p>
+
+        <h2 id="corrections">Corrections log</h2>
+        <p>When we get something wrong, we fix it, note the change on the page, and log it here with the date.</p>
+        <div class="empty-log">No corrections yet. Spot an error? <a href="mailto:[CORRECTIONS EMAIL]">Tell us</a>.</div>
+
+        <p class="not-advice">{NOT_ADVICE}</p>
+      </div>
+    </div>
+
+    <aside class="art-side">
+      <nav class="toc" aria-label="On this page">
+        <span style="font-weight: 700; margin-bottom: 8px">On this page</span>
+        <a href="#independence">Editorial independence</a>
+        <a href="#rules">The rules</a>
+        <a href="#evidence">How we grade evidence</a>
+        <a href="#review">Who reviews what</a>
+        <a href="#disclosures">Disclosures</a>
+        <a href="#corrections">Corrections log</a>
+      </nav>
+      <div class="next bg-ink" style="border-radius: var(--r-lg)">
+        <span style="font-size: 14px; color: var(--on-dark-muted)">Need personal help?</span>
+        <span class="t">Free, unbiased help comes first.</span>
+        <a href="https://www.healthcare.gov/find-assistance/" class="btn coral small" style="align-self: flex-start; color: var(--ink)">Find a navigator</a>
+      </div>
+    </aside>
+  </div>
+</Base>

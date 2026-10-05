@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Signup from '../components/Signup.astro';
+---
+<Base title="Stack calculator" description="Compare the expected and worst-case yearly cost of different coverage stacks, with every formula published.">
+  <header class="page-hero bg-ink">
+    <span class="pill rise" style="align-self: flex-start; background: #2A3A4E; color: #fff"><span class="dot"></span>In development</span>
+    <h1 class="display rise d1">The stack calculator, <em>coming soon.</em></h1>
+    <p class="dek rise d2 on-dark-muted">Enter your household, income and expected usage. See an expected year and a bad year for each stack, side by side.</p>
+  </header>
+  <div class="bento">
+    <div class="card pad-s reveal"><Icon name="calc" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">Formulas published</h2><p class="muted" style="margin: 0">Every number traces to a formula and an assumption you can read and change.</p></div>
+    <div class="card pad-s reveal"><Icon name="ban" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">Nothing pre-selected</h2><p class="muted" style="margin: 0">No partner product is ranked first, highlighted or chosen for you. You set the sort order.</p></div>
+    <div class="card pad-s reveal"><Icon name="info" size={28} /><h2 class="serif" style="font-size: 32px; margin: 18px 0 8px">An estimate only</h2><p class="muted" style="margin: 0">It shows how stacks compare under stated assumptions. Confirm with HealthCare.gov, your state exchange, a navigator or a licensed agent.</p></div>
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../site';
+---
+<Base title={`For agencies, from ${SITE.publisher}`} description={`${SITE.publisher} provides ${SITE.services} to insurance agencies and brokers. This page is commercial and kept separate from our consumer guides.`}>
+  <header class="page-hero bg-ink">
+    <span class="label-banner rise" style="background: var(--accent); color: var(--ink)"><Icon name="info" size={18} /> Commercial page: about {SITE.publisher}'s services</span>
+    <h1 class="display rise d1">For agencies <em>and brokers.</em></h1>
+    <p class="dek rise d2 on-dark-muted">{SITE.publisher} provides {SITE.services} to insurance agencies and brokers. This page describes those services. It is kept apart from our consumer guides, which never link here from inside the text.</p>
+    <div class="row rise d3" style="gap: 10px"><a href="mailto:[CONTACT EMAIL]" class="btn coral">Talk to {SITE.publisher} <Icon name="arrow" size={18} stroke={2.2} /></a><a href="/methodology/" class="btn" style="background: #2A3A4E; color: #fff">Our editorial rules</a></div>
+  </header>
+
+  <div class="bento">
+    <div class="card pad-s reveal"><Icon name="users" size={28} /><h2 class="serif" style="font-size: 34px; margin: 18px 0 8px; line-height: 1.05">[SERVICE ONE]</h2><p class="muted" style="margin: 0">[One or two sentences on what this service does for an agency.]</p></div>
+    <div class="card pad-s reveal"><Icon name="bars" size={28} /><h2 class="serif" style="font-size: 34px; margin: 18px 0 8px; line-height: 1.05">[SERVICE TWO]</h2><p class="muted" style="margin: 0">[One or two sentences on what this service does for an agency.]</p></div>
+    <div class="card pad-s reveal"><Icon name="pen" size={28} /><h2 class="serif" style="font-size: 34px; margin: 18px 0 8px; line-height: 1.05">[SERVICE THREE]</h2><p class="muted" style="margin: 0">[One or two sentences on what this service does for an agency.]</p></div>
+
+    <section class="card span-all bg-lilac reveal" style="display: flex; flex-wrap: wrap; gap: 40px">
+      <div style="flex: 1 1 380px"><h2 class="h-xl">Use the guides <em>with your clients.</em></h2></div>
+      <div style="flex: 2 1 520px; display: flex; flex-direction: column; gap: 14px; font-size: 18px">
+        <p style="margin: 0">Every {SITE.name} guide is free to link to and share. They explain how DPC, HSAs, bronze and catastrophic plans and the extras fit together, in plain language, with sources.</p>
+        <p style="margin: 0">Agencies cannot pay for placement, rankings or favorable coverage in the guides. That independence is what makes them useful to share.</p>
+        <a href="/guides/" class="btn ink small" style="align-self: flex-start">Browse the guides</a>
+      </div>
+    </section>
+
+    <section class="card span-all reveal">
+      <div class="section-head"><h2 class="h-xl">How this page <em>stays separate</em></h2><a href="/methodology/#disclosures" style="font-weight: 600">See all disclosures</a></div>
+      <div class="mini-grid">
+        <div class="promise"><Icon name="ban" size={26} /><h3>No in-text links</h3><p>Consumer guides never point here from inside an article.</p></div>
+        <div class="promise"><Icon name="doc" size={26} /><h3>Same template</h3><p>Products sold through {SITE.publisher}'s clients get the same review template as everything else.</p></div>
+        <div class="promise"><Icon name="bars" size={26} /><h3>No default picks</h3><p>Partner products are never pre-selected, ranked first or highlighted.</p></div>
+        <div class="promise"><Icon name="log" size={26} /><h3>Partners listed</h3><p>Every partner relationship is named on the disclosures page.</p></div>
+      </div>
+    </section>
+  </div>
+</Base>

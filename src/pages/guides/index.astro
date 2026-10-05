@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Signup from '../../components/Signup.astro';
+import { PLANNED } from '../../site';
+
+const guides = (await getCollection('guides', (g) => !g.data.draft))
+  .sort((a, b) => +b.data.lastReviewed - +a.data.lastReviewed);
+const published = new Set(guides.map((g) => g.data.title));
+const upcoming = PLANNED.filter((p) => !published.has(p.title));
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<Base title="Guides" description="Plain-language guides to direct primary care, HSAs, bronze and catastrophic plans, and the extras.">
+  <header class="page-hero bg-butter">
+    <span class="pill white rise" style="align-self: flex-start"><span class="dot"></span>{guides.length} published · {upcoming.length} in the works</span>
+    <h1 class="display rise d1">Guides, <em>with the math shown.</em></h1>
+    <p class="dek rise d2">Every guide uses the same template: what it is, who it fits, who should skip it, costs, risks and evidence. Each one shows when it was last reviewed and by whom.</p>
+  </header>
+
+  <div class="bento">
+    {guides.map((g) => (
+      <a href={`/guides/${g.id}/`} class="tile reveal" id={g.data.categorySlug}>
+        <span class="meta"><span>{g.data.category}</span><span>{g.data.readMinutes} min</span></span>
+        <span style="display: flex; flex-direction: column; gap: 12px">
+          <span class="t">{g.data.title}</span>
+          <span class="muted" style="font-size: 15px">{g.data.dek}</span>
+          <span style="font-size: 13px; font-weight: 600">Reviewed {fmt(g.data.lastReviewed)}</span>
+        </span>
+      </a>
+    ))}
+    {upcoming.map((p) => (
+      <div class="tile reveal">
+        <span class="meta"><span>{p.category}</span><span>{p.minutes} min</span></span>
+        <span style="display: flex; flex-direction: column; gap: 14px"><span class="soon">Coming soon</span><span class="t">{p.title}</span></span>
+      </div>
+    ))}
+    <section id="policy" class="card span-all reveal" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center">
+      <div style="flex: 1 1 420px">
+        <h2 class="h-l">Policy updates</h2>
+        <p class="muted" style="margin: 12px 0 0; max-width: 560px">Short notes when a rule changes: HSA limits, subsidy rules, catastrophic eligibility, open enrollment dates. Each one links back to the guides it affects.</p>
+      </div>
+      <span class="pill">The first updates arrive before open enrollment</span>
+    </section>
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>

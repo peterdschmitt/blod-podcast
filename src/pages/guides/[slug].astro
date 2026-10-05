@@ -1,0 +1,135 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE, NOT_ADVICE } from '../../site';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', (g) => !g.data.draft);
+  return guides.map((g) => ({ params: { slug: g.id }, props: { guide: g } }));
+}
+
+const { guide } = Astro.props;
+const d = guide.data;
+const { Content, headings } = await render(guide);
+const toc = headings.filter((h) => h.depth === 2);
+const next = d.next ? await getEntry('guides', d.next) : undefined;
+const reviewed = d.lastReviewed.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const heroBg = { lilac: 'bg-lilac', sage: 'bg-sage', butter: 'bg-butter', coral: 'bg-coral', white: 'bg-white' }[d.heroColor];
+const gradeClass = (g: string) => (g === 'Primary source' ? 'primary' : g.startsWith('Vendor') ? 'vendor' : '');
+const titleMain = d.titleEm && d.title.endsWith(d.titleEm) ? d.title.slice(0, -d.titleEm.length) : d.title;
+---
+<Base title={d.title} description={d.dek} article>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <article style="display: flex; flex-direction: column; gap: var(--gap)">
+    <header class:list={['art-hero', heroBg]}>
+      <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/guides/">Guides</a><a href={`/guides/#${d.categorySlug}`}>{d.category}</a></nav>
+      <h1 class="display rise d1">{titleMain}{d.titleEm && titleMain !== d.title && <em>{d.titleEm}</em>}</h1>
+      <p class="dek rise d2">{d.dek}</p>
+      <div class="byline rise d3">
+        <span>By <strong>{d.author}</strong></span>
+        {d.reviewer && <span>Reviewed by <strong>{d.reviewer}</strong></span>}
+        {d.mathReviewer && <span>Math checked by <strong>{d.mathReviewer}</strong></span>}
+        <span class="ink">Last reviewed <time datetime={d.lastReviewed.toISOString().slice(0, 10)}>{reviewed}</time></span>
+      </div>
+    </header>
+
+    <div class="art-body">
+      <div class="art-main">
+        <div class="prose">
+          {d.namesProducts ? (
+            <div class="notice warn" role="note">
+              <Icon name="info" size={20} color="var(--ink)" />
+              <div><strong>Disclosure:</strong> {d.disclosure ?? `${SITE.publisher} provides services to agencies that sell products named on this page.`} <a href="/methodology/#disclosures">See all disclosures</a></div>
+            </div>
+          ) : (
+            <div class="notice" role="note">
+              <Icon name="info" size={20} color="var(--ink)" />
+              <div><strong>Disclosure:</strong> this guide names no specific product, carrier or DPC practice. {SITE.name} is published by {SITE.publisher}, which provides {SITE.services} to insurance agencies. General information, not advice about your situation. <a href="/methodology/">How we stay independent</a></div>
+            </div>
+          )}
+
+          {d.summary.length > 0 && (
+            <section class="tldr" aria-label="In 30 seconds">
+              <h2>In 30 seconds</h2>
+              <ol>{d.summary.map((s) => <li>{s}</li>)}</ol>
+            </section>
+          )}
+
+          <Content />
+
+          <div class="callout-dark">
+            <div class="h">Want help with your own situation?</div>
+            <p><a href="https://www.healthcare.gov/">HealthCare.gov</a>, your state exchange and <a href="https://www.healthcare.gov/find-assistance/">certified navigators</a> help for free. A licensed agent in your state can compare specific plans for you.</p>
+          </div>
+
+          <section id="sources" class="sources" aria-label="Sources">
+            <h2>Sources</h2>
+            <ol>
+              {d.sources.map((s, i) => (
+                <li id={`src-${i + 1}`}><a href={s.url} rel="noopener">{s.title}</a> <span class:list={['grade', gradeClass(s.grade)]}>{s.grade}</span></li>
+              ))}
+            </ol>
+            <p style="margin: 18px 0 0">Spot an error? <a href="mailto:[CORRECTIONS EMAIL]">Tell us</a>. Every fix goes in the <a href="/methodology/#corrections">corrections log</a>.</p>
+            <p class="not-advice">{NOT_ADVICE}</p>
+          </section>
+        </div>
+      </div>
+
+      <aside class="art-side">
+        {toc.length > 0 && (
+          <nav class="toc" aria-label="On this page">
+            <span style="font-weight: 700; margin-bottom: 8px">On this page</span>
+            {toc.map((h) => <a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a>)}
+            <a href="#sources" data-toc="sources">Sources</a>
+          </nav>
+        )}
+        <div class="evidence bg-sage">
+          <span style="font-weight: 700">Evidence for this guide</span>
+          <div class="meter" role="img" aria-label={`Evidence strength ${d.evidence.level} of 4`}>
+            {[1, 2, 3, 4].map((n) => <span class:list={{ on: n <= d.evidence.level }}></span>)}
+          </div>
+          <span style="font-size: 15px"><b>{d.evidence.label}.</b> {d.evidence.note}</span>
+          <a href="/methodology/#evidence" style="font-size: 14px; font-weight: 600">How we grade evidence</a>
+        </div>
+        {next ? (
+          <a href={`/guides/${next.id}/`} class="next bg-ink card" style="padding: 24px">
+            <span style="font-size: 14px; color: var(--on-dark-muted)">Next guide</span>
+            <span class="t">{next.data.title}</span>
+          </a>
+        ) : (
+          <div class="next bg-ink" style="border-radius: var(--r-lg)">
+            <span style="font-size: 14px; color: var(--on-dark-muted)">Next guide · coming soon</span>
+            <span class="t">DPC plus a bronze plan, with worked numbers</span>
+          </div>
+        )}
+      </aside>
+    </div>
+  </article>
+
+  <script>
+    // Reading progress
+    const bar = document.querySelector<HTMLElement>('.progress span');
+    const main = document.querySelector<HTMLElement>('.art-main');
+    const onScroll = () => {
+      if (!bar || !main) return;
+      const r = main.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      const p = Math.min(1, Math.max(0, -r.top / (total > 0 ? total : 1)));
+      bar.style.width = `${p * 100}%`;
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Highlight the current section in "On this page"
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc]')];
+    const targets = links.map((l) => document.getElementById(l.dataset.toc!)).filter(Boolean) as HTMLElement[];
+    const spy = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        links.forEach((l) => l.classList.toggle('active', l.dataset.toc === e.target.id));
+      }
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    targets.forEach((t) => spy.observe(t));
+  </script>
+</Base>

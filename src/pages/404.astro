@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+<Base title="Page not found">
+  <header class="page-hero bg-lilac" style="min-height: 60vh; justify-content: center">
+    <h1 class="display">This layer <em>is missing.</em></h1>
+    <p class="dek">The page you wanted isn't here. Try the guides, or start from the top.</p>
+    <div class="row" style="gap: 10px"><a href="/" class="btn ink">Home <Icon name="arrow" size={18} stroke={2.2} /></a><a href="/guides/" class="btn white">All guides</a></div>
+  </header>
+</Base>

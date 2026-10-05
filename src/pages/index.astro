@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Signup from '../components/Signup.astro';
+import { PLANNED, SITUATIONS } from '../site';
+
+const guides = (await getCollection('guides', (g) => !g.data.draft))
+  .sort((a, b) => +b.data.lastReviewed - +a.data.lastReviewed);
+const featured = guides.find((g) => g.data.featured) ?? guides[0];
+const publishedTitles = new Set(guides.map((g) => g.data.title));
+const upcoming = PLANNED.filter((p) => !publishedTitles.has(p.title));
+---
+<Base>
+  <div class="bento">
+    <section class="span-all row">
+      <div class="card hero-main rise">
+        <span class="pill" style="align-self: flex-start"><span class="dot"></span>Independent. Not an insurance agency.</span>
+        <div>
+          <h1 class="display">Build the coverage <em>you</em> actually need.</h1>
+          <p class="lede">A friendly, unbiased guide to direct primary care, high-deductible plans, HSAs and the extras. We show the math and tell you who each option is wrong for.</p>
+        </div>
+        <div class="row" style="gap: 10px">
+          <a href="#start" class="btn coral">Find your situation <Icon name="arrow" size={18} stroke={2.2} /></a>
+          <a href="/calculator/" class="btn">Compare stacks</a>
+        </div>
+      </div>
+
+      <div class="card bg-ink stack rise d2" aria-label="How a coverage stack fits together">
+        <div class="stack-head"><span class="serif" style="font-size: 30px">Your stack</span><span style="font-size: 13px; color: var(--on-dark-faint)">2026 rules</span></div>
+        <div class="layer optional drop"><span><b>Extras</b><small>Dental, vision, accident</small></span><span class="tag">Optional</span></div>
+        <div class="layer drop" style="background: var(--lilac)"><span><b>HSA</b><small>Tax-free savings</small></span><Icon name="wallet" /></div>
+        <div class="layer drop" style="background: var(--sage)"><span><b>Bronze or catastrophic</b><small>For the big, rare bills</small></span><Icon name="shield" /></div>
+        <div class="layer base drop" style="background: var(--accent)"><span><b>Direct primary care</b><small>Your doctor, flat monthly fee</small></span><Icon name="stetho" /></div>
+        <p style="margin: 12px 0 0; font-size: 14px; color: var(--on-dark-faint)">Each layer does one job. Most people need two or three, not all four.</p>
+      </div>
+    </section>
+
+    <div class="stat bg-butter rise d1">
+      <span class="eyebrow">Average marketplace payment</span>
+      <div><div class="num">+58%</div><p>$113 to $178 a month, 2025 to 2026. Source: <a href="https://www.kff.org/quick-insights/aca-marketplace-enrollment-is-down-by-3-million-after-big-jump-in-premium-payments/">KFF</a></p></div>
+    </div>
+    <div class="stat bg-white rise d2">
+      <span class="eyebrow">Average deductible, 2026</span>
+      <div><div class="num">$3,786</div><p class="muted">Up 37% in one year. Source: <a href="https://www.kff.org/affordable-care-act/what-we-know-so-far-about-2026-aca-marketplace-enrollment-premiums-and-deductibles/">KFF</a></p></div>
+    </div>
+    <div class="stat bg-lilac rise d3">
+      <span class="eyebrow">New for 2026</span>
+      <div><div class="num">$150<small>/mo</small></div><p>DPC fee you can pay alongside an HSA. Source: <a href="https://www.irs.gov/newsroom/treasury-irs-provide-guidance-on-new-tax-benefits-for-health-savings-account-participants-under-the-one-big-beautiful-bill">IRS Notice 2026-5</a></p></div>
+    </div>
+    <div class="stat bg-ink rise d4">
+      <span class="eyebrow">2027 open enrollment</span>
+      <div><div class="num mid">Nov 1 to <em>Jan 15</em></div><p class="on-dark-muted">Free help at <a href="https://www.healthcare.gov/">HealthCare.gov</a> and from local navigators.</p></div>
+    </div>
+
+    <section id="start" class="card span-all reveal">
+      <div class="section-head">
+        <h2 class="h-xl">Where are you <em>starting</em>?</h2>
+        <p class="muted">General education for each path, never a recommendation about your plan.</p>
+      </div>
+      <div class="chips">
+        {SITUATIONS.map((s, i) => (
+          <a href="/guides/" class:list={['chip', { on: i === 0 }]}>{s}{i === 0 && <Icon name="arrow" size={18} stroke={2.2} />}</a>
+        ))}
+      </div>
+    </section>
+
+    {featured && (
+      <a href={`/guides/${featured.id}/`} class="feature bg-sage span-all reveal">
+        <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+          <span class="pill white" style="align-self: flex-start; font-weight: 600">Featured guide · {featured.data.readMinutes} min{featured.data.reviewer && ' · Doctor reviewed'}</span>
+          <h2>{featured.data.title}</h2>
+          <p style="margin: 0; max-width: 620px; font-size: 18px">{featured.data.dek}</p>
+        </div>
+        <span class="round-arrow"><Icon name="arrow-ne" size={28} color="#fff" stroke={2} /></span>
+      </a>
+    )}
+
+    {guides.filter((g) => g !== featured).map((g) => (
+      <a href={`/guides/${g.id}/`} class="tile reveal">
+        <span class="meta"><span>{g.data.category}</span><span>{g.data.readMinutes} min</span></span>
+        <span class="t">{g.data.title}</span>
+      </a>
+    ))}
+    {upcoming.map((p) => (
+      <div class="tile reveal" aria-label={`${p.title}, coming soon`}>
+        <span class="meta"><span>{p.category}</span><span>{p.minutes} min</span></span>
+        <span style="display: flex; flex-direction: column; gap: 14px">
+          <span class="soon">Coming soon</span>
+          <span class="t">{p.title}</span>
+        </span>
+      </div>
+    ))}
+
+    <section class="span-all row reveal">
+      <div class="card bg-ink" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 32px">
+        <h2 class="h-xl">Compare stacks, <em>with the math shown.</em></h2>
+        <p class="on-dark-muted" style="margin: 0; font-size: 18px">An expected year and a bad year for each option. Every formula published. Partner products are never pre-selected.</p>
+        <a href="/calculator/" class="btn coral small" style="align-self: flex-start; color: var(--ink)">Open the calculator</a>
+      </div>
+      <div class="card calc-demo" aria-label="Calculator preview">
+        <div class="row" style="gap: 8px">
+          <label class="field">Household<select disabled><option>2 adults, 1 child</option></select></label>
+          <label class="field">Expected usage<select disabled><option>Medium</option></select></label>
+        </div>
+        <div class="bar-row"><div class="top"><span>DPC + bronze + HSA</span><span>[$ —]</span></div><div class="bars"><span style="width: 18%; background: var(--accent)"></span><span style="width: 26%; background: var(--sage)"></span><span style="width: 8%; background: var(--lilac)"></span></div></div>
+        <div class="bar-row"><div class="top"><span>Silver plan alone</span><span>[$ —]</span></div><div class="bars"><span style="width: 62%; background: var(--ink)"></span></div></div>
+        <div class="bar-row"><div class="top"><span>DPC + catastrophic</span><span>[$ —]</span></div><div class="bars"><span style="width: 18%; background: var(--accent)"></span><span style="width: 20%; background: var(--sage)"></span></div></div>
+        <p class="muted" style="margin: 4px 0 0; font-size: 13px">Illustrative layout. An estimate, not a recommendation. Confirm with HealthCare.gov, your state exchange, a navigator, or a licensed agent.</p>
+      </div>
+    </section>
+
+    <section class="card span-all reveal">
+      <div class="section-head">
+        <h2 class="h-xl">Our promise: <em>no spin.</em></h2>
+        <a href="/methodology/" style="font-weight: 600">Read the methodology</a>
+      </div>
+      <div class="mini-grid">
+        <div class="promise"><Icon name="doc" size={26} /><h3>Same template for all</h3><p>Who it fits, who should skip it, costs, risks and evidence.</p></div>
+        <div class="promise"><Icon name="ban" size={26} /><h3>No paid placement</h3><p>Nobody can buy a ranking. You choose the sort order.</p></div>
+        <div class="promise"><Icon name="bars" size={26} /><h3>Evidence, graded</h3><p>Every study labeled: independent, actuarial, vendor-funded or anecdotal.</p></div>
+        <div class="promise"><Icon name="gift" size={26} /><h3>Free help named first</h3><p>HealthCare.gov and navigators, before anyone who gets paid.</p></div>
+      </div>
+    </section>
+
+    <div class="span-all"><Signup /></div>
+  </div>
+</Base>
