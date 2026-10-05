@@ -2,7 +2,7 @@
 export const SITE = {
   name: 'Straight Talk on Healthcare Options',
   publisher: 'Conversely',
-  services: '[SERVICES]',
+  services: 'performance services',
   tagline: 'Independent guides to direct primary care, high-deductible plans, HSAs and the extras.',
 };
 

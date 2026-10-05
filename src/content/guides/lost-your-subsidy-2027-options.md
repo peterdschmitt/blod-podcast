@@ -6,7 +6,6 @@ category: Your options
 categorySlug: your-options
 readMinutes: 14
 author: Sophia Cranbrook
-mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05
 heroColor: coral
 summary:
