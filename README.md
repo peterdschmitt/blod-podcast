@@ -22,4 +22,4 @@ Reusable blocks you can drop into Markdown: `<div class="figs">` stat cards, `<d
 
 ## Placeholders to fill
 
-Search for `[` in `src/`: `[SERVICES]`, reviewers, `[EDITOR NAME]`, `[PARTNER LIST]`, `[CONTACT EMAIL]`, `[CORRECTIONS EMAIL]`, and the agency services. Site-wide strings live in `src/site.ts`. Set `site` in `astro.config.mjs` once a domain is chosen. The newsletter form is a placeholder until a provider is connected.
+Search for `[` in `src/`: `[EDITOR NAME]`, `[PARTNER LIST]`, `[CONTACT EMAIL]`, and the agency services. Site-wide strings live in `src/site.ts`. Set `site` in `astro.config.mjs` once a domain is chosen. The newsletter form is a placeholder until a provider is connected.

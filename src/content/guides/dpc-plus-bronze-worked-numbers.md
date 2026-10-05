@@ -6,7 +6,6 @@ category: The math
 categorySlug: the-math
 readMinutes: 12
 author: Sophia Cranbrook
-mathReviewer: "[LICENSED AGENT OR ACTUARY]"
 lastReviewed: 2026-10-05
 heroColor: lilac
 summary:
