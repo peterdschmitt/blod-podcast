@@ -1,0 +1,71 @@
+---
+// "Each one alone leaves a gap" graphic: three layers across three kinds of cost, then the combined row.
+import Icon from './Icon.astro';
+
+type Cell = { s: 'full' | 'part' | 'gap'; t: string };
+const COLS = [
+  { k: 'Everyday care', d: 'Check-ups, sick visits, questions' },
+  { k: 'Extras', d: 'Prescriptions, dental, vision, 2am advice' },
+  { k: 'Big, rare bills', d: 'ER, hospital, surgery, serious illness' },
+];
+const ROWS: { name: string; icon: string; tone: string; cells: Cell[] }[] = [
+  { name: 'Direct primary care', icon: 'stetho', tone: 'butter', cells: [
+    { s: 'full', t: 'Unlimited visits for a flat fee' },
+    { s: 'part', t: 'Labs and generics near cost' },
+    { s: 'gap', t: 'Not covered' },
+  ] },
+  { name: 'Value-added benefits', icon: 'gift', tone: 'sage', cells: [
+    { s: 'part', t: 'Telemedicine visits' },
+    { s: 'full', t: 'Rx, dental and vision discounts' },
+    { s: 'gap', t: 'Not covered' },
+  ] },
+  { name: 'Insurance plan', icon: 'shield', tone: 'lilac', cells: [
+    { s: 'part', t: 'Check-ups free; other visits paid until the deductible' },
+    { s: 'part', t: 'Often only after the deductible' },
+    { s: 'full', t: 'Caps your worst year' },
+  ] },
+];
+const LABEL = { full: 'Covered', part: 'Partly', gap: 'Gap' };
+---
+<section class="combine span-all reveal" aria-labelledby="combine-h">
+  <div class="combine-head">
+    <span class="eyebrow">Why combine them</span>
+    <h2 id="combine-h">Each one alone <em>leaves a gap.</em> Together, they cover the whole year.</h2>
+  </div>
+
+  <div class="cg" role="table" aria-label="What each layer covers, alone and combined">
+    <div class="cg-row cg-colhead" role="row">
+      <span class="cg-corner" role="columnheader"><span class="sr-only">Layer</span></span>
+      {COLS.map((c) => <span class="cg-col" role="columnheader"><b>{c.k}</b><small>{c.d}</small></span>)}
+    </div>
+
+    {ROWS.map((r) => (
+      <div class="cg-row" role="row">
+        <span class:list={['cg-name', `tone-${r.tone}`]} role="rowheader"><Icon name={r.icon} size={20} /> {r.name} <em>alone</em></span>
+        {r.cells.map((c, i) => (
+          <span class:list={['cg-cell', c.s, `tone-${r.tone}`]} role="cell">
+            <span class="cg-state">{c.s === 'gap' ? <Icon name="x" size={13} stroke={2.6} /> : c.s === 'full' ? <Icon name="check" size={13} stroke={2.6} /> : null}{LABEL[c.s]}</span>
+            <span class="cg-t">{c.t}</span>
+            <span class="cg-colname" aria-hidden="true">{COLS[i].k}</span>
+          </span>
+        ))}
+      </div>
+    ))}
+
+    <div class="cg-plus" aria-hidden="true"><span></span>All three together<span></span></div>
+
+    <div class="cg-row cg-combined" role="row">
+      <span class="cg-name" role="rowheader"><Icon name="check" size={20} stroke={2.4} /> Combined</span>
+      <span class="cg-cell full tone-butter" role="cell"><span class="cg-state"><Icon name="check" size={13} stroke={2.6} />Covered</span><span class="cg-t">Your DPC doctor</span><span class="cg-colname" aria-hidden="true">Everyday care</span></span>
+      <span class="cg-cell full tone-sage" role="cell"><span class="cg-state"><Icon name="check" size={13} stroke={2.6} />Covered</span><span class="cg-t">DPC plus your benefits</span><span class="cg-colname" aria-hidden="true">Extras</span></span>
+      <span class="cg-cell full tone-lilac" role="cell"><span class="cg-state"><Icon name="check" size={13} stroke={2.6} />Covered</span><span class="cg-t">Your insurance plan</span><span class="cg-colname" aria-hidden="true">Big, rare bills</span></span>
+    </div>
+  </div>
+
+  <div class="combine-points">
+    <div><b>DPC alone</b><p>Great everyday care, but one ER visit or hospital stay can cost thousands.</p></div>
+    <div><b>Benefits alone</b><p>Handy savings, but discounts are not coverage. You still owe the bill.</p></div>
+    <div><b>Insurance alone</b><p>Protects the worst year, but you can pay full price for routine care until the deductible.</p></div>
+  </div>
+  <p class="combine-note">General illustration. What each plan or membership covers varies, so check the details of any specific option. Not advice about your situation.</p>
+</section>

@@ -482,3 +482,54 @@ a:hover { color: var(--navy); }
 .start-link { font-weight: 600; display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: -8px; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Home: "why combine them" graphic */
+.combine { background: #fff; border: 1px solid var(--hairline); border-radius: var(--r-xl); padding: clamp(22px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 26px; }
+.combine-head { display: flex; flex-direction: column; gap: 10px; max-width: 900px; }
+.combine-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4vw, 54px); line-height: 1.02; letter-spacing: -.02em; margin: 0; }
+.cg { display: flex; flex-direction: column; gap: 8px; }
+.cg-row { display: grid; grid-template-columns: minmax(170px, 1.1fr) repeat(3, 1fr); gap: 8px; align-items: stretch; }
+.cg-col { display: flex; flex-direction: column; gap: 2px; padding: 0 4px 6px; border-bottom: 2px solid var(--ink); }
+.cg-col b { font-size: 16px; }
+.cg-col small { color: var(--muted); font-size: 13px; }
+.cg-name { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; padding: 10px 4px; }
+.cg-name em { font-style: normal; color: var(--muted); font-weight: 500; }
+.cg-cell { border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-height: 76px; transition: transform .4s var(--ease); }
+.cg-state { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; font-weight: 600; }
+.cg-t { font-size: 14.5px; line-height: 1.35; }
+.cg-colname { display: none; }
+.cg-cell.full.tone-butter { background: var(--butter); }
+.cg-cell.full.tone-sage { background: var(--sage); }
+.cg-cell.full.tone-lilac { background: var(--lilac); }
+.cg-cell.part { background: repeating-linear-gradient(135deg, var(--tone) 0 8px, #fff 8px 14px); border: 1px solid var(--hairline); }
+.cg-cell.part .cg-t, .cg-cell.part .cg-state { background: rgba(255,255,255,.92); border-radius: 6px; padding: 1px 6px; align-self: flex-start; }
+.tone-butter { --tone: var(--butter); }
+.tone-sage { --tone: var(--sage); }
+.tone-lilac { --tone: var(--lilac); }
+.cg-cell.gap { background: #FBF4F2; border: 1.5px dashed rgba(184,67,58,.6); color: var(--red); }
+.cg-cell.gap .cg-t { color: var(--red); font-weight: 600; }
+.cg-plus { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); font-weight: 600; margin: 10px 0 4px; }
+.cg-plus span { flex: 1; height: 2px; background: var(--navy); opacity: .25; }
+.cg-combined { background: var(--navy); border-radius: 20px; padding: 8px; }
+.cg-combined .cg-name { color: #fff; padding-left: 12px; }
+.cg-combined .cg-cell { border: 0; }
+.reveal.in .cg-combined .cg-cell { animation: cg-pop .6s var(--ease) both; }
+.reveal.in .cg-combined .cg-cell:nth-child(3) { animation-delay: .12s; }
+.reveal.in .cg-combined .cg-cell:nth-child(4) { animation-delay: .24s; }
+@keyframes cg-pop { from { transform: scale(.94); opacity: .3; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .reveal.in .cg-combined .cg-cell { animation: none; } }
+.combine-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.combine-points div { background: var(--bg); border-radius: var(--r-md); padding: 16px 18px; }
+.combine-points b { font-size: 16px; }
+.combine-points p { margin: 4px 0 0; font-size: 15px; color: var(--ink-2); line-height: 1.45; }
+.combine-note { margin: 0; font-size: 13px; color: var(--muted); }
+@media (max-width: 720px) {
+  .cg-colhead { display: none; }
+  .cg-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .cg-name { grid-column: 1 / -1; padding: 10px 2px 0; }
+  .cg-cell { padding: 10px; min-height: 0; }
+  .cg-t { font-size: 13px; }
+  .cg-colname { display: block; order: -1; font-size: 11px; font-weight: 700; color: var(--ink-2); }
+  .cg-cell.gap .cg-colname { color: var(--red); }
+  .cg-combined .cg-name { padding: 6px 6px 2px; }
+}

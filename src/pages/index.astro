@@ -5,6 +5,7 @@ import Icon from '../components/Icon.astro';
 import Signup from '../components/Signup.astro';
 import EpisodeRow from '../components/EpisodeRow.astro';
 import ExampleCard from '../components/ExampleCard.astro';
+import CombineGraphic from '../components/CombineGraphic.astro';
 import { PLANNED } from '../site';
 import { EXAMPLES, FACTS } from '../data/examples';
 
@@ -86,6 +87,8 @@ const statFacts = [FACTS.practices, FACTS.avgFee, FACTS.payments];
         <a href="/real-examples/" class="btn white small">See how people combine them</a>
       </div>
     </section>
+
+    <CombineGraphic />
 
     <section class="span-all hub reveal">
       <div class="hub-col">
