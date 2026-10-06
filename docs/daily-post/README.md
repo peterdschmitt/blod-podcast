@@ -36,6 +36,18 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 7. **Link** to at least one earlier post and to the [calculator](/calculator/) when money is involved.
 8. **Build.** `npm ci && npm run build` must pass. Quote YAML values containing ": ". Wrap Markdown tables in `<div style="overflow-x: auto">` with blank lines around the table.
 
+## House style (match the six launch posts)
+
+Every daily post should look and read like the posts already live on the blog. Before writing, reread one of them (for example `src/content/guides/lost-your-subsidy-2027-options.md`).
+
+- **Frontmatter:** a plain-language `title` with its last phrase repeated in `titleEm` (set in italics); a one- or two-sentence `dek`; 4 to 6 `summary` bullets that each state a finding with its number; an `evidence` block; a graded `sources` list; `next` pointing to a related post.
+- **Shape:** the headline lead, then 4 to 6 `##` sections with plain headings that say what's in them ("Who gets a check", "What it costs in 2027"), then `## In the news`, then one closing line linking to related posts or the calculator.
+- **Show the numbers:** at least one visual block. Use a `<div class="figs">` row of 2 or 3 stat cards (`bg-sage`, `bg-butter`, `bg-lilac`, `bg-coral`) or a comparison table wrapped in `<div style="overflow-x: auto">`.
+- **Examples:** when money is involved, walk through a hypothetical person or household with a name and age (like "Dana, 40, self-employed"), label it hypothetical, and show the math.
+- **Voice:** second person ("you"), short sentences, contractions, one idea per paragraph, no jargon without a plain-words gloss. Say what something is and what it isn't. Name the trade-off; don't pick for the reader.
+- **Footnotes:** `<sup><a href="#src-N">N</a></sup>` after the sentence the source supports, numbered in the order of the `sources` list.
+- **"In the news" lines:** `**Outlet**, Mon D, YYYY: [Exact headline](url). One sentence on why it matters here.`
+
 ## Fixed facts
 
 - Byline: `author: Sophia Cranbrook`. No `reviewer` or `mathReviewer` field, no physician or "math checked by" line.
