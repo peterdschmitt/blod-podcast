@@ -51,6 +51,12 @@ Put those stories side by side and you get the real question for anyone who buys
 
 Here is what we know about the money, and how it compares with next year's bill.
 
+<div class="figs">
+  <div class="fig bg-coral"><div class="n">$500</div><div class="l">one-time check, about 950,000 people</div></div>
+  <div class="fig bg-butter"><div class="n">15%</div><div class="l">median proposed premium increase for 2027</div></div>
+  <div class="fig bg-sage"><div class="n">Nov 1</div><div class="l">open enrollment starts on HealthCare.gov</div></div>
+</div>
+
 ## Who gets a check
 
 The White House announced the payments on September 10. They go to people in the 30 states that use the federal exchange, HealthCare.gov, who paid the full premium themselves with no premium tax credit.<sup><a href="#src-1">1</a></sup> ABC News reported that most recipients earn more than 400% of the federal poverty line, the point where the regular subsidy stops, plus some people below that line who received no subsidy.
@@ -97,5 +103,7 @@ Further reading on the checks and on next year's prices:
 
 - **CNBC**, Sep 30, 2026: [Trump administration starts sending $500 Obamacare refund checks — who stands to benefit](https://www.cnbc.com/2026/09/30/obamacare-aca-refund-checks.html). Coverage of the first checks going out and who stands to benefit.
 - **NBC News**, Sep 12, 2026: [ACA, Medicare or health insurance through work? Your health insurance bills are about to go up](https://www.nbcnews.com/health/health-news/aca-medicare-work-health-insurance-cost-rise-2027-rcna597069). It shows the 2027 increases across marketplace plans, job-based coverage and Medicare, useful if your household mixes all three.
+
+To see where the check fits in a full plan for 2027, start with [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/) or run your numbers in the [stack calculator](/calculator/).
 
 This guide is educational. We don't sell insurance and can't recommend a plan. Spot an error? Write to info@converselyai.com.
