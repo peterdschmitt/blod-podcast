@@ -1,15 +1,16 @@
 ---
 title: How to evaluate a DPC practice
 titleEm: a DPC practice
-dek: Twenty questions to ask before you sign a membership agreement, what a good answer sounds like, and the answers that should make you walk away.
+dek: Twenty-one questions to ask before you sign a membership agreement, what a good answer sounds like, and the answers that should make you walk away.
 category: Checklist
 categorySlug: checklist
 readMinutes: 8
 author: Sophia Cranbrook
-lastReviewed: 2026-10-05
+lastReviewed: 2026-10-06
 heroColor: white
 summary:
   - Get the price, what it covers and how to cancel in writing before you join.
+  - Ask exactly who you will see. Your membership only pays for that practice's or program's clinicians, so joining usually means leaving your current doctor unless they are part of it.
   - Ask how many patients the doctor has. Doctors with full practices usually report 400 to 700. Far more can mean slower access.
   - If you use an HSA, ask the practice to confirm in writing that it meets the IRS definition of a direct primary care arrangement.
   - If you are 60 or older, ask whether the doctor has opted out of Medicare. Most have.
@@ -43,6 +44,9 @@ sources:
   - title: Federation of State Medical Boards, Information for consumers
     url: https://www.fsmb.org/u.s.-medical-regulatory-trends-and-actions/guide-to-medical-regulation-in-the-united-states/information-for-consumers/
     grade: Primary source
+  - title: ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)
+    url: https://www.valuepenguin.com/health-insurace-direct-primary-care
+    grade: Independent analysis
 next: direct-primary-care-explained
 ---
 
@@ -83,9 +87,10 @@ To find practices, try the DPC Frontier mapper<sup><a href="#src-5">5</a></sup> 
 
 ## 5. Quality and fit
 
-18. **Who will I see, and what is their training?** Board certification in family or internal medicine is a good sign. You can check a doctor's license and any disciplinary record on your state medical board's website or through the free DocInfo lookup.<sup><a href="#src-8">8</a></sup>
-19. **How long has the practice been open, and how many members has it lost?** Stability matters. If a practice closes, you start the search over.
-20. **What do you tell members about insurance?** The right answer: membership covers primary care only, and you still need a health plan for emergencies, hospital stays and specialists.<sup><a href="#src-4">4</a></sup>
+18. **Who will I see, and what is their training?** Your membership only pays for care from this practice's own clinicians. See anyone else and you pay full price unless a separate health plan covers it.<sup><a href="#src-9">9</a></sup> So get names, not just "our providers." If the program books visits for you across a network of partner clinics, ask which clinics are near you and whether you can ask for the same clinician each time. Board certification in family or internal medicine is a good sign. You can check a doctor's license and any disciplinary record on your state medical board's website or through the free DocInfo lookup.<sup><a href="#src-8">8</a></sup>
+19. **Is my current doctor part of this?** If not, joining means switching primary care doctors. Weigh that honestly. For some people a long relationship with a doctor is worth more than the flat fee.
+20. **How long has the practice been open, and how many members has it lost?** Stability matters. If a practice closes, you start the search over.
+21. **What do you tell members about insurance?** The right answer: membership covers primary care only, and you still need a health plan for emergencies, hospital stays and specialists.<sup><a href="#src-4">4</a></sup>
 
 ## Answers that should make you walk away
 
@@ -118,6 +123,7 @@ To find practices, try the DPC Frontier mapper<sup><a href="#src-5">5</a></sup> 
 
 | Question | Practice A | Practice B | Practice C |
 |---|---|---|---|
+| Who I would see (names) | | | |
 | Monthly fee (your household) | | | |
 | Enrollment fee | | | |
 | Cancellation terms | | | |

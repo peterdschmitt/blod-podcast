@@ -36,6 +36,7 @@ export const EXAMPLES: Example[] = [
     watch: [
       'Specialists, imaging and hospital care still hit the bronze deductible, so the HSA needs funding.',
       'Check that the practice meets the IRS definition; some hybrid practices do not.',
+      'The membership only pays for that practice’s clinicians, so unless her current doctor is part of it, she switches primary care doctors.',
     ],
     fits: true,
   },

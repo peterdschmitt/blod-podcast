@@ -1,16 +1,17 @@
 ---
 title: Direct primary care, explained honestly
 titleEm: explained honestly
-dek: A flat monthly fee for your own doctor, with no copays and no claims. Here is what it covers, what it never covers, what it costs in 2026, and why it is not insurance on purpose.
+dek: A flat monthly fee for primary care from one practice, with no copays and no claims. Here is what it covers, what it never covers, who you actually see, what it costs in 2026, and why it is not insurance on purpose.
 category: DPC basics
 categorySlug: dpc-basics
-readMinutes: 11
+readMinutes: 12
 author: Sophia Cranbrook
-lastReviewed: 2026-10-05
+lastReviewed: 2026-10-06
 heroColor: sage
 summary:
   - Direct primary care (DPC) is a membership with a primary care practice. You pay a flat monthly fee, usually $80 to $115, and the practice does not bill insurance.
   - It typically includes visits, texting or video with your doctor, basic in-office procedures, and labs and generic drugs at close to cost.
+  - You get care from the practice or program you join, not from any doctor you like. Unless your current doctor is part of it, joining usually means switching primary care doctors. That is a real difference from insurance.
   - It never covers specialists, hospital stays, surgery, most imaging or the ER. That is the job of an insurance plan.
   - DPC is not insurance, and that is the point. Paying for routine care directly removes the billing layer that makes routine care slow and expensive.
   - Since 2026, you can pay a qualifying DPC fee from an HSA, and bronze and catastrophic plans now count as HSA-compatible. That makes the two easier to pair.
@@ -40,12 +41,18 @@ sources:
   - title: IRS Notice 2026-5, guidance on HSA changes including direct primary care service arrangements
     url: https://www.irs.gov/pub/irs-drop/n-26-05.pdf
     grade: Primary source
+  - title: ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)
+    url: https://www.valuepenguin.com/health-insurace-direct-primary-care
+    grade: Independent analysis
+  - title: Healthcare2U, Direct Primary Care program overview for brokers (Warner Pacific, 2024)
+    url: https://www.warnerpacific.com/hubfs/assets/healthcare2u/dpcp.Healthcare2U.V.09162024L.pdf
+    grade: Vendor-reported
 next: value-added-benefits-explained
 ---
 
 ## What DPC is
 
-Direct primary care is a membership with a primary care practice. You pay a set fee every month. In return you get your own doctor (or a nurse practitioner or physician assistant) for everyday care. The practice doesn't send claims to an insurance company for that care. So there's no copay, no deductible and no surprise bill for an office visit.
+Direct primary care is a membership with a primary care practice. You pay a set fee every month. In return you get a doctor of your own at that practice (or a nurse practitioner or physician assistant) for everyday care. The practice doesn't send claims to an insurance company for that care. So there's no copay, no deductible and no surprise bill for an office visit.
 
 The model has grown fast. The DPC Alliance counted more than 3,600 practices in the U.S. as of early 2025, up more than 19% a year since 2022. There's at least one in every state except Alaska.<sup><a href="#src-1">1</a></sup>
 
@@ -56,6 +63,20 @@ The model has grown fast. The DPC Alliance counted more than 3,600 practices in 
 </div>
 
 That last number is the heart of it. A small patient list is what makes room for same-day appointments, longer visits and a doctor who actually answers your text.
+
+## Who you see: the practice's doctors, not any doctor you choose
+
+This is the part people most often miss. With insurance, you can usually pick from a long list of in-network primary care doctors, and keep the one you already have if they take your plan. A DPC membership works differently. Your fee pays for care from the practice or program you join, and only that. If you want to see a doctor outside it, the membership doesn't pay. You'd pay the full price yourself unless a separate health plan covers that visit.<sup><a href="#src-8">8</a></sup>
+
+That means, in plain terms:
+
+- **Your current doctor probably isn't included.** Unless your doctor runs a DPC practice or belongs to the program you join, signing up usually means switching to a new primary care doctor.
+- **You see who the practice has.** At a small independent practice that's often one or two doctors, sometimes with a nurse practitioner or physician assistant. You pick the practice, then you see its clinicians.
+- **Some programs book the visit for you.** Some DPC programs sold through employers and benefits agencies run a network of partner clinics. A care line or concierge books your appointment with a provider in that network, and care is only provided through that network.<sup><a href="#src-9">9</a></sup> You get less choice of the individual doctor, and you need to check that the network has a clinic near you.
+
+Why is it built this way? The flat fee only works because the practice is paying its own staff, not reimbursing other doctors. It doesn't run claims, coding or a billing department, which the American Academy of Family Physicians says cuts overhead.<sup><a href="#src-2">2</a></sup> The sources we checked credit DPC's lower price mainly to that missing billing layer, not to the limit on doctors by itself. But the two go together: a membership that covered any doctor anywhere would need claims and payments again, which is what insurance does.
+
+So before you join, ask two plain questions. Who exactly will I see? And is my current doctor part of this? If keeping your doctor matters more to you than the flat fee, that's a good reason to stay with insurance-billed primary care.
 
 ## What a membership usually includes
 
@@ -144,6 +165,7 @@ That's one employer. The study didn't measure quality of care, and the DPC group
     <div class="tag">Think twice</div>
     <ul>
       <li>People with low copays on a silver or gold plan who are happy with their doctor</li>
+      <li>Anyone who wants to keep a current doctor who isn't part of a DPC practice</li>
       <li>Anyone turning 65 soon (see below)</li>
       <li>People who rarely see a doctor and cannot spare $100 a month</li>
       <li>Anyone thinking of using DPC <em>instead</em> of insurance</li>
@@ -166,6 +188,7 @@ Recent national coverage of membership-style primary care and the new HSA rules:
 
 ## Questions to ask before you join
 
+- Which doctors or clinicians will I see? Is my current doctor part of this practice or program?
 - What exactly is included, and what costs extra?
 - How many patients does the doctor have, and what is the cap?
 - How fast can I get an appointment, and who answers after hours?

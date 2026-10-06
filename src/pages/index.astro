@@ -39,7 +39,7 @@ const statFacts = [FACTS.practices, FACTS.avgFee, FACTS.payments];
         <div class="layer optional drop"><span><b>Extras</b><small>Dental, vision, accident</small></span><span class="tag">Optional</span></div>
         <div class="layer drop" style="background: var(--lilac)"><span><b>HSA</b><small>Tax-free savings</small></span><Icon name="wallet" /></div>
         <div class="layer drop" style="background: var(--sage)"><span><b>Bronze or catastrophic</b><small>For the big, rare bills</small></span><Icon name="shield" /></div>
-        <div class="layer base drop" style="background: var(--butter)"><span><b>Direct primary care</b><small>Your doctor, flat monthly fee</small></span><Icon name="stetho" /></div>
+        <div class="layer base drop" style="background: var(--butter)"><span><b>Direct primary care</b><small>One practice, flat monthly fee</small></span><Icon name="stetho" /></div>
         <p style="margin: 12px 0 0; font-size: 14px; color: var(--on-dark-faint)">Each layer does one job. Most people need two or three, not all four.</p>
       </div>
     </section>
@@ -50,11 +50,12 @@ const statFacts = [FACTS.practices, FACTS.avgFee, FACTS.payments];
         <article class="explain-card bg-butter">
           <div class="explain-top"><span class="explain-num">1</span><span class="pill white not-ins"><Icon name="x" size={14} stroke={2.4} /> Not insurance</span></div>
           <h3>What is direct primary care?</h3>
-          <p class="explain-lede">You pay your own doctor a flat monthly membership, often around $100 a month, and get your everyday care directly from them.</p>
+          <p class="explain-lede">You join one primary care practice for a flat monthly membership, often around $100 a month, and get your everyday care directly from its doctors.</p>
           <ul class="explain-list">
             <li><Icon name="check" size={18} stroke={2.2} />Office visits, check-ups and sick visits with no co-pay or claim.</li>
             <li><Icon name="check" size={18} stroke={2.2} />Often same-day or next-day visits, and you can text or call your doctor.</li>
             <li><Icon name="check" size={18} stroke={2.2} />Many practices offer labs and generic drugs at close to cost.</li>
+            <li><Icon name="x" size={18} stroke={2.2} />The trade-off: you see that practice's doctors only. Unless your current doctor is part of it, you switch.</li>
           </ul>
           <div class="explain-why">
             <span class="eyebrow">Why it's not insurance, on purpose</span>
