@@ -6,7 +6,7 @@ category: The math
 categorySlug: the-math
 readMinutes: 12
 author: Sophia Cranbrook
-lastReviewed: 2026-10-05
+lastReviewed: 2026-10-06
 heroColor: lilac
 summary:
   - We compared a silver plan, a bronze plan alone, and bronze plus direct primary care plus an HSA for one hypothetical 40-year-old with no subsidy in 2027.
@@ -55,6 +55,9 @@ sources:
   - title: Peterson-KFF Health System Tracker, Higher premium payments or higher deductibles, the tradeoffs ACA enrollees face
     url: https://www.healthsystemtracker.org/brief/higher-premium-payments-or-higher-deductibles-the-tradeoffs-aca-enrollees-face/
     grade: Independent research
+  - title: ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)
+    url: https://www.valuepenguin.com/health-insurace-direct-primary-care
+    grade: Independent analysis
 next: how-to-evaluate-a-dpc-practice
 ---
 
@@ -166,6 +169,7 @@ The insurance did its real job in every column. Dana's hospital bill might have 
 - **Under 30, or eligible for a hardship exemption:** a catastrophic plan may cost less than bronze. It covers at least three primary care visits a year before the deductible, which overlaps with what DPC provides.<sup><a href="#src-10">10</a></sup>
 - **You still get a subsidy:** the credit is sized to the second-lowest-cost silver plan in your area but can be used on a bronze plan, which can bring the bronze premium way down.<sup><a href="#src-9">9</a></sup> That changes every row of these tables.
 - **A family:** family DPC memberships often cost less than the sum of individual fees, and families with young kids tend to use more primary care. The 2027 family out-of-pocket cap is $24,000, so the HSA cushion matters more.<sup><a href="#src-6">6</a></sup>
+- **You want to keep your current doctor:** a DPC membership only pays for that practice's own clinicians. If your doctor isn't part of it, you'd switch, or pay full price to keep seeing them unless your plan covers the visit.<sup><a href="#src-13">13</a></sup> That is a cost the dollar figures above don't show.
 
 Bronze is no niche choice anymore. The share of Marketplace shoppers picking bronze rose from 30% in 2025 to 40% in 2026 after the enhanced tax credits expired.<sup><a href="#src-4">4</a></sup>
 

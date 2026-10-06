@@ -6,7 +6,7 @@ category: DPC and HSAs
 categorySlug: dpc-and-hsas
 readMinutes: 9
 author: Sophia Cranbrook
-lastReviewed: 2026-10-05
+lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 summary:
@@ -31,6 +31,9 @@ sources:
   - title: KFF, Policy Changes Bring Renewed Focus on High-Deductible Health Plans
     url: https://www.kff.org/patient-consumer-protections/policy-changes-bring-renewed-focus-on-high-deductible-health-plans/
     grade: Independent research
+  - title: ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)
+    url: https://www.valuepenguin.com/health-insurace-direct-primary-care
+    grade: Independent analysis
 next: dpc-plus-bronze-worked-numbers
 ---
 
@@ -63,6 +66,8 @@ The care has to come from a primary care clinician: a doctor in family, internal
 </div>
 
 A practice can still bill you, or your insurer, for care it provides outside the membership. That doesn't disqualify the arrangement, as long as the fixed fee is the only payment for the care the membership covers.<sup><a href="#src-1">1</a></sup> Ask the practice which services sit inside the fee and which don't.
+
+One thing the tax rules don't change: a DPC membership only pays for care from the practice you join. Unless your current doctor is part of it, signing up means switching primary care doctors.<sup><a href="#src-5">5</a></sup>
 
 ## Paying from your HSA
 
