@@ -1,10 +1,10 @@
 ---
 title: Direct primary care, explained honestly
 titleEm: explained honestly
-dek: A flat monthly fee for primary care from one practice, with no copays and no claims. Here is what it covers, what it never covers, who you actually see, what it costs in 2026, and why it is not insurance on purpose.
+dek: A flat monthly fee for primary care from one practice, with no copays and no claims. Here is what being a member is like, what it covers, who you actually see, what it costs in 2026, and why it is not insurance on purpose.
 category: DPC basics
 categorySlug: dpc-basics
-readMinutes: 12
+readMinutes: 13
 author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: sage
@@ -77,6 +77,19 @@ That means, in plain terms:
 Why is it built this way? The flat fee only works because the practice is paying its own staff, not reimbursing other doctors. It doesn't run claims, coding or a billing department, which the American Academy of Family Physicians says cuts overhead.<sup><a href="#src-2">2</a></sup> The sources we checked credit DPC's lower price mainly to that missing billing layer, not to the limit on doctors by itself. But the two go together: a membership that covered any doctor anywhere would need claims and payments again, which is what insurance does.
 
 So before you join, ask two plain questions. Who exactly will I see? And is my current doctor part of this? If keeping your doctor matters more to you than the flat fee, that's a good reason to stay with insurance-billed primary care.
+
+## What being a member looks like, step by step
+
+Here's the experience from sign-up to the day you need more than primary care. Details vary by practice, so treat this as the usual pattern, not a promise.
+
+1. **You pick a practice and sign an agreement.** You find a practice or program, often meet the doctor first, and sign a membership contract that lists the monthly fee, what's included and how to cancel. Some practices charge a one-time enrollment fee. Most price by age.<sup><a href="#src-1">1</a></sup>
+2. **You switch your primary care there.** From now on, that practice is your primary care. Its own clinicians are the people you see, so unless your current doctor is part of it, this is where you change doctors (see the section above).<sup><a href="#src-8">8</a></sup>
+3. **You book by calling, texting or using the practice's app.** Same-day or next-day visits are common, and many practices let you message the doctor directly. In network programs, you may call a care line that books you with a partner clinic instead.<sup><a href="#src-9">9</a></sup>
+4. **You get everyday care with nothing to pay at the visit.** Office visits, check-ups and chronic care are covered by the fee, with no copay and no claim. Labs and generic drugs are often extra, at low posted prices.<sup><a href="#src-2">2</a></sup>
+5. **You need a specialist, a scan or the hospital.** The membership stops here. Your DPC doctor can refer you and often knows cash prices for imaging, but the specialist, the hospital and the ER are paid by your health plan, or by you in full if you don't have one.<sup><a href="#src-8">8</a></sup> Check that any specialist you're sent to is in your plan's network.
+6. **You keep paying monthly, and you can leave.** Many practices run month to month with notice. If you leave, you go back to finding primary care through your insurance.
+
+The short version: one practice for everyday care, your insurance for everything else, and no claims in between.
 
 ## What a membership usually includes
 
