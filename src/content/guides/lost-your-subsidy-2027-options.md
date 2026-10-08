@@ -6,7 +6,7 @@ category: Your options
 categorySlug: your-options
 readMinutes: 14
 author: Sophia Cranbrook
-lastReviewed: 2026-10-05
+lastReviewed: 2026-10-06
 heroColor: coral
 summary:
   - The enhanced subsidies expired on December 31, 2025. Regular subsidies still exist for incomes from 100% to 400% of the poverty line. For 2027 coverage, 400% is $63,840 for one person and $132,000 for a family of four.
@@ -71,6 +71,9 @@ sources:
   - title: KFF, Policy changes bring renewed focus on high-deductible health plans
     url: https://www.kff.org/patient-consumer-protections/policy-changes-bring-renewed-focus-on-high-deductible-health-plans/
     grade: Independent research
+  - title: ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)
+    url: https://www.valuepenguin.com/health-insurace-direct-primary-care
+    grade: Independent analysis
 next: dpc-plus-bronze-worked-numbers
 ---
 
@@ -193,7 +196,7 @@ Each option below gets the same four questions. The first three are regulated AC
 
 ## Where direct primary care fits
 
-Every path above that ends in bronze or catastrophic leaves you paying for everyday care until you meet the deductible. That is the gap DPC fills, for a flat monthly fee. A 2025 law lets people in certain DPC arrangements keep their HSA and pay the fee from it.<sup><a href="#src-17">17</a></sup> See [DPC plus a bronze plan, with worked numbers](/blog/dpc-plus-bronze-worked-numbers/).
+Every path above that ends in bronze or catastrophic leaves you paying for everyday care until you meet the deductible. That is the gap DPC fills, for a flat monthly fee. A 2025 law lets people in certain DPC arrangements keep their HSA and pay the fee from it.<sup><a href="#src-17">17</a></sup> One trade-off to know first: the membership only pays for care from that practice's own clinicians, so unless your current doctor is part of it, joining means switching primary care doctors.<sup><a href="#src-18">18</a></sup> See [DPC plus a bronze plan, with worked numbers](/blog/dpc-plus-bronze-worked-numbers/).
 
 ## Key dates and free help
 

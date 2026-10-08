@@ -122,7 +122,7 @@ If you have direct primary care, much of the bundle may already be covered:
 
 | Benefit | Usually included in DPC? | Worth buying separately? |
 |---|---|---|
-| Telehealth for minor illness | Yes, with your own doctor | Only for travel or nights the practice does not cover |
+| Telehealth for minor illness | Yes, with your DPC practice's clinicians | Only for travel or nights the practice does not cover |
 | Generic drugs at cost | Often, where state law allows | Discount card still useful for drugs the practice does not stock |
 | Labs at wholesale price | Usually | Rarely |
 | Cash-price imaging | Many practices negotiate it | Useful if yours does not |
