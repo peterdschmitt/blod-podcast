@@ -20,12 +20,17 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 
 ## Header reference (every post)
 
-Peter wants every post to point to another publication in its header, not only in the body (2026-10-08).
+Peter wants every post to name another publication in its header, quote it, and say why it matters to us (2026-10-08). The site shows it under the title as an "In response to" box.
 
-- Fill in `respondingTo` in the frontmatter: `outlet`, `headline` (exact, in single quotes), `url` and `date` (YYYY-MM-DD). The site shows it under the title as "In response to: Outlet, date: headline". The build fails without it.
-- Pick the story the post most directly answers. Use a major national outlet from the list below, from roughly the last 14 days when the post is news-driven.
-- Use a different article from the two in the headline lead and from the "In the news" list, so a reader sees at least three different stories.
-- Verify it the same way as the lead: the exact headline, outlet and date, checked against the publisher's page (or search results for paywalled pieces).
+- Fill in `respondingTo` in the frontmatter:
+  - `outlet`, `headline` (exact), `url`, `date` (YYYY-MM-DD).
+  - `quote`: one short sentence copied word for word from the article body (not the headline), under about 125 characters. Change nothing inside it except a final comma to a period.
+  - `quoteBy`: the person and their role when the quote is a person's words, for example "Stacey Pogue, Georgetown University's Center on Health Insurance Reforms". Leave it out when the quote is the outlet's own narration.
+  - `whyItMatters`: one or two plain sentences tying the quote to this post's point for the reader.
+- The build fails without it.
+- Pick the story the post most directly answers, from a major national outlet on the list below. For news-driven posts, use one from roughly the last 14 days.
+- Use a different article from the two in the headline lead and from the "In the news" list.
+- The quote must come from a page you can actually read. CNBC, NBC News, CNN and Bloomberg block our reader, so for the header prefer KFF Health News, ABC News, CBS News, PBS (AP) or an NPR member-station copy. Never take a quote from a search snippet.
 
 ## Picking the day's topic
 
