@@ -9,12 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
 respondingTo:
-  lede: "Hospitals are asking for money before treatment, KFF Health News reports. Here's what your DPC membership can and can't do about that."
-  outlet: "KFF Health News"
-  headline: "Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered"
-  url: "https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/"
-  date: "2026-08-14"
-  quote: "If they don't collect up front, these care providers fear, they'll increasingly face unpaid medical bills."
+  lede: "NBC News found hospital costs outpacing inflation and pushing families into debt. A DPC membership won't shield you from that bill."
+  outlet: "NBC News"
+  headline: "Hospital costs are rising far faster than inflation and drowning Americans in debt"
+  url: "https://www.nbcnews.com/investigations/hospital-costs-are-rising-far-faster-inflation-drowning-americans-debt-rcna262473"
+  date: "2026-04-02"
+  quote: "Hospital costs are among the major forces driving Americans deeper into debt and widening the inequality gap."
   impact: "If you're counting on a DPC membership to cover a hospital stay, it won't. That bill still belongs to insurance, and this post shows exactly where the line falls."
 summary:
   - A DPC membership usually covers unlimited primary care visits, messaging with the practice's clinicians, physicals, chronic care and basic in-office procedures, with labs and generic drugs at close to cost.
@@ -126,6 +126,7 @@ Our [checklist for evaluating a DPC practice](/blog/how-to-evaluate-a-dpc-practi
 
 Further reading on what happens when care falls outside a membership or a deductible:
 
+- **KFF Health News**, Aug 14, 2026: [Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered](https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/). Why a high deductible can mean paying the hospital before your surgery, not after.
 - **CBS News**, Oct 28, 2025: [Direct primary care gains traction as providers look for a better way to treat patients — without insurance](https://www.cbsnews.com/news/direct-primary-care-treat-patients-without-insurance/). A look inside DPC practices, including a DPC nurse practitioner's reminder that complex problems still go to a specialist.
 
 To see how DPC fits with the other pieces, start with [Direct primary care, explained](/blog/direct-primary-care-explained/) or run your own numbers in the [stack calculator](/calculator/).

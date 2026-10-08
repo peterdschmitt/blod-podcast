@@ -10,12 +10,12 @@ lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 respondingTo:
-  lede: "Your HSA can cover a fancy sauna but not your premiums, KFF Health News found. So where does a DPC fee land?"
-  outlet: "KFF Health News"
-  headline: "Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums"
-  url: "https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/"
-  date: "2025-12-05"
-  quote: "Those same dollars can't be used, though, to pay for most baby formulas, toothbrushes — or insurance premiums."
+  lede: "Fox Business reports the new HSA rules let you pay DPC fees tax-free. Here's the fine print before you count on it."
+  outlet: "Fox Business"
+  headline: "Treasury Department announces expanded HSA tax benefits under Trump law"
+  url: "https://www.foxbusiness.com/politics/treasury-department-announces-expanded-hsa-tax-benefits-under-trump-law"
+  date: "2025-12-11"
+  quote: "They may also use HSA funds tax-free to pay DPC fees that arise periodically."
   impact: "Since 2026, DPC fees can count as HSA expenses, but only within IRS limits. This guide walks through which memberships qualify."
 summary:
   - Since January 1, 2026, a qualifying DPC arrangement no longer blocks HSA contributions.
@@ -94,4 +94,5 @@ Tax rules like these turn on details. If you're unsure how they apply to you, ch
 National coverage of the HSA changes behind this guide:
 
 - **CNBC**, Dec 11, 2025: [IRS releases health savings account expansion details under Trump's 'big beautiful bill'](https://www.cnbc.com/2025/12/11/health-savings-accounts-trump.html). It reported on the IRS guidance that set the DPC and bronze-plan rules described here.
+- **KFF Health News**, Dec 5, 2025: [Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums](https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/). A skeptical look at what HSA money can and can't pay for.
 - **KFF Health News**, Apr 13, 2026: [How To Make a High-Deductible Health Plan Work for You](https://kffhealthnews.org/health-care-costs/health-care-helpline-npr-hsa-savings-account-high-deductible-plan-tips/). Practical tips for people in the bronze and catastrophic plans that now qualify for an HSA.

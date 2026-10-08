@@ -9,12 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: lilac
 respondingTo:
-  lede: "KFF Health News on high-deductible plans: low premiums, big bills when you need care. We ran the numbers with DPC added."
-  outlet: "KFF Health News"
-  headline: "How To Make a High-Deductible Health Plan Work for You"
-  url: "https://kffhealthnews.org/health-care-costs/health-care-helpline-npr-hsa-savings-account-high-deductible-plan-tips/"
-  date: "2026-04-13"
-  quote: "These plans offer lower monthly payments, but in exchange patients can face steep out-of-pocket costs when they need care."
+  lede: "Marketplace deductibles hit a record in 2026, CNBC reports. We ran the numbers on pairing a bronze plan with DPC."
+  outlet: "CNBC"
+  headline: "Your health insurance premiums may take a big jump in 2027 — here's why"
+  url: "https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html"
+  date: "2026-10-02"
+  quote: "Average ACA marketplace deductibles increased by 37%, or $1,027 per person, to a record high of $3,786 in 2026, it found."
   impact: "If you pick a bronze plan to save on premiums, a rough year can get expensive fast. Our worked examples show what a quiet year and a bad year really cost."
 summary:
   - We compared a silver plan, a bronze plan alone, and bronze plus direct primary care plus an HSA for one hypothetical 40-year-old with no subsidy in 2027.

@@ -9,13 +9,13 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-08
 heroColor: butter
 respondingTo:
-  lede: "KFF Health News just reported 20% rate hikes in Michigan. Your 2027 price could be next."
-  outlet: "KFF Health News"
-  headline: "'Medicare for All' Message Attracts Voters Buckling Under Medical Bills"
-  url: "https://kffhealthnews.org/elections/medicare-for-all-abdul-el-sayed-michigan-midterm-elections/"
-  date: "2026-10-07"
-  quote: "Insurance companies in Michigan hiked individual marketplace rates by an average of 20%."
-  impact: "Expect your own renewal notice to look different this fall. November 1 is when you can see the new number and shop around before your plan renews on autopilot."
+  lede: "Forbes says marketplace premiums are on track to rise about 15% for 2027. Here's how to keep your own bill from creeping up."
+  outlet: "Forbes"
+  headline: "Health Insurance Will Cost A Lot More In 2027. Here's How To Pay Less"
+  url: "https://www.forbes.com/sites/jessepines/2026/09/18/health-insurance-will-cost-a-lot-more-in-2027-heres-how-to-pay-less/"
+  date: "2026-09-18"
+  quote: "In the ACA marketplace, insurers have proposed a median premium increase of about 15% for 2027."
+  impact: "Your renewal notice will likely show a higher price. Open enrollment starts November 1, and comparing plans on total cost, not just the premium, is how you avoid paying more than you need to."
 summary:
   - On HealthCare.gov, open enrollment runs from November 1, 2026 to January 15, 2027. Pick a plan by December 15 for coverage that starts January 1. Enroll from December 16 to January 15 and it starts February 1.
   - Some state-run exchanges use different dates. Idaho, for example, opens October 15 and closes December 15. Check your state's exchange.

@@ -9,13 +9,13 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  lede: "Why are 2027 premiums climbing? KFF Health News points to the cost of care itself."
-  outlet: "KFF Health News"
-  headline: "Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags"
-  url: "https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/"
-  date: "2026-07-08"
-  quote: "The main factor driving proposed premium increases for 2027, as in most years, is the rising cost and use of medical care."
-  impact: "You can't do much about what hospitals and doctors charge. If you've lost your subsidy, the part you control is how you put your coverage together."
+  lede: "CNN reports more than a million fewer people signed up for marketplace coverage once the extra subsidies ended. If you lost yours, you still have options."
+  outlet: "CNN"
+  headline: "Obamacare enrollment drops after enhanced premium subsidies expire"
+  url: "https://localnews8.com/politics/cnn-us-politics/2026/01/28/obamacare-enrollment-drops-after-enhanced-premium-subsidies-expire/"
+  date: "2026-01-28"
+  quote: "However, total enrollment is likely to fall in coming months, experts said."
+  impact: "Losing the subsidy doesn't have to mean going without coverage. There are realistic ways to put it back together, and this post lines them up side by side."
 summary:
   - The enhanced subsidies expired on December 31, 2025. Regular subsidies still exist for incomes from 100% to 400% of the poverty line. For 2027 coverage, 400% is $63,840 for one person and $132,000 for a family of four.
   - If you are near that line, HSA and pre-tax retirement contributions lower the income that counts and can bring a subsidy back.
@@ -217,4 +217,5 @@ You don't have to sort this out alone. HealthCare.gov, your state exchange and l
 Major outlets have tracked the fallout all year:
 
 - **Associated Press** (via PBS News), Jul 6, 2026: [Affordable Care Act enrollment shrank dramatically in many states over the past year, new federal data shows](https://www.pbs.org/newshour/health/affordable-care-act-enrollment-shrank-dramatically-in-many-states-over-the-past-year-new-federal-data-shows). About 2.6 million fewer people had ACA plans in February 2026 than a year earlier, which helps explain why premiums keep climbing.
+- **KFF Health News**, Jul 8, 2026: [Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags](https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/). Part of the 2027 increase comes from healthier people dropping coverage, leaving an older, costlier pool.
 - **CNBC**, Oct 2, 2026: [Your health insurance premiums may take a big jump in 2027 — here's why](https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html). A fresh look at why your renewal notice this fall may show a higher price.

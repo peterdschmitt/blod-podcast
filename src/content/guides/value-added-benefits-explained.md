@@ -9,13 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-05
 heroColor: butter
 respondingTo:
-  lede: "Cheaper alternative health plans are having a moment, says KFF Health News. Read the fine print before you buy one."
-  outlet: "KFF Health News"
-  headline: "Cheaper, Alternative Health Plans Are Having a Moment, but Critics Urge Caution"
-  url: "https://kffhealthnews.org/health-industry/alternative-health-plans-growth-sharing-ministries-short-term-aca-premiums/"
-  date: "2026-05-26"
-  quote: "Make sure it's covering what you need to be covered."
-  quoteBy: "Jade Ramsey, who bought a low-cost policy in Arizona"
+  lede: "Cheap \"junk\" plans can turn you away over a pre-existing condition, The Hill reported. Here's how to tell what a low-cost health product really covers."
+  outlet: "The Hill"
+  headline: "Biden rolls back Trump expansion of short-term 'junk' insurance plans"
+  url: "https://thehill.com/policy/healthcare/4561849-biden-trump-short-term-junk-insurance-plans-obamacare/"
+  date: "2024-03-28"
+  quote: "So people with preexisting medical conditions could be charged more or even denied coverage."
   impact: "Value-added benefits and fixed indemnity plans can help, but they aren't health insurance. Know what they actually pay before you lean on them."
 summary:
   - Value-added benefits (VABs) are services such as telehealth, discount prescriptions, cash-price labs and imaging, and help navigating care. Most are not insurance.
@@ -167,3 +166,4 @@ Cheaper alternatives to ACA plans, and the add-ons sold with them, have drawn na
 
 - **NPR**, Dec 21, 2025: [Cheaper alternatives to pricy ACA health plans come with trade-offs](https://www.npr.org/sections/shots-health-news/2025/12/21/nx-s1-5649902/aca-health-plans-costs-alternatives). It walks through indemnity plans and other non-ACA options, which pay fixed dollar amounts and skip ACA coverage rules.
 - **NPR**, Feb 5, 2026: [White House unveils TrumpRx website for medication discounts](https://www.npr.org/2026/02/05/nx-s1-5702493/trumprx-drug-prices-discounts). Buyers must agree not to count those cash purchases toward an insurance deductible, the same tradeoff as any discount card.
+- **KFF Health News**, May 26, 2026: [Cheaper, Alternative Health Plans Are Having a Moment, but Critics Urge Caution](https://kffhealthnews.org/health-industry/alternative-health-plans-growth-sharing-ministries-short-term-aca-premiums/). Brokers report more fixed-indemnity marketing since enhanced tax credits ended, a reminder to check what a "plan" actually pays.
