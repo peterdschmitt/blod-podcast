@@ -9,14 +9,14 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: sage
 respondingTo:
-  take: "Direct primary care is gaining traction. What it is, and what it isn't"
+  topic: "direct primary care"
   outlet: "CBS News"
   headline: "Direct primary care gains traction as providers look for a better way to treat patients — without insurance"
   url: "https://www.cbsnews.com/news/direct-primary-care-treat-patients-without-insurance/"
   date: "2025-10-28"
   quote: "If your issues are complex, you need to see a specialist for that."
   quoteBy: "Alley Tuttle, nurse practitioner at a DPC practice"
-  whyItMatters: "DPC covers everyday care from the practice's own clinicians. Specialists, hospitals and emergencies still need insurance."
+  impact: "DPC covers everyday care from the practice's own clinicians. Specialists, hospitals and emergencies still need insurance."
 summary:
   - Direct primary care (DPC) is a membership with a primary care practice. You pay a flat monthly fee, usually $80 to $115, and the practice does not bill insurance.
   - It typically includes visits, texting or video with your doctor, basic in-office procedures, and labs and generic drugs at close to cost.

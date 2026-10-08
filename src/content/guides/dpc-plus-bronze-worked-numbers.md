@@ -9,13 +9,13 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: lilac
 respondingTo:
-  take: "High-deductible plans trade low premiums for big bills. The numbers with DPC added"
+  topic: "high-deductible health plans"
   outlet: "KFF Health News"
   headline: "How To Make a High-Deductible Health Plan Work for You"
   url: "https://kffhealthnews.org/health-care-costs/health-care-helpline-npr-hsa-savings-account-high-deductible-plan-tips/"
   date: "2026-04-13"
   quote: "These plans offer lower monthly payments, but in exchange patients can face steep out-of-pocket costs when they need care."
-  whyItMatters: "That trade-off is what our worked numbers put in dollars: what a quiet year and a rough year cost with DPC plus a bronze plan."
+  impact: "A low premium can come with a big bill when you need care. Our worked numbers show what a quiet year and a rough year cost with DPC plus a bronze plan."
 summary:
   - We compared a silver plan, a bronze plan alone, and bronze plus direct primary care plus an HSA for one hypothetical 40-year-old with no subsidy in 2027.
   - In a light year, bronze alone came out cheapest. The DPC membership cost about $160 more than it saved.

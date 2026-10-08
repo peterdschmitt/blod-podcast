@@ -19,19 +19,19 @@ const heroBg = { lilac: 'bg-lilac', sage: 'bg-sage', butter: 'bg-butter', coral:
 const gradeClass = (g: string) => (g === 'Primary source' ? 'primary' : g.startsWith('Vendor') ? 'vendor' : '');
 const resp = d.respondingTo;
 const respDate = resp.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
-const headOutlet = resp.outlet.replace(/\s*\(via .*\)$/, '');
+const headOutlet = resp.outletInHeadline ?? resp.outlet.replace(/\s*\(via .*\)$/, '');
 ---
 <Base title={d.title} description={d.dek} article>
   <div class="progress" aria-hidden="true"><span></span></div>
   <article style="display: flex; flex-direction: column; gap: var(--gap)">
     <header class:list={['art-hero', heroBg]}>
       <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/blog/">Blog</a><a href={`/blog/#${d.categorySlug}`}>{d.category}</a></nav>
-      <h1 class="display rise d1 lead-outlet"><span class="outlet">{headOutlet}:</span> {resp.take}</h1>
+      <h1 class="display rise d1 lead-outlet">Did you see what <span class="outlet">{headOutlet}</span> says about {resp.topic}?</h1>
       <figure class="responding rise d2" aria-label="The news story this post responds to">
         <blockquote><p>&ldquo;{resp.quote}&rdquo;</p></blockquote>
         <figcaption>{resp.quoteBy && <span>{resp.quoteBy}, in </span>}<strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">{resp.headline}</a></figcaption>
       </figure>
-      <p class="why rise d2"><strong>Why it matters to you:</strong> {resp.whyItMatters}</p>
+      <p class="why rise d2"><strong>It will most likely impact you this way:</strong> {resp.impact}</p>
       <p class="dek rise d3">{d.dek}</p>
       <div class="byline rise d3">
         <span>By <strong>{d.author}</strong></span>

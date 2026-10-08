@@ -10,13 +10,13 @@ lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 respondingTo:
-  take: "HSAs cover saunas but not premiums. Where DPC fees fit in 2026"
+  topic: "what HSAs will pay for"
   outlet: "KFF Health News"
   headline: "Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums"
   url: "https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/"
   date: "2025-12-05"
   quote: "Those same dollars can't be used, though, to pay for most baby formulas, toothbrushes — or insurance premiums."
-  whyItMatters: "HSA rules are narrow. Since 2026, DPC fees can qualify, but only within IRS limits, and this guide shows which ones do."
+  impact: "HSA rules are narrow. Since 2026, DPC fees can qualify, but only within IRS limits, and this guide shows which ones do."
 summary:
   - Since January 1, 2026, a qualifying DPC arrangement no longer blocks HSA contributions.
   - "The fees must total $150 a month or less for one person, $300 for more than one. Those caps hold for 2027."

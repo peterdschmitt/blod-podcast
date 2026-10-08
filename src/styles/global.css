@@ -253,6 +253,7 @@ a:hover .round-arrow { transform: rotate(45deg); }
 .byline { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; }
 .byline span { color: var(--ink); background: #fff; border-radius: var(--pill); padding: 8px 14px; }
 .byline span.ink { background: var(--ink); color: #fff; }
+.bg-coral .byline span.ink, .bg-ink .byline span.ink { background: #fff; color: var(--ink); }
 
 .art-body { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: flex-start; }
 .art-main { flex: 999 1 640px; min-width: 0; background: #fff; border-radius: var(--r-xl); padding: clamp(24px, 5vw, 72px); }
