@@ -9,10 +9,13 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  outlet: CNBC
-  headline: 'Trump administration starts sending $500 Obamacare refund checks — who stands to benefit'
-  url: https://www.cnbc.com/2026/09/30/obamacare-aca-refund-checks.html
-  date: 2026-09-30
+  outlet: "Associated Press (via PBS News)"
+  headline: "Obamacare premiums surged this year. A new analysis shows it's likely to happen again in 2027"
+  url: "https://www.pbs.org/newshour/health/obamacare-premiums-surged-this-year-a-new-analysis-shows-its-likely-to-happen-again-in-2027"
+  date: "2026-07-08"
+  quote: "The analysts all predicted that, and now that's what we're seeing."
+  quoteBy: "Stacey Pogue, Georgetown University's Center on Health Insurance Reforms"
+  whyItMatters: "Higher 2027 premiums were expected for months. A one-time $500 check covers only part of an increase you'll pay every month."
 summary:
   - The federal government started mailing $500 checks on September 30 to about 950,000 people in the 30 states that use HealthCare.gov. The checks go to people who paid full price for marketplace coverage, with no premium tax credit.
   - Insurers proposed a median premium increase of 15% for 2027. On national average prices for a 40-year-old, that adds roughly $69 a month to a bronze plan and $95 a month to a silver plan.
@@ -106,6 +109,7 @@ These are averages, not quotes. Your ZIP code, age and plan choice change everyt
 
 Further reading on the checks and on next year's prices:
 
+- **CNBC**, Sep 30, 2026: [Trump administration starts sending $500 Obamacare refund checks — who stands to benefit](https://www.cnbc.com/2026/09/30/obamacare-aca-refund-checks.html). Coverage of the first checks going out and who stands to benefit.
 - **NBC News**, Sep 12, 2026: [ACA, Medicare or health insurance through work? Your health insurance bills are about to go up](https://www.nbcnews.com/health/health-news/aca-medicare-work-health-insurance-cost-rise-2027-rcna597069). It shows the 2027 increases across marketplace plans, job-based coverage and Medicare, useful if your household mixes all three.
 
 To see where the check fits in a full plan for 2027, start with [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/) or run your numbers in the [stack calculator](/calculator/).

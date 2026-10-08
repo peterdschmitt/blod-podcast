@@ -10,10 +10,12 @@ lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 respondingTo:
-  outlet: CNBC
-  headline: 'IRS releases health savings account expansion details under Trump''s ''big beautiful bill'''
-  url: https://www.cnbc.com/2025/12/11/health-savings-accounts-trump.html
-  date: 2025-12-11
+  outlet: "KFF Health News"
+  headline: "Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums"
+  url: "https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/"
+  date: "2025-12-05"
+  quote: "Those same dollars can't be used, though, to pay for most baby formulas, toothbrushes — or insurance premiums."
+  whyItMatters: "HSA rules are narrow. Since 2026, DPC fees can qualify, but only within IRS limits, and this guide shows which ones do."
 summary:
   - Since January 1, 2026, a qualifying DPC arrangement no longer blocks HSA contributions.
   - "The fees must total $150 a month or less for one person, $300 for more than one. Those caps hold for 2027."
@@ -90,5 +92,5 @@ Tax rules like these turn on details. If you're unsure how they apply to you, ch
 
 National coverage of the HSA changes behind this guide:
 
-- **KFF Health News**, Dec 5, 2025: [Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums](https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/). A skeptical look at what HSA money can and can't pay for.
+- **CNBC**, Dec 11, 2025: [IRS releases health savings account expansion details under Trump's 'big beautiful bill'](https://www.cnbc.com/2025/12/11/health-savings-accounts-trump.html). It reported on the IRS guidance that set the DPC and bronze-plan rules described here.
 - **KFF Health News**, Apr 13, 2026: [How To Make a High-Deductible Health Plan Work for You](https://kffhealthnews.org/health-care-costs/health-care-helpline-npr-hsa-savings-account-high-deductible-plan-tips/). Practical tips for people in the bronze and catastrophic plans that now qualify for an HSA.

@@ -28,10 +28,15 @@ const titleMain = d.titleEm && d.title.endsWith(d.titleEm) ? d.title.slice(0, -d
       <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/blog/">Blog</a><a href={`/blog/#${d.categorySlug}`}>{d.category}</a></nav>
       <h1 class="display rise d1">{titleMain}{d.titleEm && titleMain !== d.title && <em>{d.titleEm}</em>}</h1>
       <p class="dek rise d2">{d.dek}</p>
-      <p class="responding rise d2">
+      <aside class="responding rise d2" aria-label="The news story this post responds to">
         <span class="lbl">In response to</span>
-        <span><strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">&ldquo;{resp.headline}&rdquo;</a></span>
-      </p>
+        <p class="src"><strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">{resp.headline}</a></p>
+        <blockquote>
+          <p>&ldquo;{resp.quote}&rdquo;</p>
+          {resp.quoteBy && <footer>{resp.quoteBy}</footer>}
+        </blockquote>
+        <p class="why"><strong>Why it matters:</strong> {resp.whyItMatters}</p>
+      </aside>
       <div class="byline rise d3">
         <span>By <strong>{d.author}</strong></span>
         {d.reviewer && <span>Reviewed by <strong>{d.reviewer}</strong></span>}

@@ -9,10 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
 respondingTo:
-  outlet: KFF Health News
-  headline: 'Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered'
-  url: https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/
-  date: 2026-08-14
+  outlet: "KFF Health News"
+  headline: "Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered"
+  url: "https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/"
+  date: "2026-08-14"
+  quote: "If they don't collect up front, these care providers fear, they'll increasingly face unpaid medical bills."
+  whyItMatters: "A DPC membership won't pay a hospital's up-front bill. That's the job of insurance, and it's where this post draws the line between the two."
 summary:
   - A DPC membership usually covers unlimited primary care visits, messaging with the practice's clinicians, physicals, chronic care and basic in-office procedures, with labs and generic drugs at close to cost.
   - It covers care from that practice's own clinicians only. Unless your current doctor is part of it, joining usually means switching doctors.

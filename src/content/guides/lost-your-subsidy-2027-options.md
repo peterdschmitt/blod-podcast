@@ -9,10 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  outlet: KFF Health News
-  headline: 'Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags'
-  url: https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/
-  date: 2026-07-08
+  outlet: "KFF Health News"
+  headline: "Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags"
+  url: "https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/"
+  date: "2026-07-08"
+  quote: "The main factor driving proposed premium increases for 2027, as in most years, is the rising cost and use of medical care."
+  whyItMatters: "Prices are rising for reasons you can't control. If you lost your subsidy, the mix of coverage you choose is the part you can."
 summary:
   - The enhanced subsidies expired on December 31, 2025. Regular subsidies still exist for incomes from 100% to 400% of the poverty line. For 2027 coverage, 400% is $63,840 for one person and $132,000 for a family of four.
   - If you are near that line, HSA and pre-tax retirement contributions lower the income that counts and can bring a subsidy back.

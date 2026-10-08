@@ -9,10 +9,12 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: lilac
 respondingTo:
-  outlet: NBC News
-  headline: 'Many Obamacare enrollees have switched to cheaper bronze plans. Here''s why that could be risky.'
-  url: https://www.nbcnews.com/health/health-news/aca-obamacare-enrollment-bronze-cheapest-plans-premiums-rcna255616
-  date: 2026-01-27
+  outlet: "KFF Health News"
+  headline: "How To Make a High-Deductible Health Plan Work for You"
+  url: "https://kffhealthnews.org/health-care-costs/health-care-helpline-npr-hsa-savings-account-high-deductible-plan-tips/"
+  date: "2026-04-13"
+  quote: "These plans offer lower monthly payments, but in exchange patients can face steep out-of-pocket costs when they need care."
+  whyItMatters: "That trade-off is what our worked numbers put in dollars: what a quiet year and a rough year cost with DPC plus a bronze plan."
 summary:
   - We compared a silver plan, a bronze plan alone, and bronze plus direct primary care plus an HSA for one hypothetical 40-year-old with no subsidy in 2027.
   - In a light year, bronze alone came out cheapest. The DPC membership cost about $160 more than it saved.
@@ -188,5 +190,6 @@ Recent national coverage of the shift to bronze plans and the new HSA rules:
 
 - **CNBC**, Dec 11, 2025: [IRS releases health savings account expansion details under Trump's 'big beautiful bill'](https://www.cnbc.com/2025/12/11/health-savings-accounts-trump.html). It covers the IRS guidance that made bronze plans and DPC memberships work with HSAs, the rules this article's math depends on.
 - **NPR**, Dec 21, 2025: [Cheaper alternatives to pricy ACA health plans come with trade-offs](https://www.npr.org/sections/shots-health-news/2025/12/21/nx-s1-5649902/aca-health-plans-costs-alternatives). It lays out the trade-off at the center of these tables, lower premiums in exchange for more risk when you get sick.
+- **NBC News**, Jan 27, 2026: [Many Obamacare enrollees have switched to cheaper bronze plans. Here's why that could be risky.](https://www.nbcnews.com/health/health-news/aca-obamacare-enrollment-bronze-cheapest-plans-premiums-rcna255616) It shows what a high deductible means for people who delay care, the year 3 risk in real life.
 
 Our earlier guides cover the pieces: [Direct primary care, explained honestly](/blog/direct-primary-care-explained/), [DPC and your HSA](/blog/dpc-and-your-hsa-2026/), and [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/). To run these numbers with your own quotes, try the [stack calculator](/calculator/). It starts from Dana's figures.
