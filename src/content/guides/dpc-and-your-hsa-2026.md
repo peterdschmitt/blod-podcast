@@ -10,6 +10,7 @@ lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 respondingTo:
+  take: "HSAs cover saunas but not premiums. Where DPC fees fit in 2026"
   outlet: "KFF Health News"
   headline: "Health Savings Accounts, Backed by GOP, Cover Fancy Saunas but Not Insurance Premiums"
   url: "https://kffhealthnews.org/health-care-costs/health-savings-accounts-hsa-insurance-premiums-republicans-obamacare/"

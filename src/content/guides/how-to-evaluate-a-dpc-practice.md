@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: white
 respondingTo:
+  take: "Concierge fees keep some patients out. How to size up a DPC practice"
   outlet: "KFF Health News"
   headline: "In Rural Massachusetts, Patients and Physicians Weigh Trade-Offs of Concierge Medicine"
   url: "https://kffhealthnews.org/health-care-costs/concierge-medicine-direct-primary-care-doctor-shortage-rural-western-massachusetts/"

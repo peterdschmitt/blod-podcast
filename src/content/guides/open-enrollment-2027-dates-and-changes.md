@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-08
 heroColor: butter
 respondingTo:
+  take: "Michigan rates jumped 20%. Here's what it means for your 2027 plan"
   outlet: "KFF Health News"
   headline: "'Medicare for All' Message Attracts Voters Buckling Under Medical Bills"
   url: "https://kffhealthnews.org/elections/medicare-for-all-abdul-el-sayed-michigan-midterm-elections/"

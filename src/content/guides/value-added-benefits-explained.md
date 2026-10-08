@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-05
 heroColor: butter
 respondingTo:
+  take: "Cheaper alternative plans are having a moment. What value-added benefits really pay"
   outlet: "KFF Health News"
   headline: "Cheaper, Alternative Health Plans Are Having a Moment, but Critics Urge Caution"
   url: "https://kffhealthnews.org/health-industry/alternative-health-plans-growth-sharing-ministries-short-term-aca-premiums/"

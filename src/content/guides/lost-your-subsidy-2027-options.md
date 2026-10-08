@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
+  take: "Medical costs are pushing 2027 premiums up. Your options if you lost your subsidy"
   outlet: "KFF Health News"
   headline: "Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags"
   url: "https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/"

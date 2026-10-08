@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: sage
 respondingTo:
+  take: "Direct primary care is gaining traction. What it is, and what it isn't"
   outlet: "CBS News"
   headline: "Direct primary care gains traction as providers look for a better way to treat patients — without insurance"
   url: "https://www.cbsnews.com/news/direct-primary-care-treat-patients-without-insurance/"

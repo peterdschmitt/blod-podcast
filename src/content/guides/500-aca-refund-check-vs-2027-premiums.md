@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
+  take: "Premiums are climbing again in 2027. Why a $500 check won't close the gap"
   outlet: "Associated Press (via PBS News)"
   headline: "Obamacare premiums surged this year. A new analysis shows it's likely to happen again in 2027"
   url: "https://www.pbs.org/newshour/health/obamacare-premiums-surged-this-year-a-new-analysis-shows-its-likely-to-happen-again-in-2027"

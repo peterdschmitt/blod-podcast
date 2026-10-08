@@ -25,6 +25,7 @@ const guides = defineCollection({
     // verbatim quote from the article, and why it matters to the reader. Required so every post
     // names another publication in its header. Verify it the same way as the headline lead.
     respondingTo: z.object({
+      take: z.string(), // our headline after "Outlet:", e.g. "Michigan rates jumped 20%. Here's what it means for your 2027 plan"
       outlet: z.string(),
       headline: z.string(),
       url: z.string().url(),

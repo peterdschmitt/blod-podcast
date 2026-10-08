@@ -9,6 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
 respondingTo:
+  take: "Hospitals want payment up front. What a DPC membership will and won't cover"
   outlet: "KFF Health News"
   headline: "Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered"
   url: "https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/"

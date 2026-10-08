@@ -240,18 +240,18 @@ a:hover .round-arrow { transform: rotate(45deg); }
 .art-hero .dek { margin: 0; max-width: 640px; font-size: 20px; line-height: 1.5; }
 .crumbs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; font-weight: 600; }
 .crumbs a { text-decoration: none; background: #fff; border-radius: var(--pill); padding: 6px 14px; }
-.responding { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0; width: 100%; max-width: 660px; background: #fff; border-radius: var(--r-md); box-shadow: inset 0 0 0 1px rgba(20, 30, 60, .1); padding: 16px 20px; text-align: center; }
-.responding .lbl { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
-.responding p { margin: 0; }
-.responding .src { font-size: 14px; line-height: 1.45; }
-.responding .src a { font-weight: 600; }
-.responding blockquote { margin: 2px 0; padding: 0; border: 0; }
-.responding blockquote p { font-family: var(--serif); font-size: 23px; line-height: 1.25; }
-.responding blockquote footer { margin-top: 4px; font-size: 13px; color: var(--muted); }
-.responding blockquote footer::before { content: '\2014\00a0'; }
-.responding .why { font-size: 15px; line-height: 1.45; max-width: 560px; }
+.lead-outlet .outlet { color: var(--navy); }
+.bg-coral .lead-outlet .outlet, .bg-ink .lead-outlet .outlet { color: var(--butter); }
+.responding { margin: 0; max-width: 820px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.responding blockquote { margin: 0; padding: 0; border: 0; }
+.responding blockquote p { margin: 0; font-family: var(--serif); font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; }
+.responding figcaption { font-size: 14px; line-height: 1.45; opacity: .85; }
+.responding figcaption::before { content: '\2014\00a0'; }
+.responding figcaption a { font-weight: 600; }
+.art-hero .why { color: var(--ink); margin: 0; max-width: 720px; background: #fff; border-radius: var(--r-md); box-shadow: inset 0 0 0 1px rgba(20, 30, 60, .1); padding: 14px 20px; font-size: 17px; line-height: 1.5; }
+.art-hero .why strong { color: var(--navy); }
 .byline { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; }
-.byline span { background: #fff; border-radius: var(--pill); padding: 8px 14px; }
+.byline span { color: var(--ink); background: #fff; border-radius: var(--pill); padding: 8px 14px; }
 .byline span.ink { background: var(--ink); color: #fff; }
 
 .art-body { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: flex-start; }
