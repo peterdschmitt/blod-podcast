@@ -20,13 +20,21 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 
 ## Header reference (every post)
 
-Peter wants every post to name another publication in its header, quote it, and say why it matters to us (2026-10-08). The site shows it under the title as an "In response to" box.
+Peter wants every post's headline to point at another publication, quote it, and say how it will likely affect the reader (2026-10-08). The page headline reads:
+
+> Did you see what **[Outlet]** says about [topic]?
+> "[verbatim quote]" (source line with the linked article)
+> **It will most likely impact you this way:** [impact]
+
+The post's own `title` stays as the page title, the URL and the listing cards; the headline above replaces it only at the top of the post.
 
 - Fill in `respondingTo` in the frontmatter:
   - `outlet`, `headline` (exact), `url`, `date` (YYYY-MM-DD).
+  - `topic`: a few words that finish "Did you see what [Outlet] says about ___?", e.g. "2027 marketplace prices". Lowercase unless a proper noun.
+  - `outletInHeadline` (optional): use when the outlet name reads badly in that sentence, e.g. "the Associated Press".
   - `quote`: one short sentence copied word for word from the article body (not the headline), under about 125 characters. Change nothing inside it except a final comma to a period.
   - `quoteBy`: the person and their role when the quote is a person's words, for example "Stacey Pogue, Georgetown University's Center on Health Insurance Reforms". Leave it out when the quote is the outlet's own narration.
-  - `whyItMatters`: one or two plain sentences tying the quote to this post's point for the reader.
+  - `impact`: one or two plain sentences, written to "you", that follow "It will most likely impact you this way:". Educational, no plan recommendations.
 - The build fails without it.
 - Pick the story the post most directly answers, from a major national outlet on the list below. For news-driven posts, use one from roughly the last 14 days.
 - Use a different article from the two in the headline lead and from the "In the news" list.
