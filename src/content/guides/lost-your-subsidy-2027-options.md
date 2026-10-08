@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  lede: "CNN reports more than a million fewer people signed up for marketplace coverage once the extra subsidies ended. If you lost yours, you still have options."
+  lede: "If losing your subsidy left you stuck, you're far from alone. CNN reports more than a million fewer people signed up, and you still have options."
   outlet: "CNN"
   headline: "Obamacare enrollment drops after enhanced premium subsidies expire"
   url: "https://localnews8.com/politics/cnn-us-politics/2026/01/28/obamacare-enrollment-drops-after-enhanced-premium-subsidies-expire/"

@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: sage
 respondingTo:
-  lede: "CBS News took a look at direct primary care. Here's what it would and wouldn't change for you."
+  lede: "Tired of rushed doctor visits? CBS News looked at direct primary care. Here's what it would and wouldn't change for you."
   outlet: "CBS News"
   headline: "Direct primary care gains traction as providers look for a better way to treat patients — without insurance"
   url: "https://www.cbsnews.com/news/direct-primary-care-treat-patients-without-insurance/"

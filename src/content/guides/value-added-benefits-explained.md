@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-05
 heroColor: butter
 respondingTo:
-  lede: "Cheap \"junk\" plans can turn you away over a pre-existing condition, The Hill reported. Here's how to tell what a low-cost health product really covers."
+  lede: "Cheap coverage that isn't there when you need it is the worst kind of surprise. The Hill reported \"junk\" plans can turn you away over a pre-existing condition."
   outlet: "The Hill"
   headline: "Biden rolls back Trump expansion of short-term 'junk' insurance plans"
   url: "https://thehill.com/policy/healthcare/4561849-biden-trump-short-term-junk-insurance-plans-obamacare/"

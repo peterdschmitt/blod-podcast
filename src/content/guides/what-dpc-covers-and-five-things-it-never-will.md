@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
 respondingTo:
-  lede: "NBC News found hospital costs outpacing inflation and pushing families into debt. A DPC membership won't shield you from that bill."
+  lede: "A hospital bill can undo years of careful saving. NBC News found costs outpacing inflation, and a DPC membership won't shield you from them."
   outlet: "NBC News"
   headline: "Hospital costs are rising far faster than inflation and drowning Americans in debt"
   url: "https://www.nbcnews.com/investigations/hospital-costs-are-rising-far-faster-inflation-drowning-americans-debt-rcna262473"

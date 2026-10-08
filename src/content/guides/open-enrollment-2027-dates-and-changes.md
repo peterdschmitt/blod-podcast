@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-08
 heroColor: butter
 respondingTo:
-  lede: "Forbes says marketplace premiums are on track to rise about 15% for 2027. Here's how to keep your own bill from creeping up."
+  lede: "Bracing for another price hike? Forbes says marketplace premiums are on track to rise about 15% for 2027. Here's how to keep yours in check."
   outlet: "Forbes"
   headline: "Health Insurance Will Cost A Lot More In 2027. Here's How To Pay Less"
   url: "https://www.forbes.com/sites/jessepines/2026/09/18/health-insurance-will-cost-a-lot-more-in-2027-heres-how-to-pay-less/"
