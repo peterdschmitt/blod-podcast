@@ -22,7 +22,11 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 
 Every post's headline points at another publication's story, quotes it, and tells the reader how it will likely affect them (Peter, 2026-10-08). Peter's example, "Did you see what KFF Health News says about ... It will most likely impact you in this way ...", is a direction for the voice, not a sentence to copy. Write each one fresh, the way a friend who reads the news would bring it up.
 
+Give it a tad of emotion (Peter, 2026-10-08): open with a short, honest human beat that names how the news feels to a reader, then the outlet and its news. Relief, frustration, worry or curiosity are all fair when the facts support them. No hype, no scare tactics, no exclamation points. Peter's model: "Finally, some good news about healthcare costs."
+
 Examples of the voice:
+- "Finally, some good news about healthcare costs. Fox Business reports the new HSA rules let you pay DPC fees tax-free."
+- "Another year, another premium hike. The AP says 2027 prices are climbing again, and that $500 check won't stretch as far as you'd hope."
 - "KFF Health News just reported 20% rate hikes in Michigan. Your 2027 price could be next."
 - "Why are 2027 premiums climbing? KFF Health News points to the cost of care itself."
 - "Your HSA can cover a fancy sauna but not your premiums, KFF Health News found. So where does a DPC fee land?"
