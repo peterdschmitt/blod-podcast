@@ -12,6 +12,7 @@ const plain = (s = '') => s
   .trim();
 
 const PAGES = [
+  { t: 'All blog posts', u: '/blog/all/', d: 'Every blog post on one page, newest first, with a short summary of each.' },
   { t: 'Blog', u: '/blog/', d: 'Every guide on direct primary care, HSAs, overlay plans and value-added benefits.' },
   { t: 'Podcast', u: '/podcast/', d: 'Plain talk about the new way to cover yourself. Episodes and show notes.' },
   { t: 'Real examples', u: '/real-examples/', d: 'Example households that show why DPC plus overlay coverage can make sense, and when it does not.' },
