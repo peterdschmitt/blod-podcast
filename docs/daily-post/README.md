@@ -24,7 +24,7 @@ Peter wants every post to point to another publication in its header, not only i
 
 - Fill in `respondingTo` in the frontmatter: `outlet`, `headline` (exact, in single quotes), `url` and `date` (YYYY-MM-DD). The site shows it under the title as "In response to: Outlet, date: headline". The build fails without it.
 - Pick the story the post most directly answers. Use a major national outlet from the list below, from roughly the last 14 days when the post is news-driven.
-- Use a different article from the two in the headline lead and from the "In the news" list, so a reader sees three or more outlets.
+- Use a different article from the two in the headline lead and from the "In the news" list, so a reader sees at least three different stories.
 - Verify it the same way as the lead: the exact headline, outlet and date, checked against the publisher's page (or search results for paywalled pieces).
 
 ## Picking the day's topic
