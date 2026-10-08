@@ -25,15 +25,14 @@ const guides = defineCollection({
     // verbatim quote from the article, and why it matters to the reader. Required so every post
     // names another publication in its header. Verify it the same way as the headline lead.
     respondingTo: z.object({
-      outletInHeadline: z.string().optional(), // e.g. "the Associated Press" when the plain outlet name reads badly in the headline
-      topic: z.string(), // finishes the headline "Did you see what <outlet> says about <topic>?"
+      lede: z.string(), // the post's headline, in our conversational voice: names the outlet and its news, then turns to the reader. Varies post to post, never a fixed template
       outlet: z.string(),
       headline: z.string(),
       url: z.string().url(),
       date: z.coerce.date(),
       quote: z.string(),
       quoteBy: z.string().optional(), // the person quoted, when the quote isn't the outlet's own words
-      impact: z.string(), // shown after "It will most likely impact you this way:"
+      impact: z.string(), // one or two sentences, to "you", on how this will likely affect the reader
     }),
     summary: z.array(z.string()).default([]),
     evidence: z.object({

@@ -9,14 +9,14 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-05
 heroColor: butter
 respondingTo:
-  topic: "cheaper alternative health plans"
+  lede: "Cheaper alternative health plans are having a moment, says KFF Health News. Read the fine print before you buy one."
   outlet: "KFF Health News"
   headline: "Cheaper, Alternative Health Plans Are Having a Moment, but Critics Urge Caution"
   url: "https://kffhealthnews.org/health-industry/alternative-health-plans-growth-sharing-ministries-short-term-aca-premiums/"
   date: "2026-05-26"
   quote: "Make sure it's covering what you need to be covered."
   quoteBy: "Jade Ramsey, who bought a low-cost policy in Arizona"
-  impact: "Value-added benefits and fixed indemnity plans aren't health insurance. Know exactly what they pay before you count on them."
+  impact: "Value-added benefits and fixed indemnity plans can help, but they aren't health insurance. Know what they actually pay before you lean on them."
 summary:
   - Value-added benefits (VABs) are services such as telehealth, discount prescriptions, cash-price labs and imaging, and help navigating care. Most are not insurance.
   - Not being insurance is a feature. These services lower the price of small, frequent things. They are not built to pay for big, rare things.

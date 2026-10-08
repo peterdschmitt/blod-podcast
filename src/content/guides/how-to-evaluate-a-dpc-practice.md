@@ -9,14 +9,14 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: white
 respondingTo:
-  topic: "concierge medicine"
+  lede: "Concierge fees are keeping some patients out, KFF Health News reports. What to ask before you join a DPC practice."
   outlet: "KFF Health News"
   headline: "In Rural Massachusetts, Patients and Physicians Weigh Trade-Offs of Concierge Medicine"
   url: "https://kffhealthnews.org/health-care-costs/concierge-medicine-direct-primary-care-doctor-shortage-rural-western-massachusetts/"
   date: "2025-04-16"
   quote: "Certainly there's some people that would love to join and can't join because they have limited income."
   quoteBy: "Rebecca Starr, an internist who runs a concierge practice"
-  impact: "Price and patient caps decide who gets in. Ask about fees, panel size and what's included before you sign."
+  impact: "Price and patient limits decide who gets a spot. Before you sign up, ask about the monthly fee, how many patients each doctor carries and what's included."
 summary:
   - Get the price, what it covers and how to cancel in writing before you join.
   - Ask exactly who you will see. Your membership only pays for that practice's or program's clinicians, so joining usually means leaving your current doctor unless they are part of it.

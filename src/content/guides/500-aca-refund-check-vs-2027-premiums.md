@@ -9,15 +9,14 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  outletInHeadline: "the Associated Press"
-  topic: "2027 premiums"
+  lede: "The AP says premiums are headed up again in 2027. That $500 check won't stretch as far as you'd hope."
   outlet: "Associated Press (via PBS News)"
   headline: "Obamacare premiums surged this year. A new analysis shows it's likely to happen again in 2027"
   url: "https://www.pbs.org/newshour/health/obamacare-premiums-surged-this-year-a-new-analysis-shows-its-likely-to-happen-again-in-2027"
   date: "2026-07-08"
   quote: "The analysts all predicted that, and now that's what we're seeing."
   quoteBy: "Stacey Pogue, Georgetown University's Center on Health Insurance Reforms"
-  impact: "Your premium will likely rise again in 2027. A one-time $500 check covers only part of an increase you'll pay every month."
+  impact: "You'll likely pay a higher monthly premium next year, and a one-time $500 covers only a slice of it. Here's how to size up the gap."
 summary:
   - The federal government started mailing $500 checks on September 30 to about 950,000 people in the 30 states that use HealthCare.gov. The checks go to people who paid full price for marketplace coverage, with no premium tax credit.
   - Insurers proposed a median premium increase of 15% for 2027. On national average prices for a 40-year-old, that adds roughly $69 a month to a bronze plan and $95 a month to a silver plan.
