@@ -8,6 +8,11 @@ readMinutes: 7
 author: Sophia Cranbrook
 lastReviewed: 2026-10-08
 heroColor: butter
+respondingTo:
+  outlet: CNBC
+  headline: 'Your health insurance premiums may take a big jump in 2027 — here''s why'
+  url: https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html
+  date: 2026-10-02
 summary:
   - On HealthCare.gov, open enrollment runs from November 1, 2026 to January 15, 2027. Pick a plan by December 15 for coverage that starts January 1. Enroll from December 16 to January 15 and it starts February 1.
   - Some state-run exchanges use different dates. Idaho, for example, opens October 15 and closes December 15. Check your state's exchange.
@@ -123,7 +128,6 @@ Neither choice is automatically right. A cheaper plan with a bigger deductible c
 
 Further reading on why 2027 prices are rising:
 
-- **CNBC**, Oct 2, 2026: [Your health insurance premiums may take a big jump in 2027 — here's why](https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html). A plain explainer of the forces behind next year's increases.
 - **NBC News**, Sep 12, 2026: [ACA, Medicare or health insurance through work? Your health insurance bills are about to go up](https://www.nbcnews.com/health/health-news/aca-medicare-work-health-insurance-cost-rise-2027-rcna597069). It shows the 2027 increases across marketplace plans, job-based coverage and Medicare, useful if your household mixes all three.
 
 If you lost your subsidy or are close to the line, read [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/) next.

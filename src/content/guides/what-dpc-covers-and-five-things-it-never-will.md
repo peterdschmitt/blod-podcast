@@ -8,6 +8,11 @@ readMinutes: 7
 author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
+respondingTo:
+  outlet: KFF Health News
+  headline: 'Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered'
+  url: https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/
+  date: 2026-08-14
 summary:
   - A DPC membership usually covers unlimited primary care visits, messaging with the practice's clinicians, physicals, chronic care and basic in-office procedures, with labs and generic drugs at close to cost.
   - It covers care from that practice's own clinicians only. Unless your current doctor is part of it, joining usually means switching doctors.
@@ -118,7 +123,6 @@ Our [checklist for evaluating a DPC practice](/blog/how-to-evaluate-a-dpc-practi
 
 Further reading on what happens when care falls outside a membership or a deductible:
 
-- **KFF Health News**, Aug 14, 2026: [Hospitals, Leery of Unpaid Bills, Increasingly Seek Payments Before Care Is Delivered](https://kffhealthnews.org/health-industry/the-week-in-brief-hospitals-payment-before-care/). Why a high deductible can mean paying the hospital before your surgery, not after.
 - **CBS News**, Oct 28, 2025: [Direct primary care gains traction as providers look for a better way to treat patients — without insurance](https://www.cbsnews.com/news/direct-primary-care-treat-patients-without-insurance/). A look inside DPC practices, including a DPC nurse practitioner's reminder that complex problems still go to a specialist.
 
 To see how DPC fits with the other pieces, start with [Direct primary care, explained](/blog/direct-primary-care-explained/) or run your own numbers in the [stack calculator](/calculator/).

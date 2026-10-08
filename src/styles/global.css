@@ -240,6 +240,9 @@ a:hover .round-arrow { transform: rotate(45deg); }
 .art-hero .dek { margin: 0; max-width: 640px; font-size: 20px; line-height: 1.5; }
 .crumbs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; font-weight: 600; }
 .crumbs a { text-decoration: none; background: #fff; border-radius: var(--pill); padding: 6px 14px; }
+.responding { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 6px 12px; margin: 0; max-width: 640px; background: #fff; border-radius: var(--r-md); padding: 10px 16px; font-size: 15px; line-height: 1.45; text-align: center; }
+.responding .lbl { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.responding a { font-weight: 600; }
 .byline { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 14px; }
 .byline span { background: #fff; border-radius: var(--pill); padding: 8px 14px; }
 .byline span.ink { background: var(--ink); color: #fff; }

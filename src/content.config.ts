@@ -21,6 +21,14 @@ const guides = defineCollection({
     // Page-level disclosure (strategy section 8, item 4). Leave unset when the guide names no specific product.
     namesProducts: z.boolean().default(false),
     disclosure: z.string().optional(),
+    // The news story this post responds to, shown under the title. Required so every post
+    // names another publication in its header. Verify it the same way as the headline lead.
+    respondingTo: z.object({
+      outlet: z.string(),
+      headline: z.string(),
+      url: z.string().url(),
+      date: z.coerce.date(),
+    }),
     summary: z.array(z.string()).default([]),
     evidence: z.object({
       level: z.number().min(1).max(4),

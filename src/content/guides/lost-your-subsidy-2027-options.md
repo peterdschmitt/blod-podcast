@@ -8,6 +8,11 @@ readMinutes: 14
 author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
+respondingTo:
+  outlet: KFF Health News
+  headline: 'Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags'
+  url: https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/
+  date: 2026-07-08
 summary:
   - The enhanced subsidies expired on December 31, 2025. Regular subsidies still exist for incomes from 100% to 400% of the poverty line. For 2027 coverage, 400% is $63,840 for one person and $132,000 for a family of four.
   - If you are near that line, HSA and pre-tax retirement contributions lower the income that counts and can bring a subsidy back.
@@ -209,5 +214,4 @@ You don't have to sort this out alone. HealthCare.gov, your state exchange and l
 Major outlets have tracked the fallout all year:
 
 - **Associated Press** (via PBS News), Jul 6, 2026: [Affordable Care Act enrollment shrank dramatically in many states over the past year, new federal data shows](https://www.pbs.org/newshour/health/affordable-care-act-enrollment-shrank-dramatically-in-many-states-over-the-past-year-new-federal-data-shows). About 2.6 million fewer people had ACA plans in February 2026 than a year earlier, which helps explain why premiums keep climbing.
-- **KFF Health News**, Jul 8, 2026: [Affordable Care Act Insurers Want More Premium Increases as Enrollment Sags](https://kffhealthnews.org/insurance/priced-out-obamacare-affordable-care-act-aca-premium-increases-peterson-kff/). Part of the 2027 increase comes from healthier people dropping coverage, leaving an older, costlier pool.
 - **CNBC**, Oct 2, 2026: [Your health insurance premiums may take a big jump in 2027 — here's why](https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html). A fresh look at why your renewal notice this fall may show a higher price.

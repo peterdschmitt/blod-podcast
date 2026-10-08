@@ -8,6 +8,11 @@ readMinutes: 13
 author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: sage
+respondingTo:
+  outlet: NPR
+  headline: 'Primary care is in trouble. Doctors are banding together to increase market power'
+  url: https://www.npr.org/2026/02/16/nx-s1-5715996/primary-care-independent-physician-association-ipa-medicaid-cuts-value-based-reimbursement
+  date: 2026-02-16
 summary:
   - Direct primary care (DPC) is a membership with a primary care practice. You pay a flat monthly fee, usually $80 to $115, and the practice does not bill insurance.
   - It typically includes visits, texting or video with your doctor, basic in-office procedures, and labs and generic drugs at close to cost.
@@ -197,7 +202,6 @@ Recent national coverage of membership-style primary care and the new HSA rules:
 - **NPR**, Mar 28, 2025: [Long wait for a rushed doctor's visit? Maybe you'll get more with a 'membership' fee](https://www.npr.org/sections/shots-health-news/2025/03/28/nx-s1-5342632/concierge-membership-primary-care-doctor-shortage-rural-health-access). A look at why more patients are paying monthly fees for easier access to a doctor, and the trade-offs.
 - **KFF Health News**, Apr 16, 2025: [In Rural Massachusetts, Patients and Physicians Weigh Trade-Offs of Concierge Medicine](https://kffhealthnews.org/news/article/concierge-medicine-direct-primary-care-doctor-shortage-rural-western-massachusetts/). It shows DPC patients still need separate insurance for care the practice doesn't provide.
 - **CNBC**, Nov 17, 2025: [4 million more Americans may adopt this 'powerful, yet underutilized' financial tool next year, researchers say](https://www.cnbc.com/2025/11/17/health-savings-accounts-expanded-access.html). The 2026 HSA expansion is the same law that lets you pay qualifying DPC fees from an HSA.
-- **NPR**, Feb 16, 2026: [Primary care is in trouble. Doctors are banding together to increase market power](https://www.npr.org/2026/02/16/nx-s1-5715996/primary-care-independent-physician-association-ipa-medicaid-cuts-value-based-reimbursement). Explains the money squeeze on primary care that is pushing some doctors toward DPC.
 
 ## Questions to ask before you join
 
