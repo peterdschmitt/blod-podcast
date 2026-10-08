@@ -124,7 +124,7 @@ Neither choice is automatically right. A cheaper plan with a bigger deductible c
 Further reading on why 2027 prices are rising:
 
 - **CNBC**, Oct 2, 2026: [Your health insurance premiums may take a big jump in 2027 — here's why](https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html). A plain explainer of the forces behind next year's increases.
-- **STAT**, Oct 5, 2026: [Hospital and pharmaceutical prices are smothering America's businesses](https://www.statnews.com/2026/10/05/hospital-bills-drug-prices-insurance-premiums-spiral-part-5-out-of-pocket-series/). Bob Herman's reporting on how hospital and drug prices, more than how much care people use, are driving up what employers pay for coverage.
+- **NBC News**, Sep 12, 2026: [ACA, Medicare or health insurance through work? Your health insurance bills are about to go up](https://www.nbcnews.com/health/health-news/aca-medicare-work-health-insurance-cost-rise-2027-rcna597069). It shows the 2027 increases across marketplace plans, job-based coverage and Medicare, useful if your household mixes all three.
 
 If you lost your subsidy or are close to the line, read [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/) next.
 
