@@ -1,0 +1,213 @@
+---
+import '../styles/calc.css';
+import '../styles/compare.css';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Signup from '../components/Signup.astro';
+import { DEFAULTS, GOLD, LIMITS, PRESETS, compareTiers, type Usage } from '../lib/calc';
+import { NOT_ADVICE } from '../site';
+
+const money = (n: number) => (n < 0 ? '−$' : '$') + Math.round(Math.abs(n)).toLocaleString('en-US');
+
+const OPTIONS = [
+  { key: 'stack', name: 'Bronze + DPC + HSA', short: 'Bronze + DPC', lower: 'bronze + DPC' },
+  { key: 'silver', name: 'Silver plan', short: 'Silver', lower: 'silver' },
+  { key: 'gold', name: 'Gold plan', short: 'Gold', lower: 'gold' },
+] as const;
+type Key = (typeof OPTIONS)[number]['key'];
+
+const YEARS = [
+  { key: 'light', name: 'Light year', use: 'Four doctor visits, two lab panels, one daily generic drug.' },
+  { key: 'typical', name: 'Typical year', use: 'A chronic condition: eight visits, four lab panels, two daily generics, a specialist visit and an MRI.' },
+  { key: 'bad', name: 'Bad year', use: 'A hospital stay big enough to reach every plan’s out-of-pocket cap.' },
+] as const;
+
+const years = YEARS.map((y) => {
+  const r = compareTiers(DEFAULTS, PRESETS[y.key]);
+  const rows = OPTIONS.map((o) => ({ ...o, r: r[o.key as Key] }));
+  const sorted = [...rows].sort((a, b) => a.r.total - b.r.total);
+  return { ...y, rows, best: sorted[0], next: sorted[1], max: Math.max(...rows.map((x) => x.r.premiums + x.r.dpcFees + x.r.inPlan + x.r.outside)) };
+});
+
+// The smallest extra bill, on top of a typical year, at which gold costs less than the bronze + DPC stack.
+function goldOvertakes(usage: Usage) {
+  for (let bill = 0; bill <= 60000; bill += 50) {
+    const r = compareTiers({ ...DEFAULTS, prices: { ...DEFAULTS.prices, hospital: bill } }, { ...usage, hospital: true });
+    if (r.gold.total < r.stack.total) return bill;
+  }
+  return null;
+}
+const flipTypical = goldOvertakes(PRESETS.typical);
+const flipLight = goldOvertakes(PRESETS.light);
+const roundTo = (n: number | null, step: number) => (n === null ? null : Math.round(n / step) * step);
+
+const s = DEFAULTS.silver;
+const b = DEFAULTS.bronze;
+const d = DEFAULTS.dpc;
+const g = GOLD;
+const specs = [
+  { row: 'Monthly premium', stack: `${money(b.premium)} + ${money(d.fee)} DPC`, silver: money(s.premium), gold: money(g.premium) },
+  { row: 'Deductible', stack: money(b.deductible), silver: money(s.deductible), gold: money(g.deductible) },
+  { row: 'Out-of-pocket cap', stack: money(b.oopMax), silver: money(s.oopMax), gold: money(g.oopMax) },
+  { row: 'After the deductible, you pay', stack: `${b.coins * 100}%`, silver: `${s.coins * 100}%`, gold: `${g.coins * 100}%` },
+  { row: 'Primary care visit', stack: 'Included in DPC', silver: `${money(s.pcpCopay)} copay`, gold: `${money(g.pcpCopay)} copay` },
+  { row: 'Lab panel', stack: `About ${money(d.lab)} at DPC cost`, silver: `About ${money(DEFAULTS.prices.lab)}, toward deductible`, gold: `About ${money(DEFAULTS.prices.lab)}, toward deductible` },
+  { row: 'Generic drug, monthly', stack: `About ${money(d.rx)} at DPC cost`, silver: `${money(s.rxCopay)} copay`, gold: `${money(g.rxCopay)} copay` },
+  { row: 'Specialist visit', stack: `About ${money(DEFAULTS.prices.specialist)}, toward deductible`, silver: `${money(s.specCopay)} copay`, gold: `${money(g.specCopay)} copay` },
+  { row: 'HSA-compatible', stack: 'Yes', silver: 'No (copays before the deductible)', gold: 'No (copays before the deductible)' },
+];
+---
+<Base title="Bronze + DPC vs silver vs gold" description="What a year costs on a bronze plan with direct primary care and an HSA, a silver plan, or a gold plan, in a light, typical and bad year. Every assumption shown.">
+  <header class="page-hero bg-ink">
+    <span class="pill rise" style="align-self: flex-start; background: #2D4C7C; color: #fff"><span class="dot"></span>Side by side · 2027 limits</span>
+    <h1 class="display rise d1">Bronze plus DPC, <em>or silver, or gold?</em></h1>
+    <p class="dek rise d2 on-dark-muted">We ran one hypothetical 40-year-old with no subsidy through three kinds of year on three setups. Bronze plus direct primary care wins when you use routine care. Gold wins when something big happens. Silver didn't win any of them at these prices.</p>
+  </header>
+
+  <section class="cmp-winners" aria-label="Who comes out ahead">
+    {years.map((y) => (
+      <article class={`card cmp-win ${y.best.key === 'gold' ? 'is-gold' : 'is-stack'}`}>
+        <span class="cmp-eyebrow">{y.name}</span>
+        <h2 class="cmp-win-name">{y.best.short}</h2>
+        <p class="cmp-win-total"><b>{money(y.best.r.total)}</b> for the year</p>
+        <p class="cmp-win-gap">{money(y.next.r.total - y.best.r.total)} less than {y.next.lower}</p>
+        <p class="cmp-win-use">{y.use}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="card cmp-board" aria-labelledby="board-h">
+    <div class="res-head">
+      <h2 id="board-h" class="h-l">The year, <em>all in.</em></h2>
+      <ul class="res-legend" aria-label="Bar colors">
+        <li><span class="sw seg-prem"></span>Premiums</li>
+        <li><span class="sw seg-dpc"></span>DPC membership</li>
+        <li><span class="sw seg-care"></span>Care you pay for</li>
+      </ul>
+    </div>
+    <div class="cmp-years">
+      {years.map((y) => (
+        <div class="cmp-year">
+          <h3 class="cmp-year-h">{y.name}</h3>
+          {y.rows.map((o) => (
+            <div class={`cmp-row${o.key === y.best.key ? ' is-low' : ''}`}>
+              <span class="cmp-row-name">{o.short}</span>
+              <span class="cmp-bar" aria-hidden="true">
+                <span class="seg-prem" style={`width: ${(o.r.premiums / y.max) * 100}%`}></span>
+                {o.r.dpcFees > 0 && <span class="seg-dpc" style={`width: ${(o.r.dpcFees / y.max) * 100}%`}></span>}
+                {o.r.inPlan + o.r.outside > 0 && <span class="seg-care" style={`width: ${((o.r.inPlan + o.r.outside) / y.max) * 100}%`}></span>}
+              </span>
+              <b class="cmp-row-total">{money(o.r.total)}</b>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+    <p class="calc-note" style="margin: 16px 0 0">Totals are after HSA tax savings, which only the bronze + DPC setup gets. Bars show spending before those savings.</p>
+  </section>
+
+  <div class="cmp-grid">
+    <section class="card cmp-specs" aria-labelledby="specs-h">
+      <h2 id="specs-h" class="calc-h">The three setups</h2>
+      <p class="calc-note">Assumed prices, not quotes. Premiums start from 2026 averages for a 40-year-old plus about 15% for 2027.<sup><a href="#src-1">1</a></sup><sup><a href="#src-2">2</a></sup> Gold’s deductible sits near the 2026 HealthCare.gov average of $1,722.<sup><a href="#src-3">3</a></sup> Its cap and copays are our assumptions, within the ranges real gold plans show.<sup><a href="#src-4">4</a></sup></p>
+      <div class="calc-table-wrap">
+        <table class="calc-table cmp-spec-table">
+          <thead><tr><th scope="col"></th>{OPTIONS.map((o) => <th scope="col">{o.name}</th>)}</tr></thead>
+          <tbody>
+            {specs.map((r) => (
+              <tr><th scope="row">{r.row}</th><td>{r.stack}</td><td>{r.silver}</td><td>{r.gold}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card cmp-lines" aria-labelledby="lines-h">
+      <h2 id="lines-h" class="calc-h">The line items</h2>
+      <div class="calc-table-wrap">
+        <table class="calc-table">
+          <thead><tr><th scope="col"></th>{OPTIONS.map((o) => <th scope="col">{o.short}</th>)}</tr></thead>
+          {years.map((y) => (
+            <tbody>
+              <tr class="cmp-group"><th scope="rowgroup" colspan="4">{y.name}</th></tr>
+              <tr><th scope="row">Premiums</th>{y.rows.map((o) => <td>{money(o.r.premiums)}</td>)}</tr>
+              <tr><th scope="row">DPC fees</th>{y.rows.map((o) => <td>{o.r.dpcFees ? money(o.r.dpcFees) : ''}</td>)}</tr>
+              <tr><th scope="row">Care you pay for</th>{y.rows.map((o) => <td>{money(o.r.inPlan + o.r.outside)}{o.r.hitCap && <span class="cap"> cap</span>}</td>)}</tr>
+              <tr><th scope="row">HSA tax savings</th>{y.rows.map((o) => <td>{o.r.hsaSavings ? money(-o.r.hsaSavings) : ''}</td>)}</tr>
+              <tr class="tot"><th scope="row">Total</th>{y.rows.map((o) => <td>{money(o.r.total)}</td>)}</tr>
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <section class="cmp-figs" aria-label="What the numbers show">
+    <div class="fig bg-sage"><div class="n">{money(years[1].next.r.total - years[1].best.r.total)}</div><div class="l">typical year with a chronic condition: what bronze + DPC saved over gold</div></div>
+    <div class="fig bg-butter"><div class="n">{money(years[2].next.r.total - years[2].best.r.total)}</div><div class="l">bad year: what gold saved over silver, and {money(years[2].rows[0].r.total - years[2].best.r.total)} over bronze + DPC</div></div>
+    {flipTypical !== null && <div class="fig bg-lilac"><div class="n">{money(roundTo(flipTypical, 250)!)}</div><div class="l">one unplanned bill this size, on top of a typical year, is enough for gold to pull ahead</div></div>}
+  </section>
+
+  <section class="card span-all" aria-labelledby="read-h">
+    <div class="section-head" style="margin-bottom: 20px">
+      <h2 id="read-h" class="h-xl">How to read it, <em>and when it flips.</em></h2>
+      <a href="/calculator/" style="font-weight: 600">Run your own numbers</a>
+    </div>
+    <div class="how-grid">
+      <div class="promise">
+        <h3>Gold is the bad-year plan</h3>
+        <p>Gold costs a bit more each month than bronze plus DPC, but its out-of-pocket cap is {money(b.oopMax - g.oopMax)} lower. Once a year turns expensive, that lower cap matters more than anything else on the page.{flipLight !== null && ` Even in a light year, one bill of about ${money(roundTo(flipLight, 250)!)} tips it to gold.`}</p>
+      </div>
+      <div class="promise">
+        <h3>Bronze + DPC is the routine-care plan</h3>
+        <p>Unlimited primary care for a flat fee, labs and generics at cost, and HSA tax savings. It pays off when you see a doctor often and nothing big happens. A DPC membership isn’t insurance, so the bronze plan is what carries the bad year.</p>
+      </div>
+      <div class="promise">
+        <h3>Why gold costs less than silver here</h3>
+        <p>Insurers price the cost of silver’s income-based discounts into silver premiums, a practice called silver loading.<sup><a href="#src-4">4</a></sup> In 2026 the average cheapest gold plan for a 40-year-old ran $615 a month, below the $625 benchmark silver and just above the $611 cheapest silver.<sup><a href="#src-1">1</a></sup> In some areas gold costs less than silver. Check yours, because it varies a lot by place.</p>
+      </div>
+      <div class="promise">
+        <h3>If your income is under 250% of poverty</h3>
+        <p>If you qualify for a premium tax credit at that income, silver plans come with cost-sharing reductions that cut the deductible, sometimes sharply. Only silver gets them, and they can make silver the best deal of the three.<sup><a href="#src-5">5</a></sup></p>
+      </div>
+      <div class="promise">
+        <h3>If you get a subsidy</h3>
+        <p>The tax credit is sized to the benchmark silver plan but can be used on any metal level.<sup><a href="#src-5">5</a></sup> The same dollar amount comes off bronze, silver and gold, so the totals all drop and the gaps between them stay about the same, unless a premium falls to $0. Plug your credit into the <a href="/calculator/">calculator</a> to see it.</p>
+      </div>
+      <div class="promise">
+        <h3>If you want to keep your doctor</h3>
+        <p>A DPC membership only covers that practice’s own clinicians. Unless your current doctor is part of it, joining means switching.<sup><a href="#src-6">6</a></sup> Silver and gold let you see any in-network doctor for a copay. That trade doesn’t show up in the dollar figures.</p>
+      </div>
+      <div class="promise">
+        <h3>Gold and HSAs</h3>
+        <p>Most gold plans charge copays before the deductible, which rules out an HSA. HSA-qualified gold plans exist but generally have to apply the deductible to everything except preventive care.<sup><a href="#src-4">4</a></sup> Bronze plans count as HSA-compatible, and DPC fees up to {money(LIMITS.dpcFeeCap.self)} a month keep you eligible.<sup><a href="#src-7">7</a></sup><sup><a href="#src-8">8</a></sup></p>
+      </div>
+      <div class="promise">
+        <h3>What we left out</h3>
+        <p>Bronze alone, without DPC, was the cheapest setup of all in the light year. Our <a href="/blog/dpc-plus-bronze-worked-numbers/">worked-numbers guide</a> covers it. We also left out state and payroll taxes, out-of-network care, and families, whose caps and HSA limits double.<sup><a href="#src-9">9</a></sup></p>
+      </div>
+    </div>
+
+    <div class="notice calc-disclaimer" role="note" style="margin-top: 20px">
+      <Icon name="info" size={20} stroke={2} />
+      <p style="margin: 0">An educational comparison, not a recommendation for you. The household is hypothetical and every price is an assumption. {NOT_ADVICE} Compare real plans on HealthCare.gov or your state’s Marketplace, and talk to a free navigator, a licensed agent or a tax professional before you choose.</p>
+    </div>
+
+    <div class="sources calc-sources">
+      <h2>Sources</h2>
+      <ol>
+        <li id="src-1"><a href="https://www.kff.org/affordable-care-act/state-indicator/average-marketplace-premiums-by-metal-tier/">KFF, average Marketplace premiums by metal tier, 40-year-old, 2026</a> (cheapest bronze $456, cheapest silver $611, benchmark silver $625, cheapest gold $615) <span class="grade">Independent research</span></li>
+        <li id="src-2"><a href="https://www.healthinsurance.org/blog/2027-aca-open-enrollment-whats-changing/">healthinsurance.org, 2027 ACA open enrollment, what is changing</a> (proposed 2027 rate increases) <span class="grade">Independent analysis</span></li>
+        <li id="src-3"><a href="https://www.healthinsurance.org/glossary/health-insurance-deductible/">healthinsurance.org, health insurance deductible</a>, citing KFF, <a href="https://www.kff.org/affordable-care-act/deductibles-in-aca-marketplace-plans/">Deductibles in ACA Marketplace Plans, 2014-2026</a> (2026 average gold deductible $1,722) <span class="grade">Independent research</span></li>
+        <li id="src-4"><a href="https://www.healthinsurance.org/blog/silver-bronze-or-gold-choosing-a-metal-level-in-the-marketplace/">healthinsurance.org, Silver, Bronze or Gold? Choosing a metal level in the marketplace</a> (silver loading, gold deductibles and caps, HSA-qualified gold) <span class="grade">Independent analysis</span></li>
+        <li id="src-5"><a href="https://www.kff.org/affordable-care-act/explaining-health-care-reform-questions-about-health-insurance-subsidies/">KFF, Explaining health care reform, questions about health insurance subsidies</a> <span class="grade">Independent research</span></li>
+        <li id="src-6"><a href="https://www.valuepenguin.com/health-insurace-direct-primary-care">ValuePenguin, What Is Direct Primary Care? (updated Jun 30, 2026)</a> <span class="grade">Independent analysis</span></li>
+        <li id="src-7"><a href="https://www.irs.gov/pub/irs-drop/n-26-05.pdf">IRS, Notice 2026-5</a> (bronze and catastrophic plans are HSA-compatible; DPC fees payable from an HSA) <span class="grade primary">Primary source</span></li>
+        <li id="src-8"><a href="https://www.irs.gov/pub/irs-drop/rp-26-24.pdf">IRS, Revenue Procedure 2026-24</a> (2027 HSA limits and the DPC fee caps) <span class="grade primary">Primary source</span></li>
+        <li id="src-9"><a href="https://www.cms.gov/files/document/2027-papi-parameters-guidance-2026-01-29.pdf">CMS, 2027 maximum annual limitation on cost sharing</a> ($12,000 one person, $24,000 family) <span class="grade primary">Primary source</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="span-all"><Signup /></div>
+</Base>
