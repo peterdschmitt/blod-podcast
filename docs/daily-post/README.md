@@ -36,9 +36,11 @@ The page shows the headline, then the verbatim quote with its linked source line
   - `quoteBy`: the person and their role when the quote is a person's words. Leave it out when the quote is the outlet's own narration.
   - `impact`: one or two plain sentences, to "you", on how this will likely affect the reader. No label or stock lead-in. Educational, no plan recommendations.
 - The build fails without it.
-- Pick the story the post most directly answers, from a major national outlet on the list below. For news-driven posts, use one from roughly the last 14 days.
+- The headline outlet must be a household name readers recognize: The Wall Street Journal, The New York Times, The Washington Post, AP, Reuters, CNBC, CNN, NBC News, CBS News, ABC News, NPR, Bloomberg, USA Today, Forbes, Fox Business, Time and similar. Never KFF Health News or a trade outlet for the headline (Peter, 2026-10-08: readers don't know it). KFF Health News is fine in the body and "In the news".
+- Rotate: the headline outlet must not repeat any outlet used in a post headline in the last 7 days. Check the `respondingTo.outlet` of the last 7 posts before picking.
+- Pick the story the post most directly answers. For news-driven posts, use one from roughly the last 14 days.
 - Use a different article from the two in the headline lead and from the "In the news" list.
-- The quote must come from a page you can actually read. CNBC, NBC News, CNN and Bloomberg block our reader, so for the header prefer KFF Health News, ABC News, CBS News, PBS (AP) or an NPR member-station copy. Never take a quote from a search snippet.
+- The quote must come from a page you can actually read. When the outlet blocks our reader or is paywalled (CNBC, NBC News, CNN, Bloomberg, npr.org, WSJ, NYT, WaPo), verify through a syndicated copy of the same article: Yahoo, MSN, a local TV station (AP stories), an NPR member station. If you still can't verify, pick a different big-name outlet rather than an obscure one. Never take a quote from a search snippet.
 
 ## Picking the day's topic
 
