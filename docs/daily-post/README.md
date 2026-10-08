@@ -18,6 +18,15 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 - This is in addition to the "In the news" section at the end. Don't repeat the same articles there; use it for further reading.
 - If two qualifying, verified headlines can't be found, don't publish a weaker post. Say so in the thread and ask whether to run without a lead that day.
 
+## Header reference (every post)
+
+Peter wants every post to point to another publication in its header, not only in the body (2026-10-08).
+
+- Fill in `respondingTo` in the frontmatter: `outlet`, `headline` (exact, in single quotes), `url` and `date` (YYYY-MM-DD). The site shows it under the title as "In response to: Outlet, date: headline". The build fails without it.
+- Pick the story the post most directly answers. Use a major national outlet from the list below, from roughly the last 14 days when the post is news-driven.
+- Use a different article from the two in the headline lead and from the "In the news" list, so a reader sees three or more outlets.
+- Verify it the same way as the lead: the exact headline, outlet and date, checked against the publisher's page (or search results for paywalled pieces).
+
 ## Picking the day's topic
 
 1. Check the news first (last 72 hours) for a timely hook that fits the site: ACA premiums and enrollment, subsidies, HSA and IRS guidance, CMS rules, court rulings, DPC, health sharing ministries, fixed indemnity, short-term plans, ICHRA, employer benefits. A strong, verifiable hook beats the queue.
@@ -40,7 +49,7 @@ Every daily post opens with a lead built from current news (Peter, 2026-10-05). 
 
 Every daily post should look and read like the posts already live on the blog. Before writing, reread one of them (for example `src/content/guides/lost-your-subsidy-2027-options.md`).
 
-- **Frontmatter:** a plain-language `title` with its last phrase repeated in `titleEm` (set in italics); a one- or two-sentence `dek`; 4 to 6 `summary` bullets that each state a finding with its number; an `evidence` block; a graded `sources` list; `next` pointing to a related post.
+- **Frontmatter:** a `respondingTo` header reference (see above); a plain-language `title` with its last phrase repeated in `titleEm` (set in italics); a one- or two-sentence `dek`; 4 to 6 `summary` bullets that each state a finding with its number; an `evidence` block; a graded `sources` list; `next` pointing to a related post.
 - **Shape:** the headline lead, then 4 to 6 `##` sections with plain headings that say what's in them ("Who gets a check", "What it costs in 2027"), then `## In the news`, then one closing line linking to related posts or the calculator.
 - **Show the numbers:** at least one visual block. Use a `<div class="figs">` row of 2 or 3 stat cards (`bg-sage`, `bg-butter`, `bg-lilac`, `bg-coral`) or a comparison table wrapped in `<div style="overflow-x: auto">`.
 - **Examples:** when money is involved, walk through a hypothetical person or household with a name and age (like "Dana, 40, self-employed"), label it hypothetical, and show the math.
