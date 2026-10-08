@@ -8,6 +8,14 @@ readMinutes: 10
 author: Sophia Cranbrook
 lastReviewed: 2026-10-05
 heroColor: butter
+respondingTo:
+  lede: "Cheap \"junk\" plans can turn you away over a pre-existing condition, The Hill reported. Here's how to tell what a low-cost health product really covers."
+  outlet: "The Hill"
+  headline: "Biden rolls back Trump expansion of short-term 'junk' insurance plans"
+  url: "https://thehill.com/policy/healthcare/4561849-biden-trump-short-term-junk-insurance-plans-obamacare/"
+  date: "2024-03-28"
+  quote: "So people with preexisting medical conditions could be charged more or even denied coverage."
+  impact: "Value-added benefits and fixed indemnity plans can help, but they aren't health insurance. Know what they actually pay before you lean on them."
 summary:
   - Value-added benefits (VABs) are services such as telehealth, discount prescriptions, cash-price labs and imaging, and help navigating care. Most are not insurance.
   - Not being insurance is a feature. These services lower the price of small, frequent things. They are not built to pay for big, rare things.

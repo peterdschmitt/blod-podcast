@@ -9,6 +9,14 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
+respondingTo:
+  lede: "Fox Business reports the new HSA rules let you pay DPC fees tax-free. Here's the fine print before you count on it."
+  outlet: "Fox Business"
+  headline: "Treasury Department announces expanded HSA tax benefits under Trump law"
+  url: "https://www.foxbusiness.com/politics/treasury-department-announces-expanded-hsa-tax-benefits-under-trump-law"
+  date: "2025-12-11"
+  quote: "They may also use HSA funds tax-free to pay DPC fees that arise periodically."
+  impact: "Since 2026, DPC fees can count as HSA expenses, but only within IRS limits. This guide walks through which memberships qualify."
 summary:
   - Since January 1, 2026, a qualifying DPC arrangement no longer blocks HSA contributions.
   - "The fees must total $150 a month or less for one person, $300 for more than one. Those caps hold for 2027."

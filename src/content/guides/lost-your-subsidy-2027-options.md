@@ -8,6 +8,14 @@ readMinutes: 14
 author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
+respondingTo:
+  lede: "CNN reports more than a million fewer people signed up for marketplace coverage once the extra subsidies ended. If you lost yours, you still have options."
+  outlet: "CNN"
+  headline: "Obamacare enrollment drops after enhanced premium subsidies expire"
+  url: "https://localnews8.com/politics/cnn-us-politics/2026/01/28/obamacare-enrollment-drops-after-enhanced-premium-subsidies-expire/"
+  date: "2026-01-28"
+  quote: "However, total enrollment is likely to fall in coming months, experts said."
+  impact: "Losing the subsidy doesn't have to mean going without coverage. There are realistic ways to put it back together, and this post lines them up side by side."
 summary:
   - The enhanced subsidies expired on December 31, 2025. Regular subsidies still exist for incomes from 100% to 400% of the poverty line. For 2027 coverage, 400% is $63,840 for one person and $132,000 for a family of four.
   - If you are near that line, HSA and pre-tax retirement contributions lower the income that counts and can bring a subsidy back.

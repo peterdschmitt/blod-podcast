@@ -8,6 +8,14 @@ readMinutes: 8
 author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: white
+respondingTo:
+  lede: "NPR found doctor membership fees running from $1,000 to $50,000 a year. Here's how to tell whether a DPC practice is worth yours."
+  outlet: "NPR"
+  headline: "Long wait for a rushed doctor's visit? Maybe you'll get more with a 'membership' fee"
+  url: "https://www.npr.org/sections/shots-health-news/2025/03/28/nx-s1-5342632/concierge-membership-primary-care-doctor-shortage-rural-health-access"
+  date: "2025-03-28"
+  quote: "Membership fees can range from $1,000 to as high as $50,000 a year."
+  impact: "Price and patient limits decide who gets a spot. Before you sign up, ask about the monthly fee, how many patients each doctor carries and what's included."
 summary:
   - Get the price, what it covers and how to cancel in writing before you join.
   - Ask exactly who you will see. Your membership only pays for that practice's or program's clinicians, so joining usually means leaving your current doctor unless they are part of it.
@@ -140,7 +148,6 @@ To find practices, try the DPC Frontier mapper<sup><a href="#src-5">5</a></sup> 
 
 Membership medicine is getting more attention from national reporters. Two recent stories worth reading:
 
-- **NPR**, Mar 28, 2025: [Long wait for a rushed doctor's visit? Maybe you'll get more with a membership fee](https://www.npr.org/sections/shots-health-news/2025/03/28/nx-s1-5342632/concierge-membership-primary-care-doctor-shortage-rural-health-access). It shows why people pay these fees and what they get for the money.
 - **KFF Health News**, Apr 16, 2025: [In Rural Massachusetts, Patients and Physicians Weigh Trade-Offs of Concierge Medicine](https://kffhealthnews.org/health-care-costs/concierge-medicine-direct-primary-care-doctor-shortage-rural-western-massachusetts/). When a doctor caps a practice, the patients left out feel it, which is one reason to ask about panel size and how stable the practice is.
 
 Once you've chosen a practice, the next question is which insurance plan to pair with it. See [DPC plus a bronze plan, with worked numbers](/blog/dpc-plus-bronze-worked-numbers/).

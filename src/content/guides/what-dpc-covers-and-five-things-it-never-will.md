@@ -8,6 +8,14 @@ readMinutes: 7
 author: Sophia Cranbrook
 lastReviewed: 2026-10-07
 heroColor: sage
+respondingTo:
+  lede: "NBC News found hospital costs outpacing inflation and pushing families into debt. A DPC membership won't shield you from that bill."
+  outlet: "NBC News"
+  headline: "Hospital costs are rising far faster than inflation and drowning Americans in debt"
+  url: "https://www.nbcnews.com/investigations/hospital-costs-are-rising-far-faster-inflation-drowning-americans-debt-rcna262473"
+  date: "2026-04-02"
+  quote: "Hospital costs are among the major forces driving Americans deeper into debt and widening the inequality gap."
+  impact: "If you're counting on a DPC membership to cover a hospital stay, it won't. That bill still belongs to insurance, and this post shows exactly where the line falls."
 summary:
   - A DPC membership usually covers unlimited primary care visits, messaging with the practice's clinicians, physicals, chronic care and basic in-office procedures, with labs and generic drugs at close to cost.
   - It covers care from that practice's own clinicians only. Unless your current doctor is part of it, joining usually means switching doctors.
