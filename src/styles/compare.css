@@ -1,0 +1,48 @@
+/* ---------- Bronze + DPC vs silver vs gold (/compare/) ---------- */
+.cmp-winners { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+@media (max-width: 860px) { .cmp-winners { grid-template-columns: minmax(0, 1fr); } }
+.cmp-win { display: flex; flex-direction: column; gap: 6px; border-top: 4px solid var(--teal); }
+.cmp-win.is-gold { border-top-color: var(--ochre); }
+.cmp-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.cmp-win-name { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.2vw, 40px); line-height: 1; letter-spacing: -.02em; }
+.cmp-win.is-stack .cmp-win-name { color: var(--teal); }
+.cmp-win.is-gold .cmp-win-name { color: var(--ochre); }
+.cmp-win-total { margin: 4px 0 0; font-size: 15px; }
+.cmp-win-total b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.cmp-win-gap { margin: 0; font-weight: 600; font-size: 14.5px; }
+.cmp-win-use { margin: 4px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+
+.cmp-board { padding: clamp(16px, 2.2vw, 26px); }
+.cmp-board .res-head em { color: var(--navy); }
+.cmp-years { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
+@media (max-width: 980px) { .cmp-years { grid-template-columns: minmax(0, 1fr); } }
+.cmp-year { display: flex; flex-direction: column; gap: 8px; }
+.cmp-year-h { margin: 0 0 2px; font-size: 15px; font-weight: 600; }
+.cmp-row { display: grid; grid-template-columns: 96px minmax(0, 1fr) 72px; align-items: center; gap: 10px; padding: 6px 8px; border-radius: var(--r-xs); }
+.cmp-row.is-low { background: #F4F9F6; outline: 1px solid var(--teal); }
+.cmp-row-name { font-size: 13.5px; }
+.cmp-bar { display: flex; gap: 2px; height: 12px; }
+.cmp-bar span { border-radius: 3px; min-width: 3px; }
+.cmp-row-total { text-align: right; font-variant-numeric: tabular-nums; font-size: 15px; }
+
+.cmp-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gap); align-items: start; }
+@media (max-width: 1080px) { .cmp-grid { grid-template-columns: minmax(0, 1fr); } }
+.cmp-specs, .cmp-lines { padding: clamp(16px, 2.2vw, 26px); }
+.cmp-spec-table td { white-space: normal; font-size: 14px; }
+.cmp-specs sup a, .cmp-figs sup a { text-decoration: none; }
+.calc-table tr.cmp-group th { text-align: left; padding-top: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--navy); border-bottom: 1px solid var(--ink); }
+.calc-table tbody:first-of-type tr.cmp-group th { padding-top: 8px; }
+
+.cmp-figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+@media (max-width: 860px) { .cmp-figs { grid-template-columns: minmax(0, 1fr); } }
+.cmp-figs .fig { border: 1px solid var(--hairline); }
+.cmp-figs .fig .n { font-size: clamp(40px, 4.4vw, 56px); }
+
+@media (max-width: 560px) {
+  .cmp-grid .calc-table { min-width: 0; font-size: 13px; }
+  .cmp-grid .calc-table th, .cmp-grid .calc-table td { padding: 8px 4px; }
+  .cmp-grid .calc-table thead th { font-size: 9.5px; letter-spacing: .04em; }
+  .cmp-spec-table td { font-size: 12.5px; }
+  .cmp-grid .calc-table .cap { display: none; }
+  .cmp-row { grid-template-columns: 88px minmax(0, 1fr) 64px; }
+}

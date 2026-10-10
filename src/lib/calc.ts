@@ -81,7 +81,7 @@ export const DEFAULTS: Inputs = {
 };
 
 export interface StackResult {
-  key: 'silver' | 'bronze' | 'stack';
+  key: 'silver' | 'gold' | 'bronze' | 'stack';
   premiums: number;
   dpcFees: number;
   inPlan: number;      // what you pay inside the insurance plan, capped at its out-of-pocket max
@@ -114,20 +114,26 @@ function hsaSavings(i: Inputs, eligibleSpend: number) {
 
 const netPremium = (monthly: number, credit: number) => Math.max(0, monthly - credit) * 12;
 
+// A plan with copays for visits and generics (silver, gold): labs, scans and hospital care go toward the deductible.
+// Copays before the deductible make it not HSA-compatible.
+function copayPlan(key: 'silver' | 'gold', plan: SilverPlan, i: Inputs, u: Usage): StackResult {
+  const p = i.prices;
+  const copays = u.pcp * plan.pcpCopay + u.specialist * plan.specCopay + u.rx * plan.rxCopay;
+  const ded = u.labs * p.lab + u.imaging * p.imaging + (u.hospital ? p.hospital : 0);
+  const share = planShare(plan, copays, ded);
+  return {
+    key, premiums: netPremium(plan.premium, i.credit), dpcFees: 0, inPlan: share.pay, outside: 0,
+    extraCost: 0, extraPays: 0, hsaOk: false, hsaSavings: 0, total: 0, hitCap: share.hitCap,
+  };
+}
+
 export function calculate(i: Inputs, usage: Usage = i.usage): StackResult[] {
   const p = i.prices;
   const u = usage;
   const hospital = u.hospital ? p.hospital : 0;
 
   // Silver: copays for visits and generics, everything else toward the deductible. Not HSA-compatible.
-  const s = i.silver;
-  const sCopays = u.pcp * s.pcpCopay + u.specialist * s.specCopay + u.rx * s.rxCopay;
-  const sDed = u.labs * p.lab + u.imaging * p.imaging + hospital;
-  const sShare = planShare(s, sCopays, sDed);
-  const silver: StackResult = {
-    key: 'silver', premiums: netPremium(s.premium, i.credit), dpcFees: 0, inPlan: sShare.pay, outside: 0,
-    extraCost: 0, extraPays: 0, hsaOk: false, hsaSavings: 0, total: 0, hitCap: sShare.hitCap,
-  };
+  const silver = copayPlan('silver', i.silver, i, u);
 
   // Bronze alone: everything at full price toward the deductible. HSA-compatible.
   const b = i.bronze;
@@ -153,10 +159,24 @@ export function calculate(i: Inputs, usage: Usage = i.usage): StackResult[] {
     total: 0, hitCap: stShare.hitCap,
   };
 
-  for (const r of [silver, bronze, stack]) {
-    r.total = r.premiums + r.dpcFees + r.inPlan + r.outside + r.extraCost - r.extraPays - r.hsaSavings;
-  }
+  for (const r of [silver, bronze, stack]) total(r);
   return [silver, bronze, stack];
+}
+
+const total = (r: StackResult) => {
+  r.total = r.premiums + r.dpcFees + r.inPlan + r.outside + r.extraCost - r.extraPays - r.hsaSavings;
+  return r;
+};
+
+// Gold, for the bronze + DPC vs silver vs gold comparison page (/compare/).
+// Premium: 2026 KFF average lowest-cost gold for a 40-year-old ($615) plus the same ~15% used for silver and bronze.
+// Deductible: near the 2026 HealthCare.gov average of $1,722 (KFF). Cap and copays are assumptions, shown on the page.
+export const GOLD: SilverPlan = { premium: 707, deductible: 1800, oopMax: 7000, coins: 0.2, pcpCopay: 25, specCopay: 50, rxCopay: 10 };
+
+// Bronze + DPC + HSA against silver and gold, for one kind of year.
+export function compareTiers(i: Inputs, usage: Usage = i.usage, gold: SilverPlan = GOLD) {
+  const [silver, , stack] = calculate(i, usage);
+  return { stack, silver, gold: total(copayPlan('gold', gold, i, usage)) };
 }
 
 // The bad year: the same routine care plus a hospital stay big enough to hit every plan's cap.
