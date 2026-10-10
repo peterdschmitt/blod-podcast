@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: white
 respondingTo:
-  lede: "NPR found doctor membership fees running from $1,000 to $50,000 a year. Here's how to tell whether a DPC practice is worth yours."
+  lede: "Sticker shock is real: NPR found doctor membership fees from $1,000 to $50,000 a year. Here's how to tell whether a DPC practice is worth yours."
   outlet: "NPR"
   headline: "Long wait for a rushed doctor's visit? Maybe you'll get more with a 'membership' fee"
   url: "https://www.npr.org/sections/shots-health-news/2025/03/28/nx-s1-5342632/concierge-membership-primary-care-doctor-shortage-rural-health-access"

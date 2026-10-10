@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: lilac
 respondingTo:
-  lede: "Marketplace deductibles hit a record in 2026, CNBC reports. We ran the numbers on pairing a bronze plan with DPC."
+  lede: "Record deductibles are a gut punch. CNBC reports they hit a new high in 2026, so we ran the numbers on pairing a bronze plan with DPC."
   outlet: "CNBC"
   headline: "Your health insurance premiums may take a big jump in 2027 — here's why"
   url: "https://www.cnbc.com/2026/10/02/health-insurance-premiums-2027-inflation-aca-obamacare.html"
