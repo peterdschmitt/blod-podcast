@@ -9,14 +9,13 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-11
 heroColor: butter
 respondingTo:
-  lede: "Turning 65 with a doctor you finally like can feel nerve-racking. Yahoo Finance says Medicare costs are shifting again for 2027, and if your doctor works on a membership, a few more rules apply to you."
-  outlet: "Yahoo Finance"
-  headline: "Medicare changes coming in 2027: What to know before open enrollment"
-  url: "https://finance.yahoo.com/personal-finance/investing/article/medicare-changes-coming-in-2027-what-to-know-before-open-enrollment-175500182.html"
-  date: "2026-09-17"
-  quote: "Confirm your preferred doctors and hospitals are in-network."
-  quoteBy: "Josh Schultz, head of government affairs at Softheon"
-  impact: "If your DPC doctor has opted out of Medicare, Medicare won't pay for anything that doctor does, even care it would normally cover. Ask your practice which kind it is before your Medicare sign-up window closes."
+  lede: "Medicare math is getting harder just as you're about to join. ABC News reports the government is ending a Part D subsidy in 2027, and if your doctor works on a membership, a few more rules apply to you."
+  outlet: "ABC News"
+  headline: "Trump administration to end Medicare Part D subsidy program in 2027"
+  url: "https://abcnews.com/Health/trump-administration-end-medicare-part-subsidy-program-2027/story?id=135176506"
+  date: "2026-07-29"
+  quote: "Ending the subsidies may increase premiums for some by as much as $20 a month, according to KFF."
+  impact: "Your drug plan may cost more in 2027, and a DPC membership won't cover prescriptions. If your DPC doctor has opted out of Medicare, Medicare won't pay for anything that doctor does, so ask which kind your practice is before you sign up."
 summary:
   - Your first window to sign up for Medicare runs seven months, from three months before the month you turn 65 to three months after it.
   - Many DPC doctors have opted out of Medicare. Then you sign a private contract, pay the doctor yourself, and Medicare pays nothing for that doctor's care, even inside a Medicare Advantage plan.
