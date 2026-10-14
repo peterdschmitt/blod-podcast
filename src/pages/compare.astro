@@ -50,11 +50,49 @@ const specs = [
   { row: 'Deductible', stack: money(b.deductible), silver: money(s.deductible), gold: money(g.deductible) },
   { row: 'Out-of-pocket cap', stack: money(b.oopMax), silver: money(s.oopMax), gold: money(g.oopMax) },
   { row: 'After the deductible, you pay', stack: `${b.coins * 100}%`, silver: `${s.coins * 100}%`, gold: `${g.coins * 100}%` },
-  { row: 'Primary care visit', stack: 'Included in DPC', silver: `${money(s.pcpCopay)} copay`, gold: `${money(g.pcpCopay)} copay` },
-  { row: 'Lab panel', stack: `About ${money(d.lab)} at DPC cost`, silver: `About ${money(DEFAULTS.prices.lab)}, toward deductible`, gold: `About ${money(DEFAULTS.prices.lab)}, toward deductible` },
-  { row: 'Generic drug, monthly', stack: `About ${money(d.rx)} at DPC cost`, silver: `${money(s.rxCopay)} copay`, gold: `${money(g.rxCopay)} copay` },
-  { row: 'Specialist visit', stack: `About ${money(DEFAULTS.prices.specialist)}, toward deductible`, silver: `${money(s.specCopay)} copay`, gold: `${money(g.specCopay)} copay` },
-  { row: 'HSA-compatible', stack: 'Yes', silver: 'No (copays before the deductible)', gold: 'No (copays before the deductible)' },
+  { row: 'HSA-compatible', stack: 'Yes', silver: 'No', gold: 'No' },
+];
+
+// What each option includes. `k` sets the badge: inc = in the DPC fee, free = $0, copay, ded = after the deductible, cash = DPC or cash price, note = depends.
+type Cell = { k: 'inc' | 'free' | 'copay' | 'ded' | 'cash' | 'note' | 'only' | 'net' | 'cap'; t: string };
+const KIND: Record<Cell['k'], string> = { inc: 'In the DPC fee', free: '$0', copay: 'Copay', ded: 'After deductible', cash: 'Near cost', note: 'Depends', only: 'Practice only', net: 'In-network', cap: 'Yearly cap' };
+const benefits: { row: string; sub?: string; stack: Cell; silver: Cell; gold: Cell }[] = [
+  { row: 'Primary care visits', sub: 'Sick visits, follow-ups, chronic care',
+    stack: { k: 'inc', t: 'Unlimited visits with the practice’s clinicians' },
+    silver: { k: 'copay', t: `${money(s.pcpCopay)} a visit` }, gold: { k: 'copay', t: `${money(g.pcpCopay)} a visit` } },
+  { row: 'Same-day access, text and video', sub: 'Reaching your own doctor',
+    stack: { k: 'inc', t: 'Usually part of the membership' },
+    silver: { k: 'note', t: 'Depends on your doctor’s office' }, gold: { k: 'note', t: 'Depends on your doctor’s office' } },
+  { row: 'Preventive care', sub: 'Checkups, screenings, vaccines',
+    stack: { k: 'free', t: 'Many services $0 through bronze, plus the DPC physical' },
+    silver: { k: 'free', t: 'Many services $0, even before the deductible' }, gold: { k: 'free', t: 'Many services $0, even before the deductible' } },
+  { row: 'Lab tests',
+    stack: { k: 'cash', t: `About ${money(d.lab)} a panel through the practice` },
+    silver: { k: 'ded', t: `About ${money(DEFAULTS.prices.lab)} a panel until the deductible` }, gold: { k: 'ded', t: `About ${money(DEFAULTS.prices.lab)} a panel until the deductible` } },
+  { row: 'Generic drugs',
+    stack: { k: 'cash', t: `About ${money(d.rx)} a month, where state law lets the practice dispense` },
+    silver: { k: 'copay', t: `${money(s.rxCopay)} a month` }, gold: { k: 'copay', t: `${money(g.rxCopay)} a month` } },
+  { row: 'Brand-name and specialty drugs',
+    stack: { k: 'ded', t: 'Through the bronze plan’s drug list' },
+    silver: { k: 'note', t: 'Through the plan’s drug list, cost varies by drug' }, gold: { k: 'note', t: 'Through the plan’s drug list, cost varies by drug' } },
+  { row: 'Specialists',
+    stack: { k: 'ded', t: `Full price until the ${money(b.deductible)} deductible` },
+    silver: { k: 'copay', t: `${money(s.specCopay)} a visit` }, gold: { k: 'copay', t: `${money(g.specCopay)} a visit` } },
+  { row: 'MRI and CT scans',
+    stack: { k: 'cash', t: `A cash price the practice arranges (about ${money(d.imagingCash)}), or bronze` },
+    silver: { k: 'ded', t: 'Toward the deductible, then 20%' }, gold: { k: 'ded', t: 'Toward the deductible, then 20%' } },
+  { row: 'ER, hospital and surgery',
+    stack: { k: 'ded', t: `Bronze: ${money(b.deductible)} deductible, then ${b.coins * 100}%` },
+    silver: { k: 'ded', t: `${money(s.deductible)} deductible, then ${s.coins * 100}%` }, gold: { k: 'ded', t: `${money(g.deductible)} deductible, then ${g.coins * 100}%` } },
+  { row: 'Pregnancy, mental health, rehab, kids’ care',
+    stack: { k: 'ded', t: 'Covered by bronze, same benefits as silver and gold' },
+    silver: { k: 'ded', t: 'Covered, plan cost sharing applies' }, gold: { k: 'ded', t: 'Covered, plan cost sharing applies' } },
+  { row: 'Which doctors', sub: 'For primary care',
+    stack: { k: 'only', t: 'Only the DPC practice’s clinicians. Joining may mean switching.' },
+    silver: { k: 'net', t: 'Any primary care doctor in the plan’s network' }, gold: { k: 'net', t: 'Any primary care doctor in the plan’s network' } },
+  { row: 'Most you pay for covered care',
+    stack: { k: 'cap', t: `${money(b.oopMax)} a year, plus DPC fees` },
+    silver: { k: 'cap', t: `${money(s.oopMax)} a year` }, gold: { k: 'cap', t: `${money(g.oopMax)} a year` } },
 ];
 ---
 <Base title="Bronze + DPC vs silver vs gold" description="What a year costs on a bronze plan with direct primary care and an HSA, a silver plan, or a gold plan, in a light, typical and bad year. Every assumption shown.">
@@ -104,6 +142,38 @@ const specs = [
       ))}
     </div>
     <p class="calc-note" style="margin: 16px 0 0">Totals are after HSA tax savings, which only the bronze + DPC setup gets. Bars show spending before those savings.</p>
+  </section>
+
+
+  <section class="card cmp-benefits" aria-labelledby="benefits-h">
+    <div class="section-head" style="margin-bottom: 14px">
+      <h2 id="benefits-h" class="h-l">What each option <em>includes.</em></h2>
+      <p class="calc-note" style="margin: 0">All three plans must cover the same 10 essential health benefits. The metal level changes your share of the bill, not what’s covered.<sup><a href="#src-10">10</a></sup> DPC adds everyday care on top of bronze. It isn’t insurance.<sup><a href="#src-6">6</a></sup></p>
+    </div>
+    <ul class="cmp-key" aria-label="Badge key">
+      {Object.entries(KIND).map(([k, label]) => <li><span class={`cmp-badge k-${k}`}>{label}</span></li>)}
+    </ul>
+    <div class="cmp-ben" role="table" aria-label="What each option includes">
+      <div class="cmp-ben-row cmp-ben-head" role="row">
+        <span role="columnheader"><span class="sr-only">Care</span></span>
+        {OPTIONS.map((o) => <span role="columnheader">{o.name}</span>)}
+      </div>
+      {benefits.map((r) => (
+        <div class="cmp-ben-row" role="row">
+          <span class="cmp-ben-what" role="rowheader"><b>{r.row}</b>{r.sub && <small>{r.sub}</small>}</span>
+          {OPTIONS.map((o) => {
+            const c = r[o.key as Key];
+            return (
+              <span class="cmp-ben-cell" role="cell" data-opt={o.short}>
+                <span class={`cmp-badge k-${c.k}`}>{KIND[c.k]}</span>
+                <span class="cmp-ben-t">{c.t}</span>
+              </span>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+    <p class="calc-note" style="margin: 14px 0 0">Copays, deductibles and DPC prices are the same assumed figures used in the totals above. Real plans and practices vary, so check the Summary of Benefits for any plan and the contract for any practice. Preventive care is $0 for many, not all, services.<sup><a href="#src-11">11</a></sup> More on where DPC stops: <a href="/blog/what-dpc-covers-and-five-things-it-never-will/">what a DPC membership covers, and five things it never will</a>.</p>
   </section>
 
   <div class="cmp-grid">
@@ -205,6 +275,8 @@ const specs = [
         <li id="src-7"><a href="https://www.irs.gov/pub/irs-drop/n-26-05.pdf">IRS, Notice 2026-5</a> (bronze and catastrophic plans are HSA-compatible; DPC fees payable from an HSA) <span class="grade primary">Primary source</span></li>
         <li id="src-8"><a href="https://www.irs.gov/pub/irs-drop/rp-26-24.pdf">IRS, Revenue Procedure 2026-24</a> (2027 HSA limits and the DPC fee caps) <span class="grade primary">Primary source</span></li>
         <li id="src-9"><a href="https://www.cms.gov/files/document/2027-papi-parameters-guidance-2026-01-29.pdf">CMS, 2027 maximum annual limitation on cost sharing</a> ($12,000 one person, $24,000 family) <span class="grade primary">Primary source</span></li>
+        <li id="src-10"><a href="https://www.healthcare.gov/choose-a-plan/plans-categories/">HealthCare.gov, The “metal” categories: Bronze, Silver, Gold &amp; Platinum</a> (every category covers the same 10 essential health benefits) <span class="grade primary">Primary source</span></li>
+        <li id="src-11"><a href="https://www.healthcare.gov/coverage/preventive-care-benefits/">HealthCare.gov, Preventive health services</a> ($0 for certain preventive services, even before the deductible) <span class="grade primary">Primary source</span></li>
       </ol>
     </div>
   </section>
