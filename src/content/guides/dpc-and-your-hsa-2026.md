@@ -10,7 +10,7 @@ lastReviewed: 2026-10-06
 heroColor: lilac
 featured: true
 respondingTo:
-  lede: "Fox Business reports the new HSA rules let you pay DPC fees tax-free. Here's the fine print before you count on it."
+  lede: "Finally, some good news about healthcare costs. Fox Business reports the new HSA rules let you pay DPC fees tax-free."
   outlet: "Fox Business"
   headline: "Treasury Department announces expanded HSA tax benefits under Trump law"
   url: "https://www.foxbusiness.com/politics/treasury-department-announces-expanded-hsa-tax-benefits-under-trump-law"

@@ -9,7 +9,7 @@ author: Sophia Cranbrook
 lastReviewed: 2026-10-06
 heroColor: coral
 respondingTo:
-  lede: "The AP says premiums are headed up again in 2027. That $500 check won't stretch as far as you'd hope."
+  lede: "Another year, another premium hike. The AP says 2027 prices are climbing again, and that $500 check won't stretch as far as you'd hope."
   outlet: "Associated Press (via PBS News)"
   headline: "Obamacare premiums surged this year. A new analysis shows it's likely to happen again in 2027"
   url: "https://www.pbs.org/newshour/health/obamacare-premiums-surged-this-year-a-new-analysis-shows-its-likely-to-happen-again-in-2027"
