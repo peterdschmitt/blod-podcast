@@ -18,6 +18,7 @@ const PAGES = [
   { t: 'Real examples', u: '/real-examples/', d: 'Example households that show why DPC plus overlay coverage can make sense, and when it does not.' },
   { t: 'Q&A: questions from the phone lines', u: '/questions/', d: 'Illustrative call transcripts answering common questions about DPC, HSAs, subsidies and overlay plans.' },
   { t: 'Stack calculator', u: '/calculator/', d: 'Compare the expected and worst-case yearly cost of different coverage stacks, with every formula published.' },
+  { t: 'Bronze + DPC vs silver vs gold', u: '/compare/', d: 'Side-by-side yearly cost of a bronze plan with direct primary care and an HSA, a silver plan and a gold plan, in a light, typical and bad year.' },
   { t: 'Methodology and disclosures', u: '/methodology/', d: 'How we grade evidence, who writes the guides, editorial independence, disclosures and corrections.' },
   { t: 'About', u: '/about/', d: 'Why the site exists, who is behind it, and how it is paid for. Not an insurance agency.' },
   { t: 'For agencies', u: '/for-agencies/', d: 'What Conversely offers insurance agencies and brokers. Clearly labeled commercial page.' },
