@@ -18,35 +18,77 @@ const reviewed = d.lastReviewed.toLocaleDateString('en-US', { month: 'short', da
 const heroBg = { lilac: 'bg-lilac', sage: 'bg-sage', butter: 'bg-butter', coral: 'bg-coral', white: 'bg-white' }[d.heroColor];
 const gradeClass = (g: string) => (g === 'Primary source' ? 'primary' : g.startsWith('Vendor') ? 'vendor' : '');
 const resp = d.respondingTo;
-const respDate = resp.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const isNew = d.snapshot.length > 0; // new format: docs/daily-post/post-outline.md
+const respDate = resp ? resp.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
 // Highlight the outlet's name wherever the headline mentions it.
-const outletNames = [resp.outlet.replace(/\s*\(via .*\)$/, ''), 'The AP', 'the AP', 'AP'];
-const outletHit = outletNames.find((n) => resp.lede.includes(n));
-const [ledeBefore, ledeAfter] = outletHit ? [resp.lede.slice(0, resp.lede.indexOf(outletHit)), resp.lede.slice(resp.lede.indexOf(outletHit) + outletHit.length)] : [resp.lede, ''];
+const outletNames = resp ? [resp.outlet.replace(/\s*\(via .*\)$/, ''), 'The AP', 'the AP', 'AP'] : [];
+const outletHit = resp && outletNames.find((n) => resp.lede.includes(n));
+const [ledeBefore, ledeAfter] = resp && outletHit ? [resp.lede.slice(0, resp.lede.indexOf(outletHit)), resp.lede.slice(resp.lede.indexOf(outletHit) + outletHit.length)] : [resp?.lede ?? '', ''];
 ---
 <Base title={d.title} description={d.dek} article>
   <div class="progress" aria-hidden="true"><span></span></div>
   <article style="display: flex; flex-direction: column; gap: var(--gap)">
     <header class:list={['art-hero', heroBg]}>
       <nav aria-label="Breadcrumb" class="crumbs rise"><a href="/blog/">Blog</a><a href={`/blog/#${d.categorySlug}`}>{d.category}</a></nav>
-      <h1 class="display rise d1 lead-outlet">{ledeBefore}{outletHit && <span class="outlet">{outletHit}</span>}{ledeAfter}</h1>
-      <figure class="responding rise d2" aria-label="The news story this post responds to">
-        <blockquote><p>&ldquo;{resp.quote}&rdquo;</p></blockquote>
-        <figcaption>{resp.quoteBy && <span>{resp.quoteBy}, in </span>}<strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">{resp.headline}</a></figcaption>
-      </figure>
-      <p class="why rise d2">{resp.impact}</p>
-      <p class="dek rise d3">{d.dek}</p>
-      <div class="byline rise d3">
-        <span>By <strong>{d.author}</strong></span>
-        {d.reviewer && <span>Reviewed by <strong>{d.reviewer}</strong></span>}
-        {d.mathReviewer && <span>Math checked by <strong>{d.mathReviewer}</strong></span>}
-        <span class="ink">Last reviewed <time datetime={d.lastReviewed.toISOString().slice(0, 10)}>{reviewed}</time></span>
-      </div>
+      {isNew ? (
+        <>
+          <h1 class="display rise d1 lead-long">{d.title}</h1>
+          <p class="dek rise d2">{d.dek}</p>
+          <div class="byline rise d2">
+            <span>By <strong>{d.author}</strong></span>
+            {d.audience && <span>{d.audience}</span>}
+            <span class="ink">Last reviewed <time datetime={d.lastReviewed.toISOString().slice(0, 10)}>{reviewed}</time></span>
+          </div>
+          {d.stats.length > 0 && (
+            <div class="stat-strip rise d3" aria-label="The numbers">
+              {d.stats.map((s) => <div class="stat"><span class="n">{s.value}</span><span class="l">{s.label}</span></div>)}
+              {d.statsNote && <p class="note">{d.statsNote}</p>}
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <h1 class="display rise d1 lead-outlet">{ledeBefore}{outletHit && <span class="outlet">{outletHit}</span>}{ledeAfter}</h1>
+          {resp && (
+            <figure class="responding rise d2" aria-label="The news story this post responds to">
+              <blockquote><p>&ldquo;{resp.quote}&rdquo;</p></blockquote>
+              <figcaption>{resp.quoteBy && <span>{resp.quoteBy}, in </span>}<strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">{resp.headline}</a></figcaption>
+            </figure>
+          )}
+          {resp && <p class="why rise d2">{resp.impact}</p>}
+          <p class="dek rise d3">{d.dek}</p>
+          <div class="byline rise d3">
+            <span>By <strong>{d.author}</strong></span>
+            {d.reviewer && <span>Reviewed by <strong>{d.reviewer}</strong></span>}
+            {d.mathReviewer && <span>Math checked by <strong>{d.mathReviewer}</strong></span>}
+            <span class="ink">Last reviewed <time datetime={d.lastReviewed.toISOString().slice(0, 10)}>{reviewed}</time></span>
+          </div>
+        </>
+      )}
     </header>
 
     <div class="art-body">
       <div class="art-main">
         <div class="prose">
+          {isNew && (
+            <section class="snapshot" aria-label="Snapshot">
+              <h2>Snapshot</h2>
+              <dl>{d.snapshot.map((x) => <div><dt>{x.label}</dt><dd>{x.text}</dd></div>)}</dl>
+            </section>
+          )}
+
+          {isNew && resp && (
+            <section class="today" aria-labelledby="today-h">
+              <h2 id="today-h">Why this matters today</h2>
+              <p class="lede-today">{resp.lede}</p>
+              <figure class="responding">
+                <blockquote><p>&ldquo;{resp.quote}&rdquo;</p></blockquote>
+                <figcaption>{resp.quoteBy && <span>{resp.quoteBy}, in </span>}<strong>{resp.outlet}</strong>, <time datetime={resp.date.toISOString().slice(0, 10)}>{respDate}</time>: <a href={resp.url} rel="noopener">{resp.headline}</a></figcaption>
+              </figure>
+              <p>{resp.impact}</p>
+            </section>
+          )}
+
           {d.namesProducts ? (
             <div class="notice warn" role="note">
               <Icon name="info" size={20} color="var(--ink)" />
@@ -59,7 +101,7 @@ const [ledeBefore, ledeAfter] = outletHit ? [resp.lede.slice(0, resp.lede.indexO
             </div>
           )}
 
-          {d.summary.length > 0 && (
+          {!isNew && d.summary.length > 0 && (
             <section class="tldr" aria-label="In 30 seconds">
               <h2>In 30 seconds</h2>
               <ol>{d.summary.map((s) => <li>{s}</li>)}</ol>
