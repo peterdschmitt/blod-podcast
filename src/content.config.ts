@@ -33,7 +33,13 @@ const guides = defineCollection({
       quote: z.string(),
       quoteBy: z.string().optional(), // the person quoted, when the quote isn't the outlet's own words
       impact: z.string(), // one or two sentences, to "you", on how this will likely affect the reader
-    }),
+    }).optional(), // required on classic posts; optional ("Why this matters today") on new-format posts with a snapshot
+    // New format (docs/daily-post/post-outline.md). A post with `snapshot` uses the new page top:
+    // title as the headline, dek, byline with audience, stat strip, snapshot, optional news box.
+    audience: z.string().optional(), // who the post is for, shown in the byline
+    stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]), // 2 to 4 numbers, each sourced in the body
+    statsNote: z.string().optional(), // where the numbers come from
+    snapshot: z.array(z.object({ label: z.string(), text: z.string() })).default([]),
     summary: z.array(z.string()).default([]),
     evidence: z.object({
       level: z.number().min(1).max(4),
@@ -46,6 +52,8 @@ const guides = defineCollection({
       grade: z.enum(['Primary source', 'Independent research', 'Independent analysis', 'Independent actuarial', 'Vendor-funded', 'Vendor-reported', 'Anecdotal']),
     })),
     next: z.string().optional(), // slug of the next guide
+  }).refine((d) => d.snapshot.length > 0 || d.respondingTo, {
+    message: 'Classic posts need respondingTo; new-format posts need a snapshot (see docs/daily-post/post-outline.md)',
   }),
 });
 

@@ -2,6 +2,8 @@
 
 A routine runs every morning and writes one new post for the blog. This file is the instructions it follows. Edit it to change how posts are made; the routine reads it fresh each day.
 
+**New format (Peter, 2026-10-31: "reuse everything we are doing for the Decision-Layer blog format and structure (prompt) but for this particular topic").** Every post now follows [post-brief.md](post-brief.md) (the rules, checked line by line before sending), [post-outline.md](post-outline.md) (17 sections, ten gated stages, final checklist), [post-queue.md](post-queue.md), [case-catalog.md](case-catalog.md) and [post-template.md](post-template.md). Where this file disagrees with post-brief.md, post-brief.md wins. The "Fixed facts" section below still holds. The "Headline lead" and "Header reference" sections apply only if Peter keeps the news-led headline (see post-brief.md, "Pending Peter's call"), and to the classic posts already written.
+
 ## Schedule and sign-off
 
 - One post a day, every day. The run starts at 5:52am US Eastern so the draft is ready by 7am.
