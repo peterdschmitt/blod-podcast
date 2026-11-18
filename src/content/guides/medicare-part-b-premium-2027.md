@@ -43,7 +43,7 @@ next: dpc-and-medicare-turning-65
 
 The number retirees wait for every fall is finally out, and the weeks around it have been full of reminders about health costs. **CBS News**' Mary Cunningham laid out what to do before the deadline in [Enrolling in Medicare? Here's what to consider before the Dec. 7 deadline](https://www.cbsnews.com/news/medicare-open-enrollment-tips-2027/). "There's really no one who can't benefit from at least taking some time to take a look," Alex Cottrill of KFF told her. He also warned that brokers are "often paid on commission."
 
-States are stepping in on drug costs, too. **KFF Health News**' Noam Levey reported on November 13 that, [Fed up with the healthcare industry, this red state capped insulin prices for patients](https://www.wfae.org/health/2026-11-13/fed-up-with-the-healthcare-industry-this-red-state-capped-insulin-prices-for-patients). "North Dakota is one of 29 states that have enacted such measures," he wrote, though "The cap won't suddenly make healthcare affordable."
+States are stepping in on drug costs, too. **KFF Health News**' Noam Levey reported on November 13: [Fed up with the healthcare industry, this red state capped insulin prices for patients](https://www.wfae.org/health/2026-11-13/fed-up-with-the-healthcare-industry-this-red-state-capped-insulin-prices-for-patients). "North Dakota is one of 29 states that have enacted such measures," he wrote, though "The cap won't suddenly make healthcare affordable."
 
 So here is what the new Medicare numbers mean for your monthly budget, and what to do with the time left in open enrollment.
 
