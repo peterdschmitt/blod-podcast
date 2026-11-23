@@ -46,9 +46,9 @@ next: lost-your-subsidy-2027-options
 
 For the first time in a while, both sides in Washington are saying the same word about health care: maybe. **CBS News**' Kaia Hubbard reported in [Hakeem Jeffries outlines healthcare areas where Democrats "can explore coming together" with Trump](https://www.cbsnews.com/news/hakeem-jeffries-trump-democrats-healthcare/) that the incoming House Speaker answered the President directly. "Let's see what's possible in terms of what the president has said with respect to healthcare," Jeffries said on Face the Nation. Trump had told reporters, "I'm open to great healthcare," adding, "Now, can it be what they want? No. But it can be a combination of what we all want, and we could end up with great healthcare in our country."
 
-Republicans are feeling the pressure from voters too. **Reuters**' Richard Cowan wrote in [Democrats won big in the midterms. So now what?](https://1027wbow.com/2026/11/21/democrats-won-big-in-the-midterms-so-now-what/) that Sen. John Boozman, an Arkansas Republican, said, "I think there's a real understanding in Congress that things like healthcare, the really exorbitant premiums, you know, that people are having to pay" must be addressed.
+Some Republicans are sounding a similar note. **Reuters**' Richard Cowan wrote in [Democrats won big in the midterms. So now what?](https://1027wbow.com/2026/11/21/democrats-won-big-in-the-midterms-so-now-what/) that Sen. John Boozman, an Arkansas Republican, said, "I think there's a real understanding in Congress that things like healthcare, the really exorbitant premiums, you know, that people are having to pay" must be addressed.
 
-That's encouraging talk. But if you're shopping for 2027 coverage right now, here's what it does and doesn't change.
+That's a change in tone. But if you're shopping for 2027 coverage right now, here's what it does and doesn't change.
 
 <div class="figs">
   <div class="fig bg-butter"><div class="n">Jan 3</div><div class="l">the day Democrats take control of Congress</div></div>
@@ -70,7 +70,7 @@ Bringing the credits back would be expensive. In an older estimate, CBO said mak
 
 ## Should you wait? No.
 
-Open enrollment runs from November 1 to January 15.<sup><a href="#src-4">4</a></sup> To have coverage on January 1, pick a plan by December 15. Even if Congress acts quickly next year, the prices and help you're offered for 2027 are set by today's rules. Going uninsured while you wait leaves you exposed to the full cost of an accident or illness.
+Open enrollment runs from November 1 to January 15.<sup><a href="#src-4">4</a></sup> To have coverage on January 1, pick a plan by December 15. The prices and help you're quoted for 2027 are based on current law, and no deal exists yet. Going uninsured while you wait leaves you exposed to the full cost of an accident or illness.
 
 - **Shop on today's numbers.** Our guide to [2027 open enrollment dates and changes](/blog/open-enrollment-2027-dates-and-changes/) covers the calendar.
 - **If your premium help shrank,** compare your choices in [Lost your subsidy? 2027 options, side by side](/blog/lost-your-subsidy-2027-options/).
